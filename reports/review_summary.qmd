@@ -1,0 +1,127 @@
+---
+title: "Review Summary"
+format: html
+execute:
+  echo: false
+editor: visual
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(googlesheets4)
+library(tidyverse)
+
+```
+
+```{r}
+#| label: read-data
+#| include: false
+
+gs4_deauth() # Just so Google doesn't try to authenticate you}
+read_review <- function(sheet) {
+  read_sheet(
+    "https://docs.google.com/spreadsheets/d/1zRA77pWp4nFZ9sjhVKXxxe0TBSg96QBC0L8XThshfQE/edit?usp=sharing",
+    sheet = sheet,
+    skip = 1,
+    na = c("", "NA")
+  )
+}
+papers <- read_review("papers")
+devices <- read_review("devices")
+taxa <- read_review("taxa")
+datasources <- read_review("data")
+
+```
+
+```{r}
+#| label: clean-data
+
+novel_data_papers <- papers %>% 
+  drop_na(manuscript_type) %>% 
+  filter(manuscript_type != "U",
+         novel_biologging == "Y",
+         biologging_context == "W")
+novel_data_devices <- devices %>% 
+  select(-note) %>% 
+  semi_join(novel_data_papers, by = "id")
+novel_data_taxa <- devices %>% 
+  select(-note) %>% 
+  semi_join(novel_data_papers, by = "id")
+novel_data_sources <- datasources %>% 
+  select(-note) %>% 
+  semi_join(novel_data_papers, by = "id")
+
+```
+
+## When and where
+
+`r nrow(novel_data_papers)` papers presented novel bio-logging data. The number of papers published per year is trending up (max of 12 in 2021).
+
+```{r}
+#| label: paper-years
+
+novel_data_papers %>% 
+  count(year) %>% 
+  complete(year = min(year):max(year), fill = list(n = 0)) %>% 
+  ggplot(aes(year, n)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+
+```
+
+*Marine Ecology Progress Series* published the most papers of any journal, followed by *Animal Biotelemetry* and *PLOS One*. Only journals with two or more publications shown here.
+
+```{r}
+#| label: journals
+
+fmt_source <- function(source) {
+  wrap_lbl <- function(lbl) {
+    lbl %>% 
+      strwrap(20) %>% 
+      paste(collapse = "\n")
+  }
+  source %>% 
+    fct_infreq() %>% 
+    fct_relabel(\(lbl) map_chr(lbl, wrap_lbl))
+}
+
+novel_data_papers %>% 
+  mutate(source = fmt_source(source)) %>% 
+  count(source) %>% 
+  filter(n > 1) %>% 
+  ggplot(aes(source, n)) +
+  geom_col() +
+  expand_limits(y = 0) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(hjust = 1, angle = 60),
+        axis.title.x = element_blank())
+```
+
+Location sensors (GPS, Argos, and depth) are used in the most studies. Accelerometers and temperature are the most commonly used intrinsic and environmental sensors, respectively.
+
+```{r}
+#| label: device-types
+
+novel_data_devices %>% 
+  pivot_longer(c(ltype, itype, etype), 
+               names_to = "cat", 
+               values_to = "sensor") %>% 
+  separate_longer_delim(sensor, ",") %>% 
+  mutate(cat = factor(cat,
+                      levels = c("ltype", "itype", "etype"),
+                      labels = c("Location", "Intrinsic", "Environment")),
+         sensor = str_trim(sensor, "both")) %>% 
+  filter(sensor != "?") %>% 
+  drop_na(sensor) %>% 
+  count(cat, sensor) %>% 
+  mutate(sensor = fct_reorder(sensor, n, .desc = TRUE)) %>% 
+  ggplot(aes(sensor, n, fill = cat)) +
+  geom_col() +
+  scale_fill_brewer("Sensor type", palette = "Dark2") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(hjust = 1, angle = 60))
+
+```
