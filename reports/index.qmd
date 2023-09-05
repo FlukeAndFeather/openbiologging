@@ -1,0 +1,23 @@
+---
+title: "Trends, challenges, and opportunities in open biologging data"
+format: html
+editor: visual
+---
+
+## Authors
+
+Max Czapanskiy ([\@FlukeAndFeather](https://github.com/flukeandfeather)), Allison Payne ([\@allisonpayne](https://github.com/allisonpayne))
+
+## Abstract
+
+The scientific community and its partners increasingly expect and rely on open science practices, especially open data. Many journals and funding bodies are adding requirements that research data be shared according to the FAIR principles: findable, accessible, interoperable, and reusable. These principles were developed collaboratively by scientists, funders, and publishers to facilitate the reuse of data by researchers and applied practitioners, including policy makers and resource managers. The biologging community is adapting to these changing norms and expectations by developing open data repositories (e.g., Movebank) and formal data standards. To measure the trajectory of open data practices in our field, we are conducting a systematic review of open data practices in biologging literature published since 2007 (the year Movebank came online).
+
+## Progress
+
+MFC: scored 150 papers
+
+ARP: scored ??? papers
+
+## Reports
+
+[Review summary](review_summary.html)

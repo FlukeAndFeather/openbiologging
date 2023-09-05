@@ -1,9 +1,12 @@
 ---
 title: "Review Summary"
-format: html
+format: 
+  html:
+    toc: true
 execute:
   echo: false
 editor: visual
+bibliography: references.bib
 ---
 
 ```{r}
@@ -55,9 +58,11 @@ novel_data_sources <- datasources %>%
 
 ```
 
-## When and where
+## When, where, how, and who
 
-`r nrow(novel_data_papers)` papers presented novel bio-logging data. The number of papers published per year is trending up (max of 12 in 2021).
+### When: year of publication
+
+`r nrow(novel_data_papers)` / `r nrow(drop_na(papers, manuscript_type))` papers presented novel bio-logging data. The number of papers published per year is trending up (max of 12 in 2021).
 
 ```{r}
 #| label: paper-years
@@ -72,35 +77,34 @@ novel_data_papers %>%
 
 ```
 
+### Where: publication source
+
 *Marine Ecology Progress Series* published the most papers of any journal, followed by *Animal Biotelemetry* and *PLOS One*. Only journals with two or more publications shown here.
 
 ```{r}
 #| label: journals
 
-fmt_source <- function(source) {
-  wrap_lbl <- function(lbl) {
-    lbl %>% 
-      strwrap(20) %>% 
-      paste(collapse = "\n")
-  }
-  source %>% 
-    fct_infreq() %>% 
-    fct_relabel(\(lbl) map_chr(lbl, wrap_lbl))
-}
+# fmt_source <- function(source) {
+#   wrap_lbl <- function(lbl) {
+#     lbl %>% 
+#       strwrap(20) %>% 
+#       paste(collapse = "\n")
+#   }
+#   source %>% 
+#     fct_infreq() %>% 
+#     fct_relabel(\(lbl) map_chr(lbl, wrap_lbl))
+# }
 
 novel_data_papers %>% 
-  mutate(source = fmt_source(source)) %>% 
   count(source) %>% 
+  arrange(desc(n)) %>% 
   filter(n > 1) %>% 
-  ggplot(aes(source, n)) +
-  geom_col() +
-  expand_limits(y = 0) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(hjust = 1, angle = 60),
-        axis.title.x = element_blank())
+  knitr::kable()
 ```
 
-Location sensors (GPS, Argos, and depth) are used in the most studies. Accelerometers and temperature are the most commonly used intrinsic and environmental sensors, respectively.
+### How: sensors deployed
+
+Location sensors (GPS, Argos, and depth) were deployed in the most studies. Accelerometers and temperature were the most commonly used intrinsic and environmental sensors, respectively. See [@williams2019] for definitions of location, intrinsic, and environmental sensors.
 
 ```{r}
 #| label: device-types
