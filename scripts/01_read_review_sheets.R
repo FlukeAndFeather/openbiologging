@@ -27,7 +27,7 @@ novel_data_papers <- papers %>%
 novel_data_devices <- devices %>%
   select(-note) %>%
   semi_join(novel_data_papers, by = "id")
-novel_data_taxa <- devices %>%
+novel_data_taxa <- taxa %>%
   select(-note) %>%
   semi_join(novel_data_papers, by = "id")
 novel_data_sources <- datasources %>%
