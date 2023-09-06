@@ -20,4 +20,6 @@ ARP: scored ??? papers
 
 ## Reports
 
+[Methods](methods.html)
+
 [Review summary](review_summary.html)

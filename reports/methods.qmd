@@ -1,0 +1,154 @@
+---
+title: "Methods"
+format: 
+  html:
+    toc: true
+editor: visual
+bibliography: references.bib
+---
+
+## Defining biologging
+
+The scientific literature has yet to arrive on consensus definitions for biologging and related terms, such as biotelemetry, tagging, and tracking. Rutz and Hays [@rutz2009] defined biologging as "the use of miniaturized animal-attached tags for logging and/or relaying of data about an animal's movements, behaviour, physiology and/or environment" and Cooke et al. [@cooke2004] defined biotelemetry as "remote measurement of physiological, behavioural, or energetic data". These and other definitions share the following two characteristics:
+
+-   An electronic device is attached to an animal, externally or internally.
+
+-   The device uses sensors and memory to record observations (e.g. GPS and accelerometers) *or* produces a signal that may be recorded by other sensors (e.g. acoustic telemetry and Argos satellites).
+
+    -   Hybrid devices may do both, either separately (e.g. a tag that transmits to Argos but also records depth from a pressure sensor, which may be downloaded after recovering the device) or simultaneously (e.g. a tag that records location using a GPS sensor, then transmits that location to Argos).
+
+Further complicating matters, biologging may be used in many research contexts. Much of the biologger literature involves deployments on unrestrained, undomesticated animals for the purposes of addressing questions in ecology and conservation. But agricultural research also uses biologging devices to assess animal welfare and resource use (domesticated animals) and biomedical research uses animal-borne heart rate sensors in lab experiments (restrained).
+
+The focus of this review is:
+
+1.  Biologging devices that use sensors (as opposed to acoustic or radio transmitters)
+2.  Deployed on unrestrained, undomesticated animals
+
+The choice to exclude transmitters was based on the properties of the data collected. Data from sensor-based biologgers can reasonably be considered self-contained, whereas data from transmitters depend equally on the receiver network. This external dependency complicates the assessment of open data sharing, the primary goal of this review. We make an exception for one type of transmitter, Argos tags, because the Argos system provides data to researchers with properties more similar to sensor-based biologgers.
+
+## Reproducible literature search
+
+On 2023-08-21, we queried Web of Science Core Collection for papers related to biologging with the following query:
+
+`animal AND (biologg* OR bio-logg* OR biotelemetry OR electronic tag* OR satellite track* OR GPS telemetry OR satellite telemetry OR satellite transmit* OR GPS collar* OR depth recorder* OR accelerometer OR archival tag*)`
+
+This yielded 6654 papers. We limited results to Web of Science categories with 100+ papers we deemed relevant, leaving 4799 papers. The categories we included were:
+
+-   Ecology
+
+-   Zoology
+
+-   Marine Freshwater Biology
+
+-   Biodiversity Conservation
+
+-   Multidisciplinary Sciences
+
+-   Environmental Sciences
+
+-   Oceanography
+
+-   Biology
+
+-   Behavioral Sciences
+
+-   Ornithology
+
+-   Evolutionary Biology
+
+-   Fisheries
+
+We excluded the following categories with 100+ papers:
+
+-   Agriculture Dairy Animal Science
+
+-   Veterinary Sciences
+
+-   Engineering Electrical Electronic
+
+-   Physiology
+
+-   Food Science Technology
+
+-   Engineering Biomedical
+
+-   Agriculture Multidisciplinary
+
+-   Computer Science Interdisciplinary Applications
+
+-   Instruments Instrumentation
+
+## Assessing open data practices
+
+At least two reviewers examined each paper. We recorded the following for each paper:
+
+-   Type of study (research, review, method, perspective, data, or unrelated)
+
+-   Did the paper present novel (i.e., previously unpublished) biologging data?
+
+-   What was the animal's context? (wild, captive, or domestic)
+
+-   Did the study incorporate data collected elsewhere? (e.g., satellite remote sensing or phylogenetic tree)
+
+    -   This can be subjective. For example, if a paper involved 3d path reconstruction from dead reckoning and they used a movement speed reported in another paper, does that count as data collected elsewhere? As a heuristic, we decided that "data" for these purposes would be limited to products that don't fit into papers themselves. E.g., numbers in a table don't count, but a raster of land cover does.
+
+-   What types of sensors were used? Following [@williams2019], we divided these into three categories:
+
+    -   Location: GPS, Argos, geolocation (using light and/or temperature), depth, altitude, other
+
+    -   Intrinsic: accelerometer, magnetometer, gyroscope, heart rate, Hall sensor, stomach temperature, neurological sensors, Pitot tubes, speed sensors (e.g., paddle wheels), internal body temperature (other than stomach), other
+
+    -   Environment: ambient temperature, video, audio, salinity, fluorescence, proximity sensors (to other tagged animals), light, other
+
+-   Which taxa were tracked? We standardized scientific names using the Integrated Taxonomic Information System.
+
+-   Were data shared according to [FAIR principles](https://www.go-fair.org/fair-principles/)? For each data source used in a study (biologging or otherwise), we recorded:
+
+    -   Is it biologging data?
+
+    -   Is there a data availability statement?
+
+        -   Positive examples include a DOI, a URL, supplemental material, citation of a published work, the name of a widely-used data source (e.g., Landsat Thematic Mapper), or "available on request"
+
+        -   Negative examples include not-widely-used data sources (e.g., a local municipality), insufficient descriptions (e.g., bathymetry is included in the analysis, but no source or description specified), and future intentions (e.g., "data will be archived in Dryad")
+
+    -   If the data deposited were deposited in a repository, which one?
+
+    -   FAIR principle F1: do the data have a DOI or other *unique* and *persistent* identifier?
+
+        -   Positive examples include DOIs
+
+        -   Negative examples include URLs, Movebank project IDs (not to be confused with the Movebank Data Repository, which assigns DOIs), and insufficient descriptions to identify data source
+
+    -   FAIR principle F4: are the data indexed in a searchable resource?
+
+        -   Positive examples include repositories that meet most of the TRUST Principles for digital repositories [@lin2020], such as the Movebank Data Repository, Dryad, or the National Snow and Ice Data Center.
+        -   Negative examples include other websites and supplemental materials to articles.
+
+    -   FAIR principle A1.1: are the data accessible by an open, free protocol?
+
+        -   Positive examples include *open* repositories, such as the Movebank Data Repository or Dryad (note: this criterion passes even if incomplete data are placed in an open repository, such as summary tables on Dryad)
+
+        -   Negative examples include *closed* repositories, such as EUROMAMMAL or the Seabird Tracking Database, and "available upon request"
+
+    -   FAIR principle I1: do the data use a formal, accessible, shared, and broadly applicable language for knowledge representation?
+
+        -   Positive examples include the Movebank data model and widely-used GIS formats (e.g., GeoTIFFs)
+
+        -   Negative examples include CSV files that don't follow a *formal*, *shared* data standard
+
+    -   FAIR principle R1.1: are the data released with a clear and accessible usage license?
+
+        -   Positive examples include open data licenses (e.g., CC0) or data distributed by a public entity (e.g., National Centers for Environmental Information)
+
+        -   Negative examples include unspecified licenses or "rights retained"
+
+    -   Are the data complete for *reproducibility* and *reuse*?
+
+        -   Positive examples include raw and processed biologging data
+
+        -   Negative examples include summary tables
+
+## Statistical analysis
+
+Crunch numbers om nom nom
