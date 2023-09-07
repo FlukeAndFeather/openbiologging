@@ -32,8 +32,9 @@ novel_data_taxa <- taxa %>%
   semi_join(novel_data_papers, by = "id")
 novel_data_sources <- datasources %>%
   select(-note) %>%
-  semi_join(novel_data_papers, by = "id")
-
+  semi_join(novel_data_papers, by = "id") %>%
+  mutate(across(c(is_biologging:availability_statement, F1:Complete),
+                \(x) case_match(x, "Y" ~ TRUE, "N" ~ FALSE, .default = NA)))
 
 # Save outputs ------------------------------------------------------------
 saveRDS(papers, "outputs/papers.rds")
