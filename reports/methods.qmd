@@ -80,75 +80,61 @@ We excluded the following categories with 100+ papers:
 
 ## Assessing open data practices
 
-At least two reviewers examined each paper. We recorded the following for each paper:
+At least two reviewers will score each paper. We'll conduct two passes for our review: a broad pass that collects high-level information about all the papers returned in our query, and a fine-scale pass that will do a deep dive into data sharing practices and conservation claims.
 
--   Type of study (research, review, method, perspective, data, or unrelated)
+### Broad pass
 
--   Did the paper present novel (i.e., previously unpublished) biologging data?
+Instructions for the broad pass.
 
--   What was the animal's context? (wild, captive, or domestic)
+#### Before you begin
 
--   Did the study incorporate data collected elsewhere? (e.g., satellite remote sensing or phylogenetic tree)
+1.  Make a copy of [review_assignments](https://docs.google.com/spreadsheets/d/1432iil-JwVyY2l1BqH3tKAlRKKKZlKdBxueSQy-oCO4/edit#gid=828697070), name it "review\_\<your initials\>" and leave it in the "Systematic review" folder.
+2.  Filter the **assigned_to** column to your initials.
 
-    -   This can be subjective. For example, if a paper involved 3d path reconstruction from dead reckoning and they used a movement speed reported in another paper, does that count as data collected elsewhere? As a heuristic, we decided that "data" for these purposes would be limited to products that don't fit into papers themselves. E.g., numbers in a table don't count, but a raster of land cover does.
+#### During your review
 
--   What types of sensors were used? Following [@williams2019], we divided these into three categories:
+For each of your assigned papers, fill out columns **D:O** following the directions in the table below.
 
-    -   Location: GPS, Argos, geolocation (using light and/or temperature), depth, altitude, other
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Column                 | Valid values | Instructions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
++========================+==============+==================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================+
+| **manuscript_type**    | \[SRMPDU\]   | Describe the type of paper. (S)tudy i.e. new research, (R)eview, (M)ethod, (P)erspective (or opinion, commentary, etc), (D)ata i.e. a data release paper, or (U)nrelated.                                                                                                                                                                                                                                                                                                                        |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **novel_biologging**   | \[YN\]       | Did the paper present *newly collected* biologging data? Reanalyses of existing data should be marked *N*, unless newly collected biologging data were also collected.                                                                                                                                                                                                                                                                                                                           |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **biologging_context** | \[WCD\]      | If the paper presented novel biologging data, in what context was it collected? (W)ild, (C)aptive, or (D)omesticated. There will be some edge cases, e.g., semi-domesticated herded animals and experimentally relocated wild animals; use your best judgement. If there is a Movebank study, you can look for a classification in the [manipulation-type](http://vocab.nerc.ac.uk/collection/MVB/current/MVB000155/) in the reference data.                                                     |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **external_data**      | \[YN\]       | Did the paper incorporate non-biologging data collected independently of the present study? E.g., satellite remote sensing or a phylogenetic tree. The purpose of this variable is to assess *asymmetrical data sharing*, so *Y* means this is a biologging paper that relied on shared non-biologging data. As a heuristic, limit \"data\" for these purposes would to products that don\'t fit into papers themselves. E.g., numbers in a table don\'t count, but a raster of land cover does. |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **device_cat**         | \[LIE\]      | What types of sensors were used? Following [@williams2019], choose one or more of these three categories:                                                                                                                                                                                                                                                                                                                                                                                        |
+|                        |              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|                        |              | -   Location: GPS, Argos, geolocation (using light and/or temperature), depth, altitude                                                                                                                                                                                                                                                                                                                                                                                                          |
+|                        |              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|                        |              | -   Intrinsic: accelerometer, magnetometer, gyroscope, heart rate, Hall sensor, stomach temperature, neurological sensors, Pitot tubes, speed sensors (e.g., paddle wheels), internal body temperature (other than stomach)                                                                                                                                                                                                                                                                      |
+|                        |              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|                        |              | -   Environment: ambient temperature, video, audio, salinity, fluorescence, proximity sensors (to other tagged animals), light                                                                                                                                                                                                                                                                                                                                                                   |
+|                        |              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|                        |              | So a GPS tag would be *L*, GPS/accelerometer would be *LI*, GPS/accelerometer/temperature would be *LIE*, and a camera-only tag would be *E*.                                                                                                                                                                                                                                                                                                                                                    |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **genus**              |              | Genus of the tagged animals. See **more_species** if multiple species were tagged.                                                                                                                                                                                                                                                                                                                                                                                                               |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **species**            |              | Species of the tagged animals. See **more_species** if multiple species were tagged.                                                                                                                                                                                                                                                                                                                                                                                                             |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **habitat**            | \[AMT\]      | Is the habitat of the species specified by **genus** and **species** (A)quatic, (M)arine, or (T)errestrial? A whale would be *M*, freshwater fish *A*, and an elk *T*. For flying animals, choose the habitat the animal is most associated with, like *M* for an albatross, *T* for a vulture, and *A* for an anhinga.                                                                                                                                                                          |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **more_species**       | \[YN\]       | Use this variable to indicate if more than one species was tracked. If so, add genus, species, and habitat information to the **additional_taxa** sheet.                                                                                                                                                                                                                                                                                                                                         |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **biologging_avail**   | \[YN\]       | Is there a data availability statement specifically for the biologging data? Any text specifically indicating how to find the data counts, including a DOI for a data repository entry, a Movebank project ID, or "available upon request". If there is a data availability statement but it doesn't address the biologging data, then this is a *N*.                                                                                                                                            |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **conserv\***          | \[YN\]       | Does the text "conserv\*" appear in the paper, referring to conservation? E.g. "wildlife management and conservation" would count, but "a conservative measure of distance travelled" would not. This will be used to sample papers for assessing conservation claims with the fine-scale rubric.                                                                                                                                                                                                |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **note**               |              | For your personal use. Questions or things you want to come back to later. Won't be used in the analysis.                                                                                                                                                                                                                                                                                                                                                                                        |
++------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-    -   Intrinsic: accelerometer, magnetometer, gyroscope, heart rate, Hall sensor, stomach temperature, neurological sensors, Pitot tubes, speed sensors (e.g., paddle wheels), internal body temperature (other than stomach), other
+### Fine-scale pass
 
-    -   Environment: ambient temperature, video, audio, salinity, fluorescence, proximity sensors (to other tagged animals), light, other
-
--   Which taxa were tracked? We standardized scientific names using the Integrated Taxonomic Information System.
-
--   Were data shared according to [FAIR principles](https://www.go-fair.org/fair-principles/)? For each data source used in a study (biologging or otherwise), we recorded:
-
-    -   Is it biologging data?
-
-    -   Is there a data availability statement?
-
-        -   Positive examples include a DOI, a URL, supplemental material, citation of a published work, the name of a widely-used data source (e.g., Landsat Thematic Mapper), or "available on request"
-
-        -   Negative examples include not-widely-used data sources (e.g., a local municipality), insufficient descriptions (e.g., bathymetry is included in the analysis, but no source or description specified), and future intentions (e.g., "data will be archived in Dryad")
-
-    -   If the data deposited were deposited in a repository, which one?
-
-    -   FAIR principle F1: do the data have a DOI or other *unique* and *persistent* identifier?
-
-        -   Positive examples include DOIs
-
-        -   Negative examples include URLs, Movebank project IDs (not to be confused with the Movebank Data Repository, which assigns DOIs), and insufficient descriptions to identify data source
-
-    -   FAIR principle F4: are the data indexed in a searchable resource?
-
-        -   Positive examples include repositories that meet most of the TRUST Principles for digital repositories [@lin2020], such as the Movebank Data Repository, Dryad, or the National Snow and Ice Data Center.
-        -   Negative examples include other websites and supplemental materials to articles.
-
-    -   FAIR principle A1.1: are the data accessible by an open, free protocol?
-
-        -   Positive examples include *open* repositories, such as the Movebank Data Repository or Dryad (note: this criterion passes even if incomplete data are placed in an open repository, such as summary tables on Dryad)
-
-        -   Negative examples include *closed* repositories, such as EUROMAMMAL or the Seabird Tracking Database, and "available upon request"
-
-    -   FAIR principle I1: do the data use a formal, accessible, shared, and broadly applicable language for knowledge representation?
-
-        -   Positive examples include the Movebank data model and widely-used GIS formats (e.g., GeoTIFFs)
-
-        -   Negative examples include CSV files that don't follow a *formal*, *shared* data standard
-
-    -   FAIR principle R1.1: are the data released with a clear and accessible usage license?
-
-        -   Positive examples include open data licenses (e.g., CC0) or data distributed by a public entity (e.g., National Centers for Environmental Information)
-
-        -   Negative examples include unspecified licenses or "rights retained"
-
-    -   Are the data complete for *reproducibility* and *reuse*?
-
-        -   Positive examples include raw and processed biologging data
-
-        -   Negative examples include summary tables
+Work in progress
 
 ## Statistical analysis
 
-Crunch numbers om nom nom
+Work in progress
