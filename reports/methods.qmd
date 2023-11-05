@@ -88,8 +88,9 @@ Instructions for the broad pass.
 
 #### Before you begin
 
-1.  Make a copy of [review_assignments](https://docs.google.com/spreadsheets/d/1432iil-JwVyY2l1BqH3tKAlRKKKZlKdBxueSQy-oCO4/edit#gid=828697070), name it "review\_\<your initials\>" and leave it in the "Systematic review" folder.
+1.  Make a copy of [review_assignments_v0.2.1](https://docs.google.com/spreadsheets/d/12BLP8avqK-0VslkPtpM1j1fb9rS8JToFVwggs8UtfFs)\_v, name it "review\_\<your initials\>" and leave it in the "Systematic review" folder.
 2.  Filter the **assigned_to** column to your initials.
+3.  If you started reviewing papers using earlier versions of this rubric, those papers are still assigned to you. You'll need to copy your efforts over from [v0.1](https://drive.google.com/drive/folders/1AKemcXC9CdcYDKVkoyV1Z4CvI1Xwvo34) (4-sheet version) or [v0.2.0](https://drive.google.com/drive/folders/1bvy4cdYlv5p3Xy-VbQdVy7rqtoTfQDqP) (single-sheet version before reassigning papers on 2023-11-05).
 
 #### During your review
 
