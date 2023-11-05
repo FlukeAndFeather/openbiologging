@@ -33,6 +33,7 @@ collaborators <- c("acn", "arp", "ecn", "cmh", "jkb", "mfc", "star", "tac")
 set.seed(2007)
 assignments <- mutate(all_papers, nth = 1) %>%
   rbind(mutate(all_papers, nth = 2)) %>%
+  filter(year >= 2007) %>%
   left_join(select(already_reviewed, id = paperid, reviewer_initials, nth),
             by = c("id", "nth")) %>%
   mutate(
@@ -43,4 +44,4 @@ assignments <- mutate(all_papers, nth = 1) %>%
   ) %>%
   arrange(assigned_to)
 
-write_sheet(assignments, "https://docs.google.com/spreadsheets/d/1432iil-JwVyY2l1BqH3tKAlRKKKZlKdBxueSQy-oCO4")
+write_sheet(assignments, "https://docs.google.com/spreadsheets/d/12BLP8avqK-0VslkPtpM1j1fb9rS8JToFVwggs8UtfFs")
