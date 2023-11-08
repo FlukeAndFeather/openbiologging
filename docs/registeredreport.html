@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Trends, challenges, and opportunities in open biologging data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="registeredreport_files/libs/clipboard/clipboard.min.js"></script>
+<script src="registeredreport_files/libs/quarto-html/quarto.js"></script>
+<script src="registeredreport_files/libs/quarto-html/popper.min.js"></script>
+<script src="registeredreport_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="registeredreport_files/libs/quarto-html/anchor.min.js"></script>
+<link href="registeredreport_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="registeredreport_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="registeredreport_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="registeredreport_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="registeredreport_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Trends, challenges, and opportunities in open biologging data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-547500-words" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="introduction-547500-words">Introduction (547/500 words)</h2>
+<p>Biologging is the practice of using animal-borne sensors to remotely observe animals and their environments<span class="citation" data-cites="rutz2009"><sup><a href="#ref-rutz2009" role="doc-biblioref">1</a></sup></span>. In the six decades since a biologist first attached a modified kitchen timer to a seal<span class="citation" data-cites="kooyman1966"><sup><a href="#ref-kooyman1966" role="doc-biblioref">2</a></sup></span>, biologging has become an invaluable, multidisciplinary tool used by ecologists<span class="citation" data-cites="wilmers2015"><sup><a href="#ref-wilmers2015" role="doc-biblioref">3</a></sup></span>, climate scientists<span class="citation" data-cites="ellis-soto2023"><sup><a href="#ref-ellis-soto2023" role="doc-biblioref">4</a></sup></span>, oceanographers<span class="citation" data-cites="treasure2017"><sup><a href="#ref-treasure2017" role="doc-biblioref">5</a></sup></span>, and more. As biologging data continue to grow in size (e.g., over six billion records in Movebank<span class="citation" data-cites="kays2021"><sup><a href="#ref-kays2021" role="doc-biblioref">6</a></sup></span>) and complexity (e.g., novel sensors like infrasound recorders<span class="citation" data-cites="denouden2021"><sup><a href="#ref-denouden2021" role="doc-biblioref">7</a></sup></span>), “big data” methods have been highlighted as a key direction for future developments<span class="citation" data-cites="nathan2022 grémillet2022"><sup><a href="#ref-nathan2022" role="doc-biblioref">8</a>,<a href="#ref-grémillet2022" role="doc-biblioref">9</a></sup></span>. Simultaneously, biologging data have been proposed as valuable conservation tools for specific taxa (e.g., seabirds<span class="citation" data-cites="beal2021"><sup><a href="#ref-beal2021" role="doc-biblioref">10</a></sup></span> and sharks<span class="citation" data-cites="queiroz2019"><sup><a href="#ref-queiroz2019" role="doc-biblioref">11</a></sup></span>) and entire regions (e.g., the Southern Ocean<span class="citation" data-cites="hindell2020"><sup><a href="#ref-hindell2020" role="doc-biblioref">12</a></sup></span>). If large, synthesis biologging datasets are going to have such important impacts on ecological research and ecosystem conservation, then equitable access to these data is a matter of practical and ethical concern.</p>
+<div class="page-columns page-full"><p>Open science practices, such as publishing data and code alongside manuscripts, increases transparency and improves efficiency<span class="citation" data-cites="lowndes2017 hampton2017"><sup><a href="#ref-lowndes2017" role="doc-biblioref">13</a>,<a href="#ref-hampton2017" role="doc-biblioref">14</a></sup></span>. The “openness” of data is determined by multiple factors. The FAIR principles<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">15</a></sup></span> - findability, accessibility, interoperability, and reusability - provide a framework for facilitating open data sharing. FAIR data are a critical component of groundbreaking synthesis science<span class="citation" data-cites="halpern2020 fredston2023"><sup><a href="#ref-halpern2020" role="doc-biblioref">16</a>,<a href="#ref-fredston2023" role="doc-biblioref">17</a></sup></span> and effective conservation practices<span class="citation" data-cites="roche2021 buxton2021"><sup><a href="#ref-roche2021" role="doc-biblioref">18</a>,<a href="#ref-buxton2021" role="doc-biblioref">19</a></sup></span> <strong>NOTE</strong>. Moreover, for fields like ecology and geosciences where a lack of diversity reflects disproportionately hostile treatment of excluded groups<span class="citation" data-cites="primack2023 primack2023 marín-spiotta2020"><sup><a href="#ref-primack2023" role="doc-biblioref">21</a>,<a href="#ref-primack2023" role="doc-biblioref">21</a>,<a href="#ref-marín-spiotta2020" role="doc-biblioref">22</a></sup></span>, FAIR data can serve an important role in transformations towards inclusive research cultures<span class="citation" data-cites="ledgerwood2022 graves2022"><sup><a href="#ref-ledgerwood2022" role="doc-biblioref">23</a>,<a href="#ref-graves2022" role="doc-biblioref">24</a></sup></span> (a transformation the open science movement itself is currently undertaking<span class="citation" data-cites="srivastava2014 whitaker2020"><sup><a href="#ref-srivastava2014" role="doc-biblioref">25</a>,<a href="#ref-whitaker2020" role="doc-biblioref">26</a></sup></span>).</p><div class="no-row-height column-margin column-container"><span class="">I’d like to incorporate Scarpignato et al.&nbsp;2023<span class="citation" data-cites="scarpignato2023"><sup><a href="#ref-scarpignato2023" role="doc-biblioref">20</a></sup></span> here.</span></div></div>
+<div class="page-columns page-full"><p>There have been numerous efforts within the biologging research community to promote open data sharing practices. Essential cyberinfrastructure include domain-specific data repositories (Movebank<span class="citation" data-cites="kays2021"><sup><a href="#ref-kays2021" role="doc-biblioref">6</a></sup></span>, Seabird Tracking Database <a href="https://www.seabirdtracking.org">seabirdtracking.org</a>, Euromammal<span class="citation" data-cites="urbano2021"><sup><a href="#ref-urbano2021" role="doc-biblioref">27</a></sup></span>) and data standards<span class="citation" data-cites="sequeira2021 dettki2023 kranstauber2011"><sup><a href="#ref-sequeira2021" role="doc-biblioref">28</a>–<a href="#ref-kranstauber2011" role="doc-biblioref">30</a></sup></span>, which facilitate adoption of the FAIR principles <strong>NOTE</strong>:</p><div class="no-row-height column-margin column-container"><span class="">Is this excessive? I want to introduce the FAIR principles explicitly, but we only have 500 words for the intro and we’re already over.</span></div></div>
+<ul>
+<li><p>Findability. Data repositories provide searchable resources for finding biologging data and may assign permanent identifiers, like DOIs.</p></li>
+<li><p>Accessibility. Data repositories allow scientists to retrieve biologging data with open protocols and tools, like HTTP (i.e., downloading a dataset through from a web browser) and R packages (e.g., the <code>move</code> package<span class="citation" data-cites="kranstauber2023"><sup><a href="#ref-kranstauber2023" role="doc-biblioref">31</a></sup></span>).</p></li>
+<li><p>Interoperability. Data standards establish common structures, formats, and vocabularies across datasets, reducing barriers to combining datasets and increasing uptake within and across scientific disciplines<span class="citation" data-cites="treasure2017"><sup><a href="#ref-treasure2017" role="doc-biblioref">5</a></sup></span>.</p></li>
+<li><p>Reusability. Data repositories and standards together record metadata essential for reusing data in new analyses (e.g., the Movebank data model records whether an instrumented animal was translocated, which would affect the results of many ecological analyses) and provide licensing options that set expectations and requirements for reuse.</p></li>
+</ul>
+<div class="page-columns page-full"><p>Despite these biologging cyberinfrastructure developments, the general state of open data practices within the community remains unknown<span class="citation" data-cites="campbell2016"><sup><a href="#ref-campbell2016" role="doc-biblioref">32</a></sup></span> <strong>NOTE</strong>. We will conduct a systematic review of the biologging literature to establish a baseline of open data practices. The review will quantify the context of biologging studies (e.g., instrumented species and sensor types) and their data sharing practices. By data sharing practices, we refer to how biologging studies both share data (e.g., were the data assigned a persistent identifier such as a DOI?) and utilize other sources of open data (e.g., satellite remote sensing data). Our review will test the following four hypotheses:</p><div class="no-row-height column-margin column-container"><span class="">Would love a more recent citation here.</span></div></div>
+<p><strong>H1:</strong> Open biologging data practices are increasing over time.</p>
+<p><strong>H2:</strong> Overall rates of open biologging data practices remain low.</p>
+<p><strong>H3:</strong> Open biologging data practices vary by taxa, habitat, and spatial vs aspatial (e.g., accelerometer) data.</p>
+<p><strong>H4:</strong> Biologging studies rely on open data from external sources more than they provide open data.</p>
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-line-spacing="2" role="list">
+<div id="ref-rutz2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Rutz, C. &amp; Hays, G. C. <a href="https://doi.org/10.1098/rsbl.2009.0089">New frontiers in biologging science</a>. <em>Biology Letters</em> <strong>5</strong>, 289–292 (2009).</div>
+</div>
+<div id="ref-kooyman1966" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Kooyman, G. L. <a href="https://doi.org/10.1126/science.151.3717.1553">Maximum Diving Capacities of the Weddell Seal,<span><em>Leptonychotes weddelli</em></span></a>. <em>Science</em> <strong>151</strong>, 1553–1554 (1966).</div>
+</div>
+<div id="ref-wilmers2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Wilmers, C. C. <em>et al.</em> <a href="https://doi.org/10.1890/14-1401.1">The golden age of bio<span>-</span>logging: how animal<span>-</span>borne sensors are advancing the frontiers of ecology</a>. <em>Ecology</em> <strong>96</strong>, 1741–1753 (2015).</div>
+</div>
+<div id="ref-ellis-soto2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Ellis-Soto, D., Wikelski, M. &amp; Jetz, W. <a href="https://doi.org/10.1038/s41558-023-01781-7">Animal-borne sensors as a biologically informed lens on a changing climate</a>. <em>Nature Climate Change</em> <strong>13</strong>, 1042–1054 (2023).</div>
+</div>
+<div id="ref-treasure2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Treasure, A. <em>et al.</em> <a href="https://doi.org/10.5670/oceanog.2017.234">Marine mammals exploring the oceans pole to pole: A review of the MEOP consortium</a>. <em>Oceanography</em> <strong>30</strong>, 132–138 (2017).</div>
+</div>
+<div id="ref-kays2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Kays, R. <em>et al.</em> <a href="https://doi.org/10.1111/2041-210x.13767">The Movebank system for studying global animal movement and demography</a>. <em>Methods in Ecology and Evolution</em> <strong>13</strong>, 419–431 (2021).</div>
+</div>
+<div id="ref-denouden2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Ouden, O. F. C. den, Smets, P. S. M., Assink, J. D. &amp; Evers, L. G. <a href="https://doi.org/10.1029/2021gl094555">A Bird<span>’</span>s<span>-</span>Eye View on Ambient Infrasonic Soundscapes</a>. <em>Geophysical Research Letters</em> <strong>48</strong>, (2021).</div>
+</div>
+<div id="ref-nathan2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Nathan, R. <em>et al.</em> <a href="https://doi.org/10.1126/science.abg1780">Big-data approaches lead to an increased understanding of the ecology of animal movement</a>. <em>Science</em> <strong>375</strong>, (2022).</div>
+</div>
+<div id="ref-grémillet2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Grémillet, D., Chevallier, D. &amp; Guinet, C. <a href="https://doi.org/10.1093/icesjms/fsac059">Big data approaches to the spatial ecology and conservation of marine megafauna</a>. <em>ICES Journal of Marine Science</em> <strong>79</strong>, 975–986 (2022).</div>
+</div>
+<div id="ref-beal2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Beal, M. <em>et al.</em> <a href="https://doi.org/10.1126/sciadv.abd7225">Global political responsibility for the conservation of albatrosses and large petrels</a>. <em>Science Advances</em> <strong>7</strong>, (2021).</div>
+</div>
+<div id="ref-queiroz2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Queiroz, N. <em>et al.</em> <a href="https://doi.org/10.1038/s41586-019-1444-4">Global spatial risk assessment of sharks under the footprint of fisheries</a>. <em>Nature</em> <strong>572</strong>, 461–466 (2019).</div>
+</div>
+<div id="ref-hindell2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">Hindell, M. A. <em>et al.</em> <a href="https://doi.org/10.1038/s41586-020-2126-y">Tracking of marine predators to protect Southern Ocean ecosystems</a>. <em>Nature</em> <strong>580</strong>, 87–92 (2020).</div>
+</div>
+<div id="ref-lowndes2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">Lowndes, J. S. S. <em>et al.</em> <a href="https://doi.org/10.1038/s41559-017-0160">Our path to better science in less time using open data science tools</a>. <em>Nature Ecology &amp; Evolution</em> <strong>1</strong>, 1–7 (2017).</div>
+</div>
+<div id="ref-hampton2017" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Hampton, S. E. <em>et al.</em> <a href="https://doi.org/10.1093/biosci/bix025">Skills and Knowledge for Data-Intensive Environmental Research</a>. <em>BioScience</em> <strong>67</strong>, 546–557 (2017).</div>
+</div>
+<div id="ref-wilkinson2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Wilkinson, M. D. <em>et al.</em> <a href="https://doi.org/10.1038/sdata.2016.18">The FAIR Guiding Principles for scientific data management and stewardship</a>. <em>Scientific Data</em> <strong>3</strong>, 160018 (2016).</div>
+</div>
+<div id="ref-halpern2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Halpern, B. S. <em>et al.</em> Ecological Synthesis and Its Role in Advancing Knowledge. <em>BioScience</em> (2020) doi:<a href="https://doi.org/10.1093/biosci/biaa105">10.1093/biosci/biaa105</a>.</div>
+</div>
+<div id="ref-fredston2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Fredston, A. L. &amp; Lowndes, J. S. S. <a href="https://doi.org/10.1146/annurev-marine-041723-094741">Welcoming More Participation in Open Data Science for the Oceans</a>. <em>Annual Review of Marine Science</em> <strong>16</strong>, (2023).</div>
+</div>
+<div id="ref-roche2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Roche, D. G. <em>et al.</em> <a href="https://doi.org/10.1111/cobi.13835">Closing the knowledge<span>-</span>action gap in conservation with open science</a>. <em>Conservation Biology</em> <strong>36</strong>, (2021).</div>
+</div>
+<div id="ref-buxton2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Buxton, R. T. <em>et al.</em> <a href="https://doi.org/10.1111/csp2.329">Avoiding wasted research resources in conservation science</a>. <em>Conservation Science and Practice</em> <strong>3</strong>, (2021).</div>
+</div>
+<div id="ref-scarpignato2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Scarpignato, A. L. <em>et al.</em> <a href="https://doi.org/10.1016/j.biocon.2023.110224">Shortfalls in tracking data available to inform North American migratory bird conservation</a>. <em>Biological Conservation</em> <strong>286</strong>, 110224 (2023).</div>
+</div>
+<div id="ref-primack2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Primack, R. B. <em>et al.</em> <a href="https://doi.org/10.1002/fee.2613">Historically excluded groups in ecology are undervalued and poorly treated</a>. <em>Frontiers in Ecology and the Environment</em> <strong>21</strong>, 363–369 (2023).</div>
+</div>
+<div id="ref-marín-spiotta2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">Marín-Spiotta, E. <em>et al.</em> <a href="https://doi.org/10.5194/adgeo-53-117-2020">Hostile climates are barriers to diversifying the geosciences</a>. <em>Advances in Geosciences</em> <strong>53</strong>, 117–127 (2020).</div>
+</div>
+<div id="ref-ledgerwood2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">Ledgerwood, A. <em>et al.</em> <a href="https://doi.org/10.1177/17456916211036654">The Pandemic as a Portal: Reimagining Psychological Science as Truly Open and Inclusive</a>. <em>Perspectives on Psychological Science</em> <strong>17</strong>, 937–959 (2022).</div>
+</div>
+<div id="ref-graves2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">Graves, J. L., Kearney, M., Barabino, G. &amp; Malcom, S. <a href="https://doi.org/10.1073/pnas.2117831119">Inequality in science and the case for a new agenda</a>. <em>Proceedings of the National Academy of Sciences</em> <strong>119</strong>, (2022).</div>
+</div>
+<div id="ref-srivastava2014" class="csl-entry" role="listitem">
+<div class="csl-left-margin">25. </div><div class="csl-right-inline">Srivastava, S. <a href="https://thehardestscience.com/2014/05/25/does-the-replication-debate-have-a-diversity-problem/">Does the replication debate have a diversity problem?</a> <em>The Hardest Science</em> (2014).</div>
+</div>
+<div id="ref-whitaker2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">26. </div><div class="csl-right-inline">Whitaker, K. &amp; Guest, O. <a href="https://www.bps.org.uk/psychologist/bropenscience-broken-science">#Bropenscience is broken science</a>. <em>The British Psychological Society</em> (2020).</div>
+</div>
+<div id="ref-urbano2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">Urbano, F. &amp; Cagnacci, F. <a href="https://doi.org/10.3389/fevo.2021.727023">Data management and sharing for collaborative science: Lessons learnt from the euromammals initiative</a>. <em>Frontiers in Ecology and Evolution</em> <strong>9</strong>, (2021).</div>
+</div>
+<div id="ref-sequeira2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">28. </div><div class="csl-right-inline">Sequeira, A. M. M. <em>et al.</em> <a href="https://doi.org/10.1111/2041-210x.13593">A standardisation framework for bio<span>-</span>logging data to advance ecological research and conservation</a>. <em>Methods in Ecology and Evolution</em> <strong>12</strong>, 996–1007 (2021).</div>
+</div>
+<div id="ref-dettki2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">29. </div><div class="csl-right-inline">Dettki, H., Arlt, D., Bäckman, J. &amp; Blanchet, M. <a href="https://doi.org/10.3897/biss.7.111438">Key-value pairs and NoSQL databases: A novel concept to manage biologging data in data repositories</a>. <em>Biodiversity Information Science and Standards</em> <strong>7</strong>, (2023).</div>
+</div>
+<div id="ref-kranstauber2011" class="csl-entry" role="listitem">
+<div class="csl-left-margin">30. </div><div class="csl-right-inline">Kranstauber, B. <em>et al.</em> <a href="https://doi.org/10.1016/j.envsoft.2010.12.005">The Movebank data model for animal tracking</a>. <em>Environmental Modelling &amp; Software</em> <strong>26</strong>, 834–835 (2011).</div>
+</div>
+<div id="ref-kranstauber2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">31. </div><div class="csl-right-inline">Kranstauber, B., Smolla, M. &amp; Scharf, A. K. <em><a href="https://bartk.gitlab.io/move/">Move: Visualizing and analyzing animal track data</a></em>. (2023).</div>
+</div>
+<div id="ref-campbell2016" class="csl-entry" role="listitem">
+<div class="csl-left-margin">32. </div><div class="csl-right-inline">Campbell, H. A., Urbano, F., Davidson, S., Dettki, H. &amp; Cagnacci, F. <a href="https://doi.org/10.1186/s40317-015-0096-x">A plea for standards in reporting data collected by animal-borne electronic devices</a>. <em>Animal Biotelemetry</em> <strong>4</strong>, (2016).</div>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

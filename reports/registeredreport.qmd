@@ -1,0 +1,33 @@
+---
+title: "Trends, challenges, and opportunities in open biologging data"
+format: html
+editor: visual
+bibliography: references.bib
+csl: nature.csl
+---
+
+## Introduction (547/500 words)
+
+Biologging is the practice of using animal-borne sensors to remotely observe animals and their environments [@rutz2009]. In the six decades since a biologist first attached a modified kitchen timer to a seal [@kooyman1966], biologging has become an invaluable, multidisciplinary tool used by ecologists [@wilmers2015], climate scientists [@ellis-soto2023], oceanographers [@treasure2017], and more. As biologging data continue to grow in size (e.g., over six billion records in Movebank [@kays2021]) and complexity (e.g., novel sensors like infrasound recorders [@denouden2021]), "big data" methods have been highlighted as a key direction for future developments [@nathan2022; @grémillet2022]. Simultaneously, biologging data have been proposed as valuable conservation tools for specific taxa (e.g., seabirds [@beal2021] and sharks [@queiroz2019]) and entire regions (e.g., the Southern Ocean [@hindell2020]). If large, synthesis biologging datasets are going to have such important impacts on ecological research and ecosystem conservation, then equitable access to these data is a matter of practical and ethical concern.
+
+Open science practices, such as publishing data and code alongside manuscripts, increases transparency and improves efficiency [@lowndes2017; @hampton2017]. The "openness" of data is determined by multiple factors. The FAIR principles [@wilkinson2016] - findability, accessibility, interoperability, and reusability - provide a framework for facilitating open data sharing. FAIR data are a critical component of groundbreaking synthesis science [@halpern2020; @fredston2023] and effective conservation practices [@roche2021; @buxton2021] **NOTE**[I'd like to incorporate Scarpignato et al. 2023 [@scarpignato2023] here.]{.aside}. Moreover, for fields like ecology and geosciences where a lack of diversity reflects disproportionately hostile treatment of excluded groups [@primack2023; @primack2023; @marín-spiotta2020], FAIR data can serve an important role in transformations towards inclusive research cultures [@ledgerwood2022; @graves2022] (a transformation the open science movement itself is currently undertaking [@srivastava2014; @whitaker2020]).
+
+There have been numerous efforts within the biologging research community to promote open data sharing practices. Essential cyberinfrastructure include domain-specific data repositories (Movebank [@kays2021], Seabird Tracking Database [seabirdtracking.org](https://www.seabirdtracking.org), Euromammal [@urbano2021]) and data standards [@sequeira2021; @dettki2023; @kranstauber2011], which facilitate adoption of the FAIR principles **NOTE**[Is this excessive? I want to introduce the FAIR principles explicitly, but we only have 500 words for the intro and we're already over.]{.aside}:
+
+-   Findability. Data repositories provide searchable resources for finding biologging data and may assign permanent identifiers, like DOIs.
+
+-   Accessibility. Data repositories allow scientists to retrieve biologging data with open protocols and tools, like HTTP (i.e., downloading a dataset through from a web browser) and R packages (e.g., the `move` package [@kranstauber2023]).
+
+-   Interoperability. Data standards establish common structures, formats, and vocabularies across datasets, reducing barriers to combining datasets and increasing uptake within and across scientific disciplines [@treasure2017].
+
+-   Reusability. Data repositories and standards together record metadata essential for reusing data in new analyses (e.g., the Movebank data model records whether an instrumented animal was translocated, which would affect the results of many ecological analyses) and provide licensing options that set expectations and requirements for reuse.
+
+Despite these biologging cyberinfrastructure developments, the general state of open data practices within the community remains unknown [@campbell2016] **NOTE**[Would love a more recent citation here.]{.aside}. We will conduct a systematic review of the biologging literature to establish a baseline of open data practices. The review will quantify the context of biologging studies (e.g., instrumented species and sensor types) and their data sharing practices. By data sharing practices, we refer to how biologging studies both share data (e.g., were the data assigned a persistent identifier such as a DOI?) and utilize other sources of open data (e.g., satellite remote sensing data). Our review will test the following four hypotheses:
+
+**H1:** Open biologging data practices are increasing over time.
+
+**H2:** Overall rates of open biologging data practices remain low.
+
+**H3:** Open biologging data practices vary by taxa, habitat, and spatial vs aspatial (e.g., accelerometer) data.
+
+**H4:** Biologging studies rely on open data from external sources more than they provide open data.
