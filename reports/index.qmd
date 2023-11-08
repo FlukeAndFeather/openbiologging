@@ -6,7 +6,7 @@ editor: visual
 
 ## Authors
 
-Max Czapanskiy ([\@FlukeAndFeather](https://github.com/flukeandfeather)), Allison Payne ([\@allisonpayne](https://github.com/allisonpayne)), Conner Hale ([\@cmhale98](https://github.com/cmhale98)), Dom Roche ([\@DomRoche](https://github.com/DomRoche)), Emily Nazario ([\@enazario11](https://github.com/enazario11)), Jessie Kendall-Bar ([\@jmkendallbar](https://github.com/jmkendallbar)), Rachel Buxton ([\@RachelBuxton](https://github.com/RachelBuxton)), Sarah Davidson ([\@sarahcd](https://github.com/sarahcd)), Salma Abdel-Raheem ([\@stabdelraheem](https://github.com/stabdelraheem)), Tommy Clay ([\@tommyclay](https://github.com/tommyclay)), Ana Nisi
+Max Czapanskiy ([\@FlukeAndFeather](https://github.com/flukeandfeather)), Allison Payne ([\@allisonpayne](https://github.com/allisonpayne)), Conner Hale ([\@cmhale98](https://github.com/cmhale98)), Dom Roche ([\@DomRoche](https://github.com/DomRoche)), Emily Nazario ([\@enazario11](https://github.com/enazario11)), Jessie Kendall-Bar ([\@jmkendallbar](https://github.com/jmkendallbar)), Rachel Buxton ([\@RachelBuxton](https://github.com/RachelBuxton)), Sarah Davidson ([\@sarahcd](https://github.com/sarahcd)), Salma Abdel-Raheem ([\@stabdelraheem](https://github.com/stabdelraheem)), Tommy Clay ([\@tommyclay](https://github.com/tommyclay)), Ana Nisi ([\@annanisi](https://github.com/annanisi))
 
 ## Abstract
 
