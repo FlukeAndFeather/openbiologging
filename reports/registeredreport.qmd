@@ -34,3 +34,49 @@ Despite these biologging cyberinfrastructure developments, the general state of 
 **H4:** Open biologging data practices vary by taxa, habitat, and spatial vs aspatial (e.g., accelerometer) data.
 
 In addition to hypothesis testing, our review will provide the first biologging bibliometric database, itself a valuable form of cyberinfrastrucure for future systematic reviews and meta-analyses. Based on the results of our review, we will also provide a set of minimum reporting standards (*sensu* MIAPE [@taylor2007] for proteomics experiments and MIReAD [@rund2019] for arthropod abundances) as a resource for authors, journal editors and funding bodies, to facilitate FAIR sharing of biologging data.
+
+## Methods
+
+### Literature review
+
+On such and such a date we searched Web of Science...
+
+### Initial classification
+
+Describe the broad rubric (study type, species instrumented, data availability statement, etc)
+
+### Sampling plan
+
+Stratified sampling across:
+
+-   Time (early 2007-2015, middle 2016-2019, recent 2020-2023)
+
+-   Taxa (mammal, bird, fish, other)
+
+-   Habitat (marine, terrestrial)
+
+-   Spatial vs aspatial
+
+### Open data assessment
+
+Describe the fine-scale rubric (FAIR principle compliance,
+
+### Analysis plan
+
+We'll have multiple binary response variables (F1, F4, A1.1...), which we expect will be correlated (e.g., it's likely p(F1\|F4) \> p(F1)). Generalized estimating equations [@liang1986], as implemented in `geepack` [@halekoh2006], are suitable for this type of data, right?
+
+$$
+\begin{bmatrix}F1 \\ F4 \\ A1.1 \\ \vdots \end{bmatrix} \sim t + x + h + s
+$$
+
+Where the response variables are compliance with individual FAIR principles, $t$ is years since 2007, $x$ is taxa (mammal, bird, fish, other), $h$ is habitat (marine, terrestrial) and $s$ is sensor type (spatial, aspatial).
+
+Now this brings up an issue with sensor type. What do you do with GPS+accelerometer tags, for instance? GPS may be shared one way and accelerometer another.
+
+#### **H1:** Open biologging data practices are increasing over time
+
+#### **H2:** Overall rates of open biologging data practices remain low
+
+#### **H3:** Biologging studies use open data from external sources more than they generate open data
+
+#### **H4:** Open biologging data practices vary by taxa, habitat, and spatial vs aspatial (e.g., accelerometer) data
