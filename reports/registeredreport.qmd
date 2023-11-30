@@ -14,12 +14,12 @@ Open science practices, such as publishing data and code alongside manuscripts, 
 
 There have been numerous efforts within the biologging research community to promote open data sharing practices. Essential cyberinfrastructure include domain-specific data repositories (Movebank [@kays2021], Seabird Tracking Database [seabirdtracking.org](https://www.seabirdtracking.org), Euromammal [@urbano2021]) and data standards [@sequeira2021; @dettki2023; @kranstauber2011] that facilitate adoption of the FAIR principles ([@tbl-fair]).
 
-| FAIR principle   | Definition                                                                                                                                           | Application to biologging                                                                                                                                                                                                                                                | Example                                                                                                                                                                                                         |
+| FAIR principle   | Definition                                                                                                                                           | Application to biologging                                                                                                                                                                                                                                                | Example                                                                                                                                                                                                        |
 |------------------|------------------|------------------|------------------|
-| Findability      | Data and metadata have a globally unique and persistent identifier (e.g., a digital object identifier, DOI) and are indexed in a searchable resource | Data repositories, like the Movebank Data Repository, improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)                                                                                                     | A tracking dataset deposited in the Movebank Data Repository is findable by its permanent DOI or by searching the repository.                                                                                   |
-| Accessibility    | Data and metadata are retrievable by open and universal protocols, such as HTTP                                                                      | Data repositories allow scientists to retrieve biologging data via a web browser or other open source tools                                                                                                                                                              | Publicly available data on Movebank may be downloaded via the website, API, or with the `move2` R package [@kranstauber2023]                                                                                    |
-| Interoperability | Data use formal and shared formats and vocabularies                                                                                                  | Shared protocols like the Darwin Core standard [@wieczorek2012], Movebank data model [@MPIAB2023], and proposed bio-logging standardization framework [@sequeira2021] reduce barriers to combining datasets and increase uptake within and across scientific disciplines | Location and environmental data from seal-borne biologgers harmonized to a standard netCDF format facilitated their reuse by oceanographers to study polar regions [@treasure2017]                              |
-| Reusability      | Data and metadata are richly described and reuse permissions are clearly defined                                                                     | Data repositories and standards together capture essential context for biologging data and provide licensing options for data reuse                                                                                                                                      | The Movebank Data Repository releases datasets under the CC0 license and the Movebank data model [@MPIAB2023] includes fields important for data reuse, e.g., whether the animal was relocated before release.  |
+| Findability      | Data and metadata have a globally unique and persistent identifier (e.g., a digital object identifier, DOI) and are indexed in a searchable resource | Data repositories, like the Movebank Data Repository, improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)                                                                                                     | A tracking dataset deposited in the Movebank Data Repository is findable by its permanent DOI or by searching the repository.                                                                                  |
+| Accessibility    | Data and metadata are retrievable by open and universal protocols, such as HTTP                                                                      | Data repositories allow scientists to retrieve biologging data via a web browser or other open source tools                                                                                                                                                              | Publicly available data on Movebank may be downloaded via the website, API, or with the `move2` R package [@kranstauber2023]                                                                                   |
+| Interoperability | Data use formal and shared formats and vocabularies                                                                                                  | Shared protocols like the Darwin Core standard [@wieczorek2012], Movebank data model [@MPIAB2023], and proposed bio-logging standardization framework [@sequeira2021] reduce barriers to combining datasets and increase uptake within and across scientific disciplines | Location and environmental data from seal-borne biologgers harmonized to a standard netCDF format facilitated their reuse by oceanographers to study polar regions [@treasure2017]                             |
+| Reusability      | Data and metadata are richly described and reuse permissions are clearly defined                                                                     | Data repositories and standards together capture essential context for biologging data and provide licensing options for data reuse                                                                                                                                      | The Movebank Data Repository releases datasets under the CC0 license and the Movebank data model [@MPIAB2023] includes fields important for data reuse, e.g., whether the animal was relocated before release. |
 
 : The FAIR principles, as implemented in biologging cyberinfrastructure, support data sharing and improve research transparency and efficiency. {#tbl-fair}
 
@@ -63,7 +63,7 @@ Describe the fine-scale rubric (FAIR principle compliance,
 
 ### Analysis plan
 
-We'll have multiple binary response variables (F1, F4, A1.1...), which we expect will be correlated (e.g., it's likely p(F1\|F4) \> p(F1)). Generalized estimating equations [@liang1986], as implemented in `geepack` [@halekoh2006], are suitable for this type of data, right?
+We'll have multiple binary response variables (F1, F4, A1.1...), which we expect will be correlated (e.g., it's likely $p(F1|F4) > p(F1)$). Generalized estimating equations [@liang1986], as implemented in `geepack` [@halekoh2006], are suitable for this type of data, right?
 
 $$
 \begin{bmatrix}F1 \\ F4 \\ A1.1 \\ \vdots \end{bmatrix} \sim t + x + h + s
@@ -75,8 +75,22 @@ Now this brings up an issue with sensor type. What do you do with GPS+accelerome
 
 #### **H1:** Open biologging data practices are increasing over time
 
+Coefficients for $t$ increase from early to middle to late.
+
 #### **H2:** Overall rates of open biologging data practices remain low
+
+How do we quantify "overall rates"? Examine each response individually? Restrict to late period?
 
 #### **H3:** Biologging studies use open data from external sources more than they generate open data
 
+How do we model this? This is probably wrong but it's a starting point.
+
+$$
+o \sim t + x + h + s
+$$
+
+Where $o$ is a multinomial variable with four categories: no open data, open external, open biologging, both open.
+
 #### **H4:** Open biologging data practices vary by taxa, habitat, and spatial vs aspatial (e.g., accelerometer) data
+
+$x$, $h$, and $s$ are all significant terms in GEE model. *A priori*, $s_{spatial}$ \> $s_{aspatial}$. But for taxa $x$ and habitat $h$, just predicting there are significant differences.
