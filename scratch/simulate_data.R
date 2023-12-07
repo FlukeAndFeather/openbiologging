@@ -1,3 +1,4 @@
+library(SimCorMultRes)
 library(tidyverse)
 
 # Simulated data to use as raw material for a discussion about methods
@@ -56,3 +57,42 @@ fair_model <- geepack::geeglm(outcome ~ rubric + year + taxa + habitat + sensor,
                               family = binomial)
 
 summary(fair_model)
+
+
+sim_biologging_data <- simulated_predictors %>%
+  cbind(foo$ydata) %>%
+  rename()
+
+
+
+
+
+
+set.seed(123)
+simulated_predictors <- tibble(
+  paperid = seq(n_papers),
+  year = sample(2007:2022, n_papers, replace = TRUE),
+  taxa = sample(unique_taxa, n_papers, replace = TRUE),
+  habitat = sample(unique_habitat, n_papers, replace = TRUE),
+  sensor = sample(c("spatial", "aspatial"), n_papers, replace = TRUE)
+)
+sample_size <- 250
+cluster_size <- 6
+beta_intercepts <- runif(cluster_size)
+beta_coefficients <- runif(
+  1 + # year
+    n_distinct(simulated_predictors$taxa) - 1 +
+    n_distinct(simulated_predictors$habitat) - 1 +
+    n_distinct(simulated_predictors$sensor) - 1
+)
+latent_correlation_matrix <- toeplitz(c(1, rep(0.75, cluster_size - 1)))
+simulated_dataset <- rbin(
+  clsize = cluster_size,
+  intercepts = beta_intercepts,
+  betas = beta_coefficients,
+  xformula = ~ year + taxa + habitat + sensor,
+  xdata = select(simulated_predictors, -paperid),
+  cor.matrix = latent_correlation_matrix,
+  link = "logit"
+)
+
