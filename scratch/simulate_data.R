@@ -96,3 +96,52 @@ simulated_dataset <- rbin(
   link = "logit"
 )
 
+logit <- function(p) log(p / (1 - p))
+logistic <- function(alpha) (tanh(alpha / 2) + 1) / 2
+
+f1_year <- function(year, taxa, habitat, sensor) {
+  beta_f1 <- c(
+    intercept = logit(0.15),
+    year = 0.1,
+    taxa_mammal = 0,
+    taxa_bird = 0.1,
+    taxa_fish = -0.05,
+    taxa_other = 0,
+    habitat_marine = 0,
+    habitat_terrestrial = 0.15,
+    habitat_aquatic = -0.1,
+    sensor_spatial = 0,
+    sensor_aspatial = -0.1
+  )
+  X <- rbind(rep(1, length(year)),
+             year,
+             taxa == "mammmal",
+             taxa == "bird",
+             taxa == "fish",
+             taxa == "other",
+             habitat == "marine",
+             habitat == "terrestrial",
+             habitat == "aquatic",
+             sensor == "spatial",
+             sensor == "aspatial")
+  rbinom(length(year),
+         size = 1, # Bernoulli
+         prob = logistic(t(beta_f1) %*% X))
+}
+simulated_dataset <- tibble(
+  paperid = seq(n_papers),
+  year = sample(2007:2022, n_papers, replace = TRUE),
+  taxa = sample(unique_taxa, n_papers, replace = TRUE),
+  habitat = sample(unique_habitat, n_papers, replace = TRUE),
+  sensor = sample(c("spatial", "aspatial"), n_papers, replace = TRUE)
+) %>%
+  mutate(year_2007 = year - 2007,
+         f1 = f1_year(year_2007, taxa, habitat, sensor))
+
+
+
+
+
+
+
+
