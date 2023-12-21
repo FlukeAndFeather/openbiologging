@@ -35,12 +35,12 @@ intercept <- logit(0.1)
 
 # coefficients (betas)
 beta <- c(
-  year2007 = 0.15,
-  habitat_terr = 1,
-  taxa_fish = -1.5,
-  taxa_mammal = -1,
-  taxa_other = -2,
-  sensor_spatial = 3
+  year2007 = 0.1,
+  habitat_terr = 0.2,
+  taxa_fish = -0.3,
+  taxa_mammal = -0.05,
+  taxa_other = -0.15,
+  sensor_spatial = 0.75
 )
 
 # random effect variances
@@ -65,49 +65,30 @@ openbiologging <- expand_grid(
   pivot_longer(F1:Complete, names_to = "fair", values_to = "drop") %>%
   select(-drop) %>%
   encode_dummy(c("habitat", "taxa", "sensor")) %>%
-  mutate(fair_effect = sim_ranef(fair, fair_var),
+  mutate(fair_effect0 = sim_ranef(fair, fair_var),
+         # make F1 the highest effect, Complete the lowest
+         fair_effect = case_match(
+           fair,
+           "Complete" ~ sort(unique(fair_effect0))[1],
+           "F4" ~ sort(unique(fair_effect0))[2],
+           "A1.1" ~ sort(unique(fair_effect0))[3],
+           "I1" ~ sort(unique(fair_effect0))[4],
+           "R4" ~ sort(unique(fair_effect0))[5],
+           "F1" ~ sort(unique(fair_effect0))[6],
+         ),
          id_effect = sim_ranef(id, id_var),
          int = intercept + fair_effect + id_effect,
          log_odds = predict_logodds(int, beta, year2007, habitat_terr,
                                     taxa_fish, taxa_mammal, taxa_other,
                                     sensor_spatial),
-         prop = plogis(log_odds))
-
+         prop = plogis(log_odds),
+         fair_val = rbinom(nrow(.), 1, prop))
 
 # Visualize data ----------------------------------------------------------
 
-
-
-
-
-openbiologging <- tibble(
-  id = 1:n_papers,
-  year = sample(2007:2022, n_papers, replace = TRUE),
-  habitat = sample(c("Marine", "Terrestrial"), n_papers, replace = TRUE),
-  taxa = sample(c("Mammal", "Bird", "Fish", "Other"), n_papers, replace = TRUE),
-  year2007 = year - 2007,
-  p = prob(year2007, habitat, taxa, psigma = 1),
-  findable = rbinom(n_papers, size = 1, prob = p),
-  accessible = rbinom(n_papers,
-                      size = 1,
-                      # If it's findable, it's more likely to be accessible
-                      prob = ifelse(findable,
-                                    logistic(logit(p) + rnorm(n_papers, -0.5, 2)),
-                                    logistic(logit(p) + rnorm(n_papers, -1.5, 2)))),
-  reusable = rbinom(n_papers,
-                    size = 1,
-                    # If it's findable, it's more likely to be reusable
-                    prob = ifelse(findable,
-                                  logistic(logit(p) + rnorm(n_papers, -1, 3)),
-                                  logistic(logit(p) + rnorm(n_papers, -2, 3))))
-)
-
 plot_data <- function(predictor) {
   data_long <- openbiologging %>%
-    pivot_longer(findable:reusable,
-                 names_to = "attribute",
-                 values_to = "value") %>%
-    count(.data[[predictor]], attribute, value)
+    count(.data[[predictor]], fair, fair_val)
   summary_geom <- if (predictor == "year") {
     geom_smooth(aes(weight = n),
                 formula = y ~ x,
@@ -116,42 +97,64 @@ plot_data <- function(predictor) {
   } else {
     geom_pointrange(aes(y = p, ymin = p - err, ymax = p + err),
                     data = data_long %>%
-                      group_by(.data[[predictor]], attribute) %>%
-                      summarize(p = n[value == 1] / sum(n),
+                      group_by(.data[[predictor]], fair) %>%
+                      summarize(p = n[fair_val == 1] / sum(n),
                                 err = sqrt(p * (1 - p) / sum(n)),
                                 .groups = "drop"))
   }
-  ggplot(data_long, aes(.data[[predictor]], value)) +
+  ggplot(data_long, aes(.data[[predictor]], fair_val)) +
     geom_point(aes(size = n), shape = 21) +
     summary_geom +
-    facet_grid(cols = vars(attribute)) +
+    facet_wrap(~ fair) +
     theme_classic()
 }
 # by year
 plot_data("year")
 plot_data("habitat")
 plot_data("taxa")
+plot_data("sensor")
 
 # GLMM
 # Doesn't converge w/ habitat + taxa
-biologging_long <- openbiologging %>%
-  pivot_longer(findable:reusable, names_to = "attribute", values_to = "value")
 openbiologging_glmm <- glmer(
-  cbind(value, 1 - value) ~ attribute * year2007 + habitat + (1 | id),
-  data = biologging_long,
+  cbind(fair_val, 1 - fair_val) ~ year2007 + habitat + taxa + sensor +
+    (1 | id) + (year2007 | fair),
+  data = openbiologging,
   family = binomial
 )
 
 # Plot predictions
-ggemmeans(openbiologging_glmm,
-          terms = c("year2007", "habitat", "attribute")) %>%
-  mutate(Year = x + 2007) %>%
-  ggplot(aes(Year, predicted)) +
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high, fill = group),
-              alpha = 0.2) +
-  geom_line(aes(y = predicted, color = group)) +
-  facet_grid(cols = vars(facet)) +
+openbiologging_pred <- expand_grid(
+  year2007 = unique(openbiologging$year2007),
+  habitat = unique(openbiologging$habitat),
+  taxa = unique(openbiologging$taxa),
+  sensor = unique(openbiologging$sensor),
+  fair = unique(openbiologging$fair)
+) %>%
+  mutate(fair_logit = predict(openbiologging_glmm,
+                              newdata = .,
+                              type = "link",
+                              re.form = ~ (1 | fair)),
+         Year = year2007 + 2007)
+
+# By habitat
+openbiologging_pred %>%
+  group_by(Year, habitat, fair) %>%
+  summarize(fair_logit = mean(fair_logit), .groups = "drop") %>%
+  mutate(fair_val = plogis(fair_logit)) %>%
+  ggplot(aes(Year, fair_val)) +
+  geom_line(aes(y = fair_val, color = habitat)) +
+  facet_grid(cols = vars(fair)) +
   scale_y_continuous("p(FAIR)", limits = c(0, NA)) +
   theme_classic()
 
-summary(openbiologging_glmm)
+# By habitat
+openbiologging_pred %>%
+  group_by(Year, habitat, fair) %>%
+  summarize(fair_logit = mean(fair_logit), .groups = "drop") %>%
+  mutate(fair_val = plogis(fair_logit)) %>%
+  ggplot(aes(Year, fair_val)) +
+  geom_line(aes(y = fair_val, color = habitat)) +
+  facet_grid(cols = vars(fair)) +
+  scale_y_continuous("p(FAIR)", limits = c(0, NA)) +
+  theme_classic()
