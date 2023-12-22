@@ -30,10 +30,12 @@ predict_logodds <- function(int, coef, ...) {
 
 n_papers <- 100
 
+set.seed(1234)
+
 # "openness" intercept in log odds
 intercept <- logit(0.1)
 
-# coefficients (betas)
+# fixed effect coefficients
 beta <- c(
   year2007 = 0.1,
   habitat_terr = 0.2,
@@ -43,13 +45,51 @@ beta <- c(
   sensor_spatial = 0.75
 )
 
-# random effect variances
-fair_var <- 0.5
+# random effects
 id_var <- 1
+fair_int_var <- 0.5
+fair_year_var <- 1
+
+set.seed(1234)
+n_papers <- 100 # number of papers
+n_scores <- 6   # number of measurements per paper
+
+biologging_data <- expand_grid(
+  year = 2007:2022,
+  habitat = c("marine", "terr"),
+  taxa = c("bird", "fish", "mammal", "other"),
+  sensor = c("spatial", "aspatial")
+) %>%
+  sample_n(n_papers, replace = TRUE) %>%
+  mutate(id = factor(seq(n_papers)),
+         year2007 = year - 2007) %>%
+  cross_join(tibble(attribute = c("F1", "F4", "A1.1", "I1", "R4", "Complete")))
+
+X <- model.matrix(~ year2007 + habitat + taxa + sensor, data = biologging_data)
+Z <- model.matrix(~ id + attribute, data = biologging_data)
+
+betas <- c(
+  logit(0.1), # Intercept
+  0.1,        # year2007
+  0.2,        # habitatterr
+  -0.3,       # taxafish
+  -0.05,      # taxamammal
+  -0.15,      # taxaother
+  0.75        # sensorspatial
+)
+
+# variance/covariance of random effects
+# variance of random intercept for id
+D_id <- 0.4
+# variance/covariance of attributes
+D_attr <- toeplitz(c(0.6, rep(0.3, 5)))
+
+L <- chol(D_attr)
+nvars <- dim(L)[1]
+r = t(L) %*% matrix(rnorm(nvars), nrow = nvars, ncol = 1)
 
 # Simulate data -----------------------------------------------------------
 
-set.seed(1234)
 openbiologging <- expand_grid(
   year = 2007:2022,
   habitat = c("marine", "terr"),
@@ -64,23 +104,16 @@ openbiologging <- expand_grid(
          year2007 = year - 2007) %>%
   pivot_longer(F1:Complete, names_to = "fair", values_to = "drop") %>%
   select(-drop) %>%
-  encode_dummy(c("habitat", "taxa", "sensor")) %>%
-  mutate(fair_effect0 = sim_ranef(fair, fair_var),
-         # make F1 the highest effect, Complete the lowest
-         fair_effect = case_match(
-           fair,
-           "Complete" ~ sort(unique(fair_effect0))[1],
-           "F4" ~ sort(unique(fair_effect0))[2],
-           "A1.1" ~ sort(unique(fair_effect0))[3],
-           "I1" ~ sort(unique(fair_effect0))[4],
-           "R4" ~ sort(unique(fair_effect0))[5],
-           "F1" ~ sort(unique(fair_effect0))[6],
-         ),
+  encode_dummy(c("habitat", "taxa", "sensor", "fair")) %>%
+  mutate(fair_intercept = sim_ranef(fair, fair_int_var),
+         fair_year_slope = sim_ranef(fair, fair_year_var),
          id_effect = sim_ranef(id, id_var),
-         int = intercept + fair_effect + id_effect,
-         log_odds = predict_logodds(int, beta, year2007, habitat_terr,
-                                    taxa_fish, taxa_mammal, taxa_other,
-                                    sensor_spatial),
+         int = intercept + fair_intercept + id_effect,
+         log_odds_fixed = predict_logodds(intercept, beta, year2007,
+                                          habitat_terr, taxa_fish, taxa_mammal,
+                                          taxa_other, sensor_spatial),
+         log_odds_random = predict_logodds(fair_intercept + id_effect,
+                                           beta, fair_F1, fair_),
          prop = plogis(log_odds),
          fair_val = rbinom(nrow(.), 1, prop))
 
