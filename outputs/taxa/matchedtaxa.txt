@@ -1,0 +1,501 @@
+TSN|Scientific Name|Author|Rank Name|Credibility|Name Usage|Accepted TSN|Accepted Name
+175300|Accipiter gentilis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+183813|Acinonyx jubatus|(Schreber, 1775)|Species        |Reviewed|valid||
+161068|Acipenser transmontanus|Richardson, 1836|Species        |Reviewed|valid||
+176133|Acryllium vulturinum|(Hardwicke, 1834)|Species        |Reviewed|valid||
+625076|Aepyceros melampus|(Lichtenstein, 1812)|Species        |Reviewed|valid||
+160978|Aetobatus narinari|(Euphrasen, 1790)|Species        |Reviewed|valid||
+621845|Ailuropoda melanoleuca|(David, 1869)|Species        |Reviewed|valid||
+621846|Ailurus fulgens|F. G. Cuvier, 1825|Species        |Reviewed|valid||
+176971|Alca torda|Linnaeus, 1758|Species        |Reviewed|valid||
+180703|Alces alces|(Linnaeus, 1758)|Species        |Reviewed|valid||
+176982|Alle alle|(Linnaeus, 1758)|Species        |Reviewed|valid||
+551771|Alligator mississippiensis|(Daudin, 1802)|Species        |Reviewed|valid||
+159922|Alopias pelagicus|Nakamura, 1935|Species        |Reviewed|valid||
+159916|Alopias vulpinus|(Bonnaterre, 1788)|Species        |Reviewed|valid||
+553909|Alopochen aegyptiacus|(Linnaeus, 1766)|Species        |Reviewed|invalid|175214|Alopochen aegyptiaca
+572940|Alouatta pigra|Lawrence, 1933|Species        |Reviewed|valid||
+566844|Amblyrhynchus cristatus|Bell, 1825|Species        |Reviewed|valid||
+180719|Ammotragus lervia|(Pallas, 1777)|Species        |Reviewed|valid||
+175074|Anas acuta|Linnaeus, 1758|Species        |Reviewed|valid||
+|Anas acutais|||||
+175096|Anas clypeata|Linnaeus, 1758|Species        |Reviewed|invalid|1192580|Spatula clypeata
+175081|Anas crecca|Linnaeus, 1758|Species        |Reviewed|valid||
+175089|Anas cyanoptera|Vieillot, 1816|Species        |Reviewed|invalid|1193067|Spatula cyanoptera cyanoptera
+553920|Anas gracilis|Buller, 1869|Species        |Reviewed|valid||
+175092|Anas penelope|Linnaeus, 1758|Species        |Reviewed|invalid|1192583|Mareca penelope
+175063|Anas platyrhynchos|Linnaeus, 1758|Species        |Reviewed|valid||
+175093|Anas querquedula|Linnaeus, 1758|Species        |Reviewed|invalid|1192571|Spatula querquedula
+175073|Anas strepera|Linnaeus, 1758|Species        |Reviewed|invalid|1193068|Mareca strepera strepera
+175115|Anas superciliosa|J. F. Gmelin, 1789|Species        |Reviewed|valid||
+161128|Anguilla anguilla|(Linnaeus, 1758)|Species        |Reviewed|valid||
+161134|Anguilla japonica|Temminck and Schlegel, 1846|Species        |Reviewed|valid||
+176941|Anous stolidus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175020|Anser albifrons|(Scopoli, 1769)|Species        |Reviewed|valid||
+175028|Anser anser|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175036|Anser brachyrhynchus|Baillon, 1834|Species        |Reviewed|valid||
+175024|Anser fabalis|(Latham, 1787)|Species        |Reviewed|valid||
+175034|Anser indicus|(Latham, 1790)|Species        |Reviewed|valid||
+1192566|Anser serrirostris|Gould, 1852|Species        |Reviewed|valid||
+625085|Antidorcas marsupialis|(Zimmermann, 1780)|Species        |Reviewed|valid||
+|Antigone canadensis|||||
+180717|Antilocapra americana|(Ord, 1815)|Species        |Reviewed|valid||
+1077358|Antrostomus vociferus|(A. Wilson, 1812)|Species        |Reviewed|valid||
+174449|Aptenodytes forsteri|G. R. Gray, 1844|Species        |Reviewed|valid||
+174450|Aptenodytes patagonicus|J. F. Miller, 1778|Species        |Reviewed|valid||
+175407|Aquila chrysaetos|(Linnaeus, 1758)|Species        |Reviewed|valid||
+824019|Aquila fasciata|Vieillot, 1822|Species        |Reviewed|valid||
+180633|Arctocephalus australis|(Zimmermann, 1783)|Species        |Reviewed|valid||
+180630|Arctocephalus gazella|(Peters, 1875)|Species        |Reviewed|valid||
+180632|Arctocephalus tropicalis|(J. E. Gray, 1872)|Species        |Reviewed|valid||
+|Ardenna gravis|||||
+|Ardenna grisea|||||
+|Ardenna tenuirostris|||||
+169369|Argyrosomus japonicus|(Temminck and Schlegel, 1843)|Species        |Reviewed|valid||
+572958|Ateles geoffroyi|Kuhl, 1820|Species        |Reviewed|valid||
+555471|Athene noctua|(Scopoli, 1769)|Species        |Reviewed|valid||
+552474|Axis axis|(Erxleben, 1777)|Species        |Reviewed|valid||
+180533|Balaena mysticetus|Linnaeus, 1758|Species        |Reviewed|valid||
+612592|Balaenoptera bonaerensis|Burmeister, 1867|Species        |Reviewed|valid||
+1116965|Balaenoptera edeni brydei|Olsen, 1913|Subspecies     |Reviewed|valid||
+180528|Balaenoptera musculus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Balaenoptera musuclus|||||
+180527|Balaenoptera physalus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Baleaenoptera brydei|||||
+180706|Bison bison|(Linnaeus, 1758)|Species        |Reviewed|valid||
+183836|Bison bonasus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+183841|Bos gaurus|C. H. Smith, 1827|Species        |Reviewed|invalid|898713|Bos frontalis gaurus
+183838|Bos taurus|Linnaeus, 1758|Species        |Reviewed|valid||
+175011|Branta bernicla|(Linnaeus, 1758)|Species        |Reviewed|valid||
+174999|Branta canadensis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175014|Branta leucopsis|(Bechstein, 1803)|Species        |Reviewed|valid||
+552476|Bubalus bubalis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+686683|Bubo scandiacus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+625135|Budorcas taxicolor|Hodgson, 1850|Species        |Reviewed|valid||
+1103405|Bufotes viridis|(Laurenti, 1768)|Species        |Reviewed|valid||
+176749|Burhinus oedicnemus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175383|Buteo buteo|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175373|Buteo lagopus|(Pontoppidan, 1763)|Species        |Reviewed|valid||
+1174549|Bycanistes albotibialis|(Cabanis & Reichenow, 1877)|Species        |Reviewed|valid||
+202213|Caiman latirostris|(Daudin, 1801)|Species        |Reviewed|valid||
+824535|Calidris canutus piersmai|Tomkovich, 2001|Subspecies     |Reviewed|valid||
+180627|Callorhinus ursinus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Calonectris borealis|||||
+203446|Calonectris diomedea|(Scopoli, 1769)|Species        |Reviewed|valid||
+723253|Calonectris edwardsii|(Oustalet, 1883)|Species        |Reviewed|valid||
+203449|Calonectris leucomelas|(Temminck, 1836)|Species        |Reviewed|valid||
+625026|Camelus bactrianus|Linnaeus, 1758|Species        |Reviewed|valid||
+625027|Camelus dromedarius|Linnaeus, 1758|Species        |Reviewed|valid||
+98675|Cancer magister|Dana, 1852|Species        |Reviewed|valid||
+180596|Canis lupus|Linnaeus, 1758|Species        |Reviewed|valid||
+183817|Canis aureus|Linnaeus, 1758|Species        |Reviewed|valid||
+180599|Canis latrans|Say, 1823|Species        |Reviewed|valid||
+180596|Canis lupus|Linnaeus, 1758|Species        |Reviewed|valid||
+726820|Canis lupus dingo|Meyer, 1793|Subspecies     |Reviewed|valid||
+183818|Canis mesomelas|Schreber, 1775|Species        |Reviewed|valid||
+180600|Canis rufus|Audubon and Bachman, 1851|Species        |Reviewed|invalid|726841|Canis lupus rufus
+898264|Capra aegagrus|Erxleben, 1777|Species        |Reviewed|invalid|898774|Capra hircus aegagrus
+|Capra aegagrus hircus|||||
+625139|Capra ibex|Linnaeus, 1758|Species        |Reviewed|valid||
+625063|Capreolus capreolus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+555569|Caprimulgus europaeus|Linnaeus, 1758|Species        |Reviewed|valid||
+552775|Caracal caracal|(Schreber, 1776)|Species        |Reviewed|valid||
+160354|Carcharhinus albimarginatus|(Rüppell, 1837)|Species        |Reviewed|valid||
+160358|Carcharhinus amblyrhynchos|(Bleeker, 1856)|Species        |Reviewed|valid||
+160310|Carcharhinus falciformis|(Müller and Henle, 1839)|Species        |Reviewed|valid||
+160345|Carcharhinus galapagensis|(Snodgrass and Heller, 1905)|Species        |Reviewed|valid||
+160275|Carcharhinus leucas|(Müller and Henle, 1839)|Species        |Reviewed|valid||
+160318|Carcharhinus limbatus|(Müller and Henle, 1839)|Species        |Reviewed|valid||
+160330|Carcharhinus longimanus|(Poey, 1861)|Species        |Reviewed|valid||
+160365|Carcharhinus melanopterus|(Quoy and Gaimard, 1824)|Species        |Reviewed|valid||
+160268|Carcharhinus obscurus|(Lesueur, 1818)|Species        |Reviewed|valid||
+649702|Carcharhinus perezi|(Poey, 1876)|Species        |Reviewed|invalid|160336|Carcharhinus perezii
+160289|Carcharhinus plumbeus|(Nardo, 1827)|Species        |Reviewed|valid||
+159879|Carcharias taurus|Rafinesque, 1810|Species        |Reviewed|invalid|159888|Carcharias taurus
+159888|Carcharias taurus|Rafinesque, 1810|Species        |Reviewed|valid||
+159903|Carcharodon carcharias|(Linnaeus, 1758)|Species        |Reviewed|valid||
+173830|Caretta caretta|(Linnaeus, 1758)|Species        |Reviewed|valid||
+173830|Caretta caretta|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180212|Castor canadensis|Kuhl, 1820|Species        |Reviewed|valid||
+573165|Castor fiber|Linnaeus, 1758|Species        |Reviewed|valid||
+175265|Cathartes aura|(Linnaeus, 1758)|Species        |Reviewed|valid||
+572977|Cebus capucinus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175855|Centrocercus urophasianus|(Bonaparte, 1827)|Species        |Reviewed|valid||
+554465|Ceratogymna atrata|(Temminck, 1835)|Species        |Reviewed|valid||
+898259|Cervus canadensis|Erxleben, 1777|Species        |Reviewed|invalid|898519|Cervus elaphus canadensis
+180695|Cervus elaphus|Linnaeus, 1758|Species        |Reviewed|valid||
+|Cervus elephas|||||
+159907|Cetorhinus maximus|(Gunnerus, 1765)|Species        |Reviewed|valid||
+178001|Chaetura pelagica|(Linnaeus, 1758)|Species        |Reviewed|valid||
+176522|Charadrius montanus|J. K. Townsend, 1837|Species        |Reviewed|valid||
+173833|Chelonia mydas|(Linnaeus, 1758)|Species        |Reviewed|valid||
+944217|Chlorocebus pygerythrus|(F. Cuvier, 1821)|Species        |Reviewed|valid||
+51653|Chrysaora hysoscella|(Linnaeus, 1766)|Species        |Not Reviewed|valid||
+183827|Chrysocyon brachyurus|(Illiger, 1815)|Species        |Reviewed|valid||
+559260|Ciconia boyciana|Swinhoe, 1873|Species        |Reviewed|valid||
+174907|Ciconia ciconia|(Linnaeus, 1758)|Species        |Reviewed|valid||
+559297|Circus aeruginosus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175439|Circus pygargus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Clanga pomarina|||||
+175147|Clangula hyemalis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+177103|Columba palumbus|Linnaeus, 1758|Species        |Reviewed|valid||
+625079|Connochaetes taurinus|(Burchell, 1823)|Species        |Reviewed|valid||
+1056065|Conolophus marthae|Gentile and Snell, 2009|Species        |Reviewed|valid||
+554518|Coracias garrulus|Linnaeus, 1758|Species        |Reviewed|valid||
+168791|Coryphaena hippurus|Linnaeus, 1758|Species        |Reviewed|valid||
+559539|Cossypha natalensis|A. Smith, 1840|Species        |Reviewed|valid||
+202200|Crocodylus niloticus|Laurenti, 1768|Species        |Reviewed|valid||
+174364|Crocodylus porosus|Schneider, 1801|Species        |Reviewed|valid||
+621907|Crocuta crocuta|(Erxleben, 1777)|Species        |Reviewed|valid||
+621907|Crocuta crocuta|(Erxleben, 1777)|Species        |Reviewed|valid||
+174310|Crotalus atrox|Baird and Girard, 1853|Species        |Reviewed|valid||
+177822|Cuculus canorus|Linnaeus, 1758|Species        |Reviewed|valid||
+183831|Cuon alpinus|(Pallas, 1811)|Species        |Reviewed|valid||
+174987|Cygnus columbianus|(Ord, 1815)|Species        |Reviewed|valid||
+|Cygnus cygnoides|||||
+174990|Cygnus cygnus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+174985|Cygnus olor|(J. F. Gmelin, 1789)|Species        |Reviewed|valid||
+|Dasyatis luviorum|||||
+552609|Dasyurus maculatus|(Kerr, 1792)|Species        |Reviewed|valid||
+180483|Delphinapterus leucas|(Pallas, 1776)|Species        |Reviewed|valid||
+180438|Delphinus delphis|Linnaeus, 1758|Species        |Reviewed|valid||
+173843|Dermochelys coriacea|(Vandelli, 1761)|Species        |Reviewed|valid||
+631886|Desmodus rotundus|(E. Geoffroy, 1810)|Species        |Reviewed|valid||
+625003|Diceros bicornis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+174525|Diomedea exulans|Linnaeus, 1758|Species        |Reviewed|valid||
+564126|Dipturus batis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Dipturus intermedius|||||
+180679|Dugong dugon|(Müller, 1776)|Species        |Reviewed|valid||
+160716|Echinorhinus cookei|Pietschmann, 1928|Species        |Reviewed|valid||
+625053|Elaphurus davidianus|Milne-Edwards, 1866|Species        |Reviewed|valid||
+584938|Elephas maximus|Linnaeus, 1758|Species        |Reviewed|valid||
+|Elephas maximus borneensis|||||
+727610|Elephas maximus sumatranus|Temminck, 1847|Subspecies     |Reviewed|valid||
+180547|Enhydra lutris|(Linnaeus, 1758)|Species        |Reviewed|valid||
+551078|Epinephelus marginatus|(Lowe, 1834)|Species        |Reviewed|valid||
+180008|Eptesicus fuscus|(Palisot de Beauvois, 1796)|Species        |Reviewed|valid||
+926145|Equus burchelli|(Gray, 1824)|Species        |Reviewed|invalid|926246|Equus quagga burchellii
+|Equus burchelli antiquorum|||||
+624992|Equus burchellii|(Gray, 1824)|Species        |Reviewed|invalid|926246|Equus quagga burchellii
+926143|Equus ferus|Boddaert, 1785|Species        |Reviewed|valid||
+624993|Equus hemionus|Pallas, 1775|Species        |Reviewed|valid||
+926176|Equus hemionus hemionus|Pallas, 1775|Subspecies     |Reviewed|valid||
+624996|Equus quagga|Boddaert, 1785|Species        |Reviewed|valid||
+173836|Eretmochelys imbricata|(Linnaeus, 1766)|Species        |Reviewed|valid||
+180655|Erignathus barbatus|(Erxleben, 1777)|Species        |Reviewed|valid||
+633540|Erinaceus europaeus|Linnaeus, 1758|Species        |Reviewed|valid||
+180521|Eschrichtius robustus|(Lilljeborg, 1861)|Species        |Reviewed|valid||
+162139|Esox lucius|Linnaeus, 1758|Species        |Reviewed|valid||
+180537|Eubalaena glacialis|(Müller, 1776)|Species        |Reviewed|valid||
+174452|Eudyptes chrysolophus|(Brandt, 1837)|Species        |Reviewed|valid||
+174460|Eudyptula minor|(J. R. Forster, 1781)|Species        |Reviewed|valid||
+180625|Eumetopias jubatus|(Schreber, 1776)|Species        |Reviewed|valid||
+179091|Euphagus carolinus|(Statius Muller, 1776)|Species        |Reviewed|valid||
+624903|Euphractus sexcinctus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175633|Falco cherrug|J. E. Gray, 1834|Species        |Reviewed|valid||
+175639|Falco eleonorae|Géné, 1839|Species        |Reviewed|valid||
+175604|Falco peregrinus|Tunstall, 1771|Species        |Reviewed|valid||
+175654|Falco subbuteo|Linnaeus, 1758|Species        |Reviewed|valid||
+175656|Falco vespertinus|Linnaeus, 1766|Species        |Reviewed|valid||
+180589|Felis silvestris|Schreber, 1777|Species        |Reviewed|valid||
+177025|Fratercula arctica|(Linnaeus, 1758)|Species        |Reviewed|valid||
+174766|Fregata minor|(Gmelin, 1789)|Species        |Reviewed|valid||
+164711|Gadus macrocephalus|Tilesius, 1810|Species        |Reviewed|valid||
+164712|Gadus morhua|Linnaeus, 1758|Species        |Reviewed|valid||
+160189|Galeocerdo cuvier|(Péron and Lesueur in Lesueur, 1822)|Species        |Reviewed|valid||
+160181|Galeorhinus galeus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+174474|Gavia stellata|(Pontoppidan, 1763)|Species        |Reviewed|valid||
+625101|Gazella subgutturosa|(Güldenstaedt, 1780)|Species        |Reviewed|valid||
+174953|Geronticus eremita|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Giraffa angolensis|||||
+625036|Giraffa camelopardalis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+169518|Girella tricuspidata|(Quoy and Gaimard, 1824)|Species        |Reviewed|valid||
+180466|Globicephala macrorhynchus|Gray, 1846|Species        |Reviewed|valid||
+552461|Globicephala melas|(Traill, 1809)|Species        |Reviewed|valid||
+173856|Gopherus agassizii|(Cooper, 1861)|Species        |Reviewed|valid||
+180457|Grampus griseus|(G. Cuvier, 1812)|Species        |Reviewed|valid||
+176177|Grus canadensis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+176183|Grus grus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180551|Gulo gulo|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Gulosus aristotelis|||||
+175274|Gymnogyps californianus|(Shaw, 1797)|Species        |Reviewed|valid||
+175483|Gypaetus barbatus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+560343|Gyps africanus|Salvadori, 1865|Species        |Reviewed|valid||
+175486|Gyps coprotheres|(J. R. Forster, 1798)|Species        |Reviewed|valid||
+175487|Gyps fulvus|(Hablizl, 1783)|Species        |Reviewed|valid||
+175488|Gyps himalayensis|Hume, 1869|Species        |Reviewed|valid||
+175490|Gyps rueppellii|(A. E. Brehm, 1852)|Species        |Reviewed|valid||
+176469|Haematopus ostralegus|Linnaeus, 1758|Species        |Reviewed|valid||
+554590|Halcyon senegaloides|A. Smith, 1834|Species        |Reviewed|valid||
+175419|Haliaeetus albicilla|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175420|Haliaeetus leucocephalus|(Linnaeus, 1766)|Species        |Reviewed|valid||
+180653|Halichoerus grypus|(Fabricius, 1791)|Species        |Reviewed|valid||
+174113|Heloderma suspectum|Cope, 1869|Species        |Reviewed|valid||
+159798|Heterodontus portusjacksoni|(Meyer, 1793)|Species        |Reviewed|valid||
+159819|Hexanchus griseus|(Bonnaterre, 1788)|Species        |Reviewed|valid||
+625178|Hippotragus niger|(Harris, 1838)|Species        |Reviewed|valid||
+622021|Histriophoca fasciata|(Zimmermann, 1783)|Species        |Reviewed|valid||
+97314|Homarus americanus|H. Milne Edwards, 1837|Species        |Reviewed|valid||
+97315|Homarus gammarus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180092|Homo sapiens|Linnaeus, 1758|Species        |Reviewed|valid||
+825303|Hydrochoerus hydrochaeris|(Linnaeus, 1766)|Species        |Reviewed|valid||
+176935|Hydroprogne caspia|(Pallas, 1770)|Species        |Reviewed|valid||
+180504|Hyperoodon ampullatus|(Forster, 1770)|Species        |Reviewed|valid||
+172488|Istiophorus platypterus|(Shaw in Shaw and Nodder, 1792)|Species        |Reviewed|valid||
+159924|Isurus oxyrinchus|Rafinesque, 1810|Species        |Reviewed|valid||
+|Jynx torquila|||||
+178150|Jynx torquilla|Linnaeus, 1758|Species        |Reviewed|valid||
+183856|Kobus ellipsiprymnus|(Ogilby, 1833)|Species        |Reviewed|valid||
+159910|Lamna ditropis|Hubbs and Follett, 1947|Species        |Reviewed|valid||
+560720|Lanius collurio|Linnaeus, 1758|Species        |Reviewed|valid||
+176824|Larus argentatus|Pontoppidan, 1763|Species        |Reviewed|valid||
+176842|Larus audouinii|Payraudeau, 1826|Species        |Reviewed|invalid|824066|Ichthyaetus audouinii
+176830|Larus delawarensis|Ord, 1815|Species        |Reviewed|valid||
+176821|Larus fuscus|Linnaeus, 1758|Species        |Reviewed|valid||
+631753|Lavia frons|(É. Geoffroy Saint-Hilaire, 1810)|Species        |Reviewed|valid||
+572872|Lemur catta|Linnaeus, 1758|Species        |Reviewed|valid||
+173839|Lepidochelys kempi|(Garman, 1880)|Species        |Reviewed|invalid|551770|Lepidochelys kempii
+551770|Lepidochelys kempii|(Garman, 1880)|Species        |Reviewed|valid||
+173840|Lepidochelys olivacea|(Eschscholtz, 1829)|Species        |Reviewed|valid||
+180669|Leptonychotes weddellii|(Lesson, 1826)|Species        |Reviewed|valid||
+552501|Lepus europaeus|Pallas, 1778|Species        |Reviewed|valid||
+176687|Limosa lapponica|(Linnaeus, 1758)|Species        |Reviewed|valid||
+176691|Limosa limosa|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Lobatus gigas|||||
+82374|Loligo forbesii|Steenstrup, 1856|Species        |Reviewed|valid||
+164499|Lophius americanus|Valenciennes in Cuvier and Valenciennes, 1837|Species        |Reviewed|valid||
+584939|Loxodonta africana|(Blumenbach, 1797)|Species        |Reviewed|valid||
+609784|Loxodonta cyclotis|(Matschie, 1900)|Species        |Reviewed|valid||
+|Loxodonta NA|||||
+183833|Lycaon pictus|(Temminck, 1820)|Species        |Reviewed|valid||
+180585|Lynx canadensis|Kerr, 1792|Species        |Reviewed|valid||
+180584|Lynx lynx|(Linnaeus, 1758)|Species        |Reviewed|valid||
+621869|Lynx pardinus|(Temminck, 1827)|Species        |Reviewed|valid||
+180582|Lynx rufus|(Schreber, 1777)|Species        |Reviewed|valid||
+631754|Macroderma gigas|(Dobson, 1880)|Species        |Reviewed|valid||
+552740|Macropus rufus|(Desmarest, 1822)|Species        |Reviewed|valid||
+172491|Makaira nigricans|Lacepède, 1802|Species        |Reviewed|valid||
+160994|Manta alfredi|(Krefft, 1868)|Species        |Reviewed|invalid|160992|Manta birostris
+175095|Mareca americana|(J. F. Gmelin, 1789)|Species        |Reviewed|valid||
+1192581|Mareca strepera|(Linnaeus, 1758)|Species        |Reviewed|valid||
+1086128|Martes caurina|(Merriam, 1890)|Species        |Reviewed|valid||
+898200|Mazama gouazoubira|(G. Fischer [von Waldheim], 1814)|Species        |Reviewed|valid||
+180530|Megaptera novaeangliae|(Borowski, 1781)|Species        |Reviewed|valid||
+175167|Melanitta deglandi|(Bonaparte, 1850)|Species        |Reviewed|valid||
+621922|Meles meles|(Linnaeus, 1758)|Species        |Reviewed|valid||
+554661|Merops apiaster|Linnaeus, 1758|Species        |Reviewed|valid||
+180517|Mesoplodon densirostris|(Blainville, 1817)|Species        |Reviewed|valid||
+550562|Micropterus dolomieu|Lacepède, 1802|Species        |Reviewed|valid||
+175470|Milvus milvus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175469|Milvus migrans|(Boddaert, 1783)|Species        |Reviewed|valid||
+175470|Milvus milvus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180672|Mirounga angustirostris|(Gill, 1866)|Species        |Reviewed|valid||
+180671|Mirounga leonina|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Mobula birostris|||||
+564407|Mobula tarapacana|(Philippi, 1893)|Species        |Reviewed|valid||
+|Mokopirirakau NA|||||
+173414|Mola mola|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180659|Monachus monachus|(Hermann, 1779)|Species        |Reviewed|valid||
+180661|Monachus schauinslandi|Matschie, 1905|Species        |Reviewed|invalid|1133135|Neomonachus schauinslandi
+180485|Monodon monoceros|Linnaeus, 1758|Species        |Reviewed|valid||
+174712|Morus bassanus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+561224|Morus capensis|(Lichtenstein, 1823)|Species        |Reviewed|valid||
+561225|Morus serrator|(G. R. Gray, 1843)|Species        |Reviewed|valid||
+174897|Mycteria americana|Linnaeus, 1758|Species        |Reviewed|valid||
+624911|Myrmecophaga tridactyla|Linnaeus, 1758|Species        |Reviewed|valid||
+573040|Nasalis larvatus|(van Wurmb, 1787)|Species        |Reviewed|valid||
+552462|Nasua narica|(Linnaeus, 1766)|Species        |Reviewed|valid||
+949133|Natator depressus|(Garman, 1880)|Species        |Reviewed|valid||
+561476|Necrosyrtes monachus|(Temminck, 1823)|Species        |Reviewed|valid||
+160433|Negaprion brevirostris|(Poey, 1868)|Species        |Reviewed|valid||
+175212|Neochen jubata|(Spix, 1825)|Species        |Reviewed|valid||
+180623|Neophoca cinerea|(Péron, 1816)|Species        |Reviewed|valid||
+175481|Neophron percnopterus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+824865|Neophron percnopterus percnopterus|(Linnaeus, 1758)|Subspecies     |Reviewed|valid||
+177499|Nestor meridionalis|(Gmelin, 1788)|Species        |Reviewed|valid||
+555476|Ninox strenua|(Gould, 1838)|Species        |Reviewed|valid||
+|Notamacropus rufogriseus|||||
+176599|Numenius phaeopus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+632069|Nyctalus noctula|(Schreber, 1774)|Species        |Reviewed|valid||
+180639|Odobenus rosmarus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180698|Odocoileus hemionus|(Rafinesque, 1817)|Species        |Reviewed|valid||
+898457|Odocoileus hemionus columbianus|(Richardson, 1829)|Subspecies     |Reviewed|valid||
+898463|Odocoileus hemionus sitkensis|Merriam, 1898|Subspecies     |Reviewed|valid||
+180699|Odocoileus virginianus|(Zimmermann, 1780)|Species        |Reviewed|valid||
+161979|Oncorhynchus nerka|(Walbaum in Artedi, 1792)|Species        |Reviewed|valid||
+161980|Oncorhynchus tshawytscha|(Walbaum in Artedi, 1792)|Species        |Reviewed|valid||
+180469|Orcinus orca|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180713|Oreamnos americanus|(Blainville, 1816)|Species        |Reviewed|valid||
+180129|Oryctolagus cuniculus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+625181|Oryx leucoryx|(Pallas, 1777)|Species        |Reviewed|valid||
+|Osphranter robustus|||||
+180619|Otaria flavescens|(Shaw, 1800)|Species        |Reviewed|invalid|552767|Otaria byronia
+552475|Ovis aries|Linnaeus, 1758|Species        |Reviewed|valid||
+552812|Ovis aries musimon|(Pallas, 1811)|Subspecies     |Reviewed|valid||
+898929|Ovis aries musimon|von Schreber, 1782|Subspecies     |Reviewed|invalid|552812|Ovis aries musimon
+180711|Ovis canadensis|Shaw, 1804|Species        |Reviewed|valid||
+|Ovis gmelini|||||
+|Ovis gmelini musimon|||||
+622022|Pagophilus groenlandicus|(Erxleben, 1777)|Species        |Reviewed|valid||
+175590|Pandion haliaetus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+183803|Panthera leo|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180593|Panthera onca|(Linnaeus, 1758)|Species        |Reviewed|valid||
+183804|Panthera pardus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+183805|Panthera tigris|(Linnaeus, 1758)|Species        |Reviewed|valid||
+933420|Panthera uncia|(Schreber, 1775)|Species        |Reviewed|invalid|183811|Uncia uncia
+552970|Panulirus cygnus|George, 1962|Species        |Reviewed|valid||
+944211|Papio anubis|(Lesson, 1827)|Species        |Reviewed|valid||
+573033|Papio hamadryas|(Linnaeus, 1758)|Species        |Reviewed|valid||
+944210|Papio ursinus|(Kerr, 1792)|Species        |Reviewed|valid||
+676899|Patagioenas fasciata|(Say, 1822)|Species        |Reviewed|valid||
+1086061|Pekania pennanti|(Erxleben, 1777)|Species        |Reviewed|valid||
+174669|Pelecanoides urinatrix|(Gmelin, 1789)|Species        |Reviewed|valid||
+174692|Pelecanus crispus|Bruch, 1832|Species        |Reviewed|valid||
+174684|Pelecanus erythrorhynchos|Gmelin, 1789|Species        |Reviewed|valid||
+174687|Pelecanus occidentalis carolinensis|Gmelin, 1789|Subspecies     |Reviewed|valid||
+180459|Peponocephala electra|(Gray, 1846)|Species        |Reviewed|valid||
+|Pezoporuso occidentalis|||||
+174676|Phaethon lepturus|Daudin, 1802|Species        |Reviewed|valid||
+174733|Phalacrocorax aristotelis|(Linnaeus, 1761)|Species        |Reviewed|valid||
+174734|Phalacrocorax atriceps|King, 1828|Species        |Reviewed|invalid|824003|Leucocarbo atriceps
+174732|Phalacrocorax verrucosus|(Cabanis, 1875)|Species        |Reviewed|invalid|824005|Leucocarbo verrucosus
+175663|Phalcoboenus australis|(J. F. Gmelin, 1788)|Species        |Reviewed|valid||
+552677|Phascolarctos cinereus|(Goldfuss, 1817)|Species        |Reviewed|valid||
+|Pheobastria immutabilis|||||
+|Pheobastria nigripes|||||
+180644|Phoca hispida|Schreber, 1775|Species        |Reviewed|invalid|622018|Pusa hispida
+180642|Phoca largha|Pallas, 1811|Species        |Reviewed|valid||
+180649|Phoca vitulina|Linnaeus, 1758|Species        |Reviewed|valid||
+622092|Phoca vitulina richardii|(Gray, 1864)|Subspecies     |Reviewed|valid||
+180617|Phocarctos hookeri|(Gray, 1844)|Species        |Reviewed|valid||
+180473|Phocoena phocoena|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180480|Phocoenoides dalli|(True, 1885)|Species        |Reviewed|valid||
+554378|Phoebastria immutabilis|(Rothschild, 1893)|Species        |Reviewed|valid||
+554379|Phoebastria nigripes|(Audubon, 1839)|Species        |Reviewed|valid||
+174530|Phoebetria fusca|(Hilsenberg, 1822)|Species        |Reviewed|valid||
+|Physester macrocephalus|||||
+180488|Physeter macrocephalus|Linnaeus, 1758|Species        |Reviewed|valid||
+174933|Platalea leucorodia|Linnaeus, 1758|Species        |Reviewed|valid||
+167156|Platycephalus fuscus|Cuvier in Cuvier and Valenciennes, 1829|Species        |Reviewed|valid||
+1056855|Pogona vitticeps|(Ahl, 1926)|Species        |Reviewed|valid||
+624904|Priodontes maximus|(Kerr, 1792)|Species        |Reviewed|valid||
+160424|Prionace glauca|(Linnaeus, 1758)|Species        |Reviewed|valid||
+160809|Pristis pectinata|Latham, 1794|Species        |Reviewed|valid||
+160810|Pristis pristis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+625114|Procapra gutturosa|(Pallas, 1777)|Species        |Reviewed|valid||
+174611|Procellaria parkinsoni|G. R. Gray, 1862|Species        |Reviewed|valid||
+|Procellaria westlandia|||||
+573052|Procolobus rufomitratus|(Peters, 1879)|Species        |Reviewed|invalid|944239|Piliocolobus rufomitratus
+180575|Procyon lotor|(Linnaeus, 1758)|Species        |Reviewed|valid||
+178464|Progne subis|(Linnaeus, 1758)|Species        |Reviewed|valid||
+700661|Pseudonaja affinis|Günther, 1872|Species        |Reviewed|valid||
+180463|Pseudorca crassidens|(Owen, 1846)|Species        |Reviewed|valid||
+174589|Pterodroma macroptera|(A. Smith, 1840)|Species        |Reviewed|valid||
+631619|Pteropus alecto|Temminck, 1837|Species        |Reviewed|valid||
+631629|Pteropus giganteus|(Brünnich, 1782)|Species        |Reviewed|invalid|631662|Pteropus vampyrus
+631643|Pteropus neohibernicus|Peters, 1876|Species        |Reviewed|valid||
+631662|Pteropus vampyrus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+174553|Puffinus griseus|(Gmelin, 1789)|Species        |Reviewed|valid||
+174555|Puffinus puffinus|(Brunnich, 1764)|Species        |Reviewed|valid||
+552479|Puma concolor|(Linnaeus, 1771)|Species        |Reviewed|valid||
+622019|Pusa caspica|(Gmelin, 1788)|Species        |Reviewed|valid||
+622018|Pusa hispida|(Schreber, 1775)|Species        |Reviewed|valid||
+174445|Pygoscelis adeliae|(Hombron & Jacquinot, 1841)|Species        |Reviewed|valid||
+174446|Pygoscelis antarctica|(J. R. Forster, 1781)|Species        |Reviewed|invalid|723249|Pygoscelis antarcticus
+723249|Pygoscelis antarcticus|(J. R. Forster, 1781)|Species        |Reviewed|valid||
+174447|Pygoscelis papua|(J. R. Forster, 1781)|Species        |Reviewed|valid||
+1094050|Python bivittatus|Kuhl, 1820|Species        |Reviewed|valid||
+168566|Rachycentron canadum|(Linnaeus, 1766)|Species        |Reviewed|valid||
+554307|Ramphastos sulfuratus|R. Lesson, 1830|Species        |Reviewed|valid||
+554313|Ramphastos swainsonii|Gould, 1833|Species        |Reviewed|invalid|1145389|Ramphastos ambiguus swainsonii
+180701|Rangifer tarandus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+202411|Rangifer tarandus caribou|(Gmelin, 1788)|Subspecies     |Reviewed|valid||
+666752|Rangifer tarandus granti|J. A. Allen, 1902|Subspecies     |Reviewed|invalid|898935|Rangifer tarandus groenlandicus
+625197|Rangifer tarandus tarandus|(Linnaeus, 1758)|Subspecies     |Reviewed|valid||
+172930|Reinhardtius hippoglossoides|(Walbaum, 1792)|Species        |Reviewed|valid||
+159857|Rhincodon typus|Smith, 1828|Species        |Reviewed|valid||
+944259|Rhinopithecus bieti|A. Milne-Edwards, 1897|Species        |Reviewed|valid||
+51917|Rhizostoma octopus|Mayer, 1910|Species        |Not Reviewed|valid||
+176875|Rissa tridactyla|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175295|Rostrhamus sociabilis|(Vieillot, 1817)|Species        |Reviewed|valid||
+625159|Rupicapra rupicapra|(Linnaeus, 1758)|Species        |Reviewed|valid||
+625120|Saiga tatarica|(Linnaeus, 1766)|Species        |Reviewed|valid||
+161996|Salmo salar|Linnaeus, 1758|Species        |Reviewed|valid||
+161997|Salmo trutta|Linnaeus, 1758|Species        |Reviewed|valid||
+162001|Salvelinus alpinus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+709400|Sarcophilus harrisii|(Boitard, 1841)|Species        |Reviewed|valid||
+82363|Sepia officinalis|Linnaeus, 1758|Species        |Reviewed|valid||
+168531|Sillago ciliata|Cuvier in Cuvier and Valenciennes, 1829|Species        |Reviewed|valid||
+164068|Silurus glanis|Linnaeus, 1758|Species        |Reviewed|valid||
+175155|Somateria mollissima|(Linnaeus, 1758)|Species        |Reviewed|valid||
+160611|Somniosus microcephalus|(Bloch and Schneider, 1801)|Species        |Reviewed|valid||
+1192580|Spatula clypeata|(Linnaeus, 1758)|Species        |Reviewed|valid||
+174462|Spheniscus demersus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+174464|Spheniscus magellanicus|(J. R. Forster, 1781)|Species        |Reviewed|valid||
+170429|Sphyraena barracuda|(Walbaum, 1792)|Species        |Reviewed|invalid|650251|Sphyraena barracuda
+650251|Sphyraena barracuda|(Edwards in Catesby, 1771)|Species        |Reviewed|valid||
+160508|Sphyrna lewini|(Griffith and Smith, 1834)|Species        |Reviewed|valid||
+160515|Sphyrna mokarran|(Rüppell, 1837)|Species        |Reviewed|valid||
+180570|Spilogale putorius|(Linnaeus, 1758)|Species        |Reviewed|valid||
+555524|Steatornis caripensis|von Humboldt, 1817|Species        |Reviewed|valid||
+176890|Sterna paradisaea|Pontoppidan, 1763|Species        |Reviewed|valid||
+174699|Sula dactylatra|Lesson, 1831|Species        |Reviewed|valid||
+726047|Sula granti|Rothschild, 1902|Species        |Reviewed|valid||
+|Sula serrator|||||
+174707|Sula sula|(Linnaeus, 1766)|Species        |Reviewed|valid||
+621906|Suricata suricatta|(Schreber, 1776)|Species        |Reviewed|valid||
+180722|Sus scrofa|Linnaeus, 1758|Species        |Reviewed|valid||
+180127|Sylvilagus transitionalis|(Bangs, 1895)|Species        |Reviewed|valid||
+183847|Syncerus caffer|(Sparrman, 1779)|Species        |Reviewed|valid||
+175056|Tadorna ferruginea|(Pallas, 1764)|Species        |Reviewed|valid||
+624912|Tamandua mexicana|(Saussure, 1860)|Species        |Reviewed|valid||
+180207|Tamias striatus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+625126|Taurotragus oryx|(Pallas, 1766)|Species        |Reviewed|valid||
+|Tectus niloticus|||||
+551865|Testudo graeca|Linnaeus, 1758|Species        |Reviewed|valid||
+172502|Tetrapturus pfluegeri|Robins and de Sylva, 1963|Species        |Reviewed|valid||
+563379|Tetrax tetrax|(Linnaeus, 1758)|Species        |Reviewed|valid||
+563380|Thalassarche bulleri|(Rothschild, 1893)|Species        |Reviewed|valid||
+824134|Thalassarche carteri|(Rothschild, 1903)|Species        |Reviewed|valid||
+563381|Thalassarche chrysostoma|(J. R. Forster, 1785)|Species        |Reviewed|valid||
+|Thalassarche melanophri|||||
+554453|Thalassarche melanophris|(Temminck, 1828)|Species        |Reviewed|valid||
+172423|Thunnus albacares|(Bonnaterre, 1788)|Species        |Reviewed|valid||
+172431|Thunnus maccoyii|(Castelnau, 1872)|Species        |Reviewed|valid||
+172422|Thunnus orientalis|(Temminck and Schlegel, 1844)|Species        |Reviewed|valid||
+172421|Thunnus thynnus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+1182839|Tiliqua multifasciata|Sternfeld, 1919|Species        |Reviewed|valid||
+1182842|Tiliqua rugosa|(Gray, 1825)|Species        |Reviewed|valid||
+1182843|Tiliqua scincoides|(White, 1790)|Species        |Reviewed|valid||
+624905|Tolypeutes matacus|(Desmarest, 1804)|Species        |Reviewed|valid||
+563501|Torgos tracheliotus|(J. R. Forster, 1796)|Species        |Reviewed|valid||
+176064|Tragopan satyra|(Linnaeus, 1758)|Species        |Reviewed|valid||
+160453|Triaenodon obesus|(Rüppell, 1837)|Species        |Reviewed|valid||
+180684|Trichechus manatus|Linnaeus, 1758|Species        |Reviewed|valid||
+552696|Trichosurus vulpecula|(Kerr, 1792)|Species        |Reviewed|valid||
+612596|Tursiops aduncus|(Ehrenberg, 1833)|Species        |Reviewed|valid||
+180426|Tursiops truncatus|(Montagu, 1821)|Species        |Reviewed|valid||
+177851|Tyto alba|(Scopoli, 1769)|Species        |Reviewed|valid||
+178117|Upupa epops|Linnaeus, 1758|Species        |Reviewed|valid||
+176974|Uria aalge|(Pontoppidan, 1763)|Species        |Reviewed|valid||
+|Uria algae|||||
+176978|Uria lomvia|(Linnaeus, 1758)|Species        |Reviewed|valid||
+|Urile pelagicus|||||
+930321|Urocitellus parryii|(Richardson, 1825)|Species        |Reviewed|valid||
+180609|Urocyon cinereoargenteus|(Schreber, 1775)|Species        |Reviewed|valid||
+180544|Ursus americanus|Pallas, 1780|Species        |Reviewed|valid||
+180543|Ursus arctos|Linnaeus, 1758|Species        |Reviewed|valid||
+202383|Ursus arctos arctos|Linnaeus, 1758|Subspecies     |Reviewed|valid||
+180542|Ursus maritimus|Phipps, 1774|Species        |Reviewed|valid||
+621850|Ursus thibetanus|G.[Baron] Cuvier, 1823|Species        |Reviewed|valid||
+552680|Vombatus ursinus|(Shaw, 1800)|Species        |Reviewed|valid||
+622025|Vulpes lagopus|(Linnaeus, 1758)|Species        |Reviewed|valid||
+180604|Vulpes vulpes|(Linnaeus, 1758)|Species        |Reviewed|valid||
+175279|Vultur gryphus|Linnaeus, 1758|Species        |Reviewed|valid||
+552759|Wallabia bicolor|(Desmarest, 1804)|Species        |Reviewed|valid||
+180621|Zalophus californianus|(Lesson, 1828)|Species        |Reviewed|valid||
+622014|Zalophus wollebaeki|Sivertsen, 1953|Species        |Reviewed|valid||
+180498|Ziphius cavirostris|G. Cuvier, 1823|Species        |Reviewed|valid||
+180443|Lagenorhynchus acutus|(Gray, 1828)|Species        |Reviewed|valid||
+
+

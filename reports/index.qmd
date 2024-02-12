@@ -16,6 +16,8 @@ The scientific community and its partners increasingly expect and rely on open s
 
 [Methods](methods.html)
 
-[Registered Report (Draft)](registeredreport.html)
+[Registered report (draft)](registeredreport.html)
 
 [Simulated data](sim_data.html)
+
+[Progress tracking](progress.html)
