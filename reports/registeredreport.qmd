@@ -128,6 +128,10 @@ We will test hypothesis **H2** by comparing posterior predictions for marine and
 
 We will test hypothesis **H3** by comparing posterior predictions for aspatial and spatial ecosystems for the year 2023.
 
+## Results
+
+We conducted a simulation to precisely demonstrate how we will conduct our analysis. We also have some preliminary data from the initial classification step. We have not yet begun assessing open data.
+
 ### Simulation
 
 We simulated reasonable values for $t$, $e$, $s$, and $f$ to demonstrate how we will perform our analysis.
@@ -336,3 +340,83 @@ h3_contrast %>%
   mutate(across(-E, scales::percent))
 
 ```
+
+### Preliminary results
+
+We have initiated the initial classification step, which will quantify our independent variables and is a prerequisite for sampling studies for the assessment of open data practices.
+
+```{r}
+#| label: prelim-results
+
+# Get the most recent set of reviews
+reviews <- dir(here::here("outputs", "reviews"), 
+                      "reviews.*rds", 
+                      full.names = TRUE) %>%
+  sort(decreasing = TRUE) %>%
+  first() %>%
+  readRDS()
+
+# And most recent studies-by-taxonomy
+study_taxa <- readRDS(here::here("outputs", "taxa", "study_taxa.rds"))
+
+# Summarize totals 
+scored_papers <- reviews %>% 
+  mutate(across(everything(), \(x) ifelse(x == "NA", NA, x))) %>% 
+  filter(reviewed)
+n_papers <- n_distinct(scored_papers$id)
+two_reviewers <- nrow(scored_papers) - n_papers
+
+scored_summary <- scored_papers %>% 
+  mutate(related = manuscript_type != "U" & 
+           str_detect(biologging_context, "W"),
+         novel = related & novel_biologging == "Y",
+         das = related & biologging_availability == "Y") %>% 
+  summarize(
+    total = n(),
+    related = sum(related, na.rm = TRUE),
+    novel = sum(novel, na.rm = TRUE),
+    das = sum(das, na.rm = TRUE))
+scored_summary <- scored_summary / scored_summary$total
+
+perc <- partial(scales::percent, accuracy = 0.1)
+```
+
+As of February 11, 2024, we have reviewed `r n_papers` papers, `r two_reviewers` of which have been reviewed by two individuals. `r perc(scored_summary$related)` of papers met our standards for relevance, `r perc(scored_summary$novel)` of papers presented novel biologging data, and `r perc(scored_summary$das)` of papers contained a data availability statement.
+
+```{r}
+#| label: sensor-types
+
+sensors <- scored_papers %>% 
+  mutate(related = manuscript_type != "U" & 
+           str_detect(biologging_context, "W"),
+         novel = related & novel_biologging == "Y") %>% 
+  filter(related, novel) %>% 
+  mutate(L = str_detect(device_cat, "L"),
+         I = str_detect(device_cat, "I"),
+         E = str_detect(device_cat, "E"))
+
+has_L <- sum(sensors$L) / nrow(sensors)
+has_I <- sum(sensors$I) / nrow(sensors)
+has_E <- sum(sensors$E) / nrow(sensors)
+
+```
+
+Location sensors (e.g., GPS, depth, or altitude) were deployed most frequently, in `r perc(has_L)` of relevant studies that presented novel biologging data. Intrinsic (e.g., accelerometers, heart rate monitors) and environmental (e.g., ambient temperature, cameras) sensors were deployed in `r perc(has_I)` and `r perc(has_E)` of studies, respectively.
+
+```{r}
+#| label: study-taxa
+
+n_taxa <- nrow(study_taxa)
+is_vertebrate <- sum(study_taxa$phylum == "Chordata")
+is_mammal <- sum(study_taxa$class == "Mammalia")
+is_bird <- sum(study_taxa$class == "Aves")
+is_ungulate <- sum(study_taxa$order %in% c("Artiodactyla", "Perissodactyla"))
+is_carnivore <- sum(study_taxa$order == "Carnivora")
+is_cetacean <- sum(study_taxa$order == "Carnivora")
+is_seabird <- sum(study_taxa$order %in% c("Charadriiformes", "Sphenisciformes", "Procellariiformes", "Suliformes", "Pelecaniformes"))
+is_raptor <- sum(study_taxa$order %in% c("Accipitriformes", "Falconiformes", "Strigiformes"))
+is_fowl <- sum(study_taxa$order %in% c("Anseriformes", "Galliformes"))
+
+```
+
+We identified `r n_taxa` species that have been instrumented with biologgers. `r perc(is_vertebrate / n_taxa)` of species were vertebrates. Most instrumented vertebrates were mammals (`r perc(is_mammal / is_vertebrate)`) or birds (`r perc(is_bird / is_vertebrate)`). The most commonly instrumented mammals were carnivores (`r perc(is_carnivore / is_mammal)`), ungulates (Perrisodactyla and non-cetacean Artiodatyla, `r perc(is_ungulate / is_mammal)`), and cetaceans (`r perc(is_cetacean / is_mammal)`). Among birds, seabirds were instrumented most often (orders Charadriiformes, Sphenisciformes, Procellariiformes, Suliformes, and Pelecaniformes, `r perc(is_seabird / is_bird)`), followed by raptors (orders Accipitriformes, Falconiformes, and Strigiformes, `r perc(is_raptor / is_bird)`) and fowl (orders Anseriformes and Galliformes, `r perc(is_fowl / is_bird)`).

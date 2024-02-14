@@ -251,6 +251,10 @@ logit(p_i) &amp;= \alpha - \beta_e e_i + \beta_s s_i + \phi_i \\
 <p>We will test hypothesis <strong>H3</strong> by comparing posterior predictions for aspatial and spatial ecosystems for the year 2023.</p>
 </section>
 </section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>We conducted a simulation to precisely demonstrate how we will conduct our analysis. We also have some preliminary data from the initial classification step. We have not yet begun assessing open data.</p>
 <section id="simulation" class="level3">
 <h3 class="anchored" data-anchor-id="simulation">Simulation</h3>
 <p>We simulated reasonable values for <span class="math inline">\(t\)</span>, <span class="math inline">\(e\)</span>, <span class="math inline">\(s\)</span>, and <span class="math inline">\(f\)</span> to demonstrate how we will perform our analysis.</p>
@@ -401,8 +405,8 @@ make: *** [foo.o] Error 1</code></pre>
 <pre><code>
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
 Chain 1: 
-Chain 1: Gradient evaluation took 8e-05 seconds
-Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.8 seconds.
+Chain 1: Gradient evaluation took 8.8e-05 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.88 seconds.
 Chain 1: Adjust your expectations accordingly!
 Chain 1: 
 Chain 1: 
@@ -419,15 +423,15 @@ Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 1: 
-Chain 1:  Elapsed Time: 2.559 seconds (Warm-up)
-Chain 1:                0.846 seconds (Sampling)
-Chain 1:                3.405 seconds (Total)
+Chain 1:  Elapsed Time: 2.591 seconds (Warm-up)
+Chain 1:                0.863 seconds (Sampling)
+Chain 1:                3.454 seconds (Total)
 Chain 1: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 2).
 Chain 2: 
-Chain 2: Gradient evaluation took 4.6e-05 seconds
-Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.46 seconds.
+Chain 2: Gradient evaluation took 4.4e-05 seconds
+Chain 2: 1000 transitions using 10 leapfrog steps per transition would take 0.44 seconds.
 Chain 2: Adjust your expectations accordingly!
 Chain 2: 
 Chain 2: 
@@ -444,15 +448,15 @@ Chain 2: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 2: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 2: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 2: 
-Chain 2:  Elapsed Time: 2.535 seconds (Warm-up)
-Chain 2:                1.016 seconds (Sampling)
-Chain 2:                3.551 seconds (Total)
+Chain 2:  Elapsed Time: 2.591 seconds (Warm-up)
+Chain 2:                1.028 seconds (Sampling)
+Chain 2:                3.619 seconds (Total)
 Chain 2: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
 Chain 3: 
-Chain 3: Gradient evaluation took 4.4e-05 seconds
-Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.44 seconds.
+Chain 3: Gradient evaluation took 4.2e-05 seconds
+Chain 3: 1000 transitions using 10 leapfrog steps per transition would take 0.42 seconds.
 Chain 3: Adjust your expectations accordingly!
 Chain 3: 
 Chain 3: 
@@ -469,15 +473,15 @@ Chain 3: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 3: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 3: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 3: 
-Chain 3:  Elapsed Time: 2.673 seconds (Warm-up)
-Chain 3:                0.676 seconds (Sampling)
-Chain 3:                3.349 seconds (Total)
+Chain 3:  Elapsed Time: 2.654 seconds (Warm-up)
+Chain 3:                0.67 seconds (Sampling)
+Chain 3:                3.324 seconds (Total)
 Chain 3: 
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
 Chain 4: 
-Chain 4: Gradient evaluation took 4.8e-05 seconds
-Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.48 seconds.
+Chain 4: Gradient evaluation took 4.3e-05 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 0.43 seconds.
 Chain 4: Adjust your expectations accordingly!
 Chain 4: 
 Chain 4: 
@@ -494,9 +498,9 @@ Chain 4: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 4: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 4: Iteration: 2000 / 2000 [100%]  (Sampling)
 Chain 4: 
-Chain 4:  Elapsed Time: 2.6 seconds (Warm-up)
-Chain 4:                0.663 seconds (Sampling)
-Chain 4:                3.263 seconds (Total)
+Chain 4:  Elapsed Time: 2.586 seconds (Warm-up)
+Chain 4:                0.656 seconds (Sampling)
+Chain 4:                3.242 seconds (Total)
 Chain 4: </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">posterior_summary</span>(biolog_mod) <span class="sc">%&gt;%</span></span>
@@ -678,6 +682,72 @@ lp__           -312.623     3.455 -320.326 -307.002</code></pre>
 2 terrestrial 17.0% 52.6% 30.4%</code></pre>
 </div>
 </div>
+</section>
+<section id="preliminary-results" class="level3">
+<h3 class="anchored" data-anchor-id="preliminary-results">Preliminary results</h3>
+<p>We have initiated the initial classification step, which will quantify our independent variables and is a prerequisite for sampling studies for the assessment of open data practices.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the most recent set of reviews</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>reviews <span class="ot">&lt;-</span> <span class="fu">dir</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"reviews"</span>), </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"reviews.*rds"</span>, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">first</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">readRDS</span>()</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># And most recent studies-by-taxonomy</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>study_taxa <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"outputs"</span>, <span class="st">"taxa"</span>, <span class="st">"study_taxa.rds"</span>))</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize totals </span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>scored_papers <span class="ot">&lt;-</span> reviews <span class="sc">%&gt;%</span> </span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), \(x) <span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="st">"NA"</span>, <span class="cn">NA</span>, x))) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(reviewed)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>n_papers <span class="ot">&lt;-</span> <span class="fu">n_distinct</span>(scored_papers<span class="sc">$</span>id)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>two_reviewers <span class="ot">&lt;-</span> <span class="fu">nrow</span>(scored_papers) <span class="sc">-</span> n_papers</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>scored_summary <span class="ot">&lt;-</span> scored_papers <span class="sc">%&gt;%</span> </span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">related =</span> manuscript_type <span class="sc">!=</span> <span class="st">"U"</span> <span class="sc">&amp;</span> </span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span>(biologging_context, <span class="st">"W"</span>),</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">novel =</span> related <span class="sc">&amp;</span> novel_biologging <span class="sc">==</span> <span class="st">"Y"</span>,</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">das =</span> related <span class="sc">&amp;</span> biologging_availability <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> <span class="fu">n</span>(),</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">related =</span> <span class="fu">sum</span>(related, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">novel =</span> <span class="fu">sum</span>(novel, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">das =</span> <span class="fu">sum</span>(das, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>scored_summary <span class="ot">&lt;-</span> scored_summary <span class="sc">/</span> scored_summary<span class="sc">$</span>total</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>perc <span class="ot">&lt;-</span> <span class="fu">partial</span>(scales<span class="sc">::</span>percent, <span class="at">accuracy =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As of February 11, 2024, we have reviewed 1521 papers, 51 of which have been reviewed by two individuals. 63.5% of papers met our standards for relevance, 59.5% of papers presented novel biologging data, and 20.9% of papers contained a data availability statement.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sensors <span class="ot">&lt;-</span> scored_papers <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">related =</span> manuscript_type <span class="sc">!=</span> <span class="st">"U"</span> <span class="sc">&amp;</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span>(biologging_context, <span class="st">"W"</span>),</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">novel =</span> related <span class="sc">&amp;</span> novel_biologging <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(related, novel) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">L =</span> <span class="fu">str_detect</span>(device_cat, <span class="st">"L"</span>),</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">I =</span> <span class="fu">str_detect</span>(device_cat, <span class="st">"I"</span>),</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">E =</span> <span class="fu">str_detect</span>(device_cat, <span class="st">"E"</span>))</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>has_L <span class="ot">&lt;-</span> <span class="fu">sum</span>(sensors<span class="sc">$</span>L) <span class="sc">/</span> <span class="fu">nrow</span>(sensors)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>has_I <span class="ot">&lt;-</span> <span class="fu">sum</span>(sensors<span class="sc">$</span>I) <span class="sc">/</span> <span class="fu">nrow</span>(sensors)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>has_E <span class="ot">&lt;-</span> <span class="fu">sum</span>(sensors<span class="sc">$</span>E) <span class="sc">/</span> <span class="fu">nrow</span>(sensors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Location sensors (e.g., GPS, depth, or altitude) were deployed most frequently, in 93.1% of relevant studies that presented novel biologging data. Intrinsic (e.g., accelerometers, heart rate monitors) and environmental (e.g., ambient temperature, cameras) sensors were deployed in 23.8% and 20.3% of studies, respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>n_taxa <span class="ot">&lt;-</span> <span class="fu">nrow</span>(study_taxa)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>is_vertebrate <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>phylum <span class="sc">==</span> <span class="st">"Chordata"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>is_mammal <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>class <span class="sc">==</span> <span class="st">"Mammalia"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>is_bird <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>class <span class="sc">==</span> <span class="st">"Aves"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>is_ungulate <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>order <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Artiodactyla"</span>, <span class="st">"Perissodactyla"</span>))</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>is_carnivore <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>order <span class="sc">==</span> <span class="st">"Carnivora"</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>is_cetacean <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>order <span class="sc">==</span> <span class="st">"Carnivora"</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>is_seabird <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>order <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Charadriiformes"</span>, <span class="st">"Sphenisciformes"</span>, <span class="st">"Procellariiformes"</span>, <span class="st">"Suliformes"</span>, <span class="st">"Pelecaniformes"</span>))</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>is_raptor <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>order <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Accipitriformes"</span>, <span class="st">"Falconiformes"</span>, <span class="st">"Strigiformes"</span>))</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>is_fowl <span class="ot">&lt;-</span> <span class="fu">sum</span>(study_taxa<span class="sc">$</span>order <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Anseriformes"</span>, <span class="st">"Galliformes"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We identified 1108 species that have been instrumented with biologgers. 99.1% of species were vertebrates. Most instrumented vertebrates were mammals (52.2%) or birds (26.1%). The most commonly instrumented mammals were carnivores (42.6%), ungulates (Perrisodactyla and non-cetacean Artiodatyla, 27.9%), and cetaceans (42.6%). Among birds, seabirds were instrumented most often (orders Charadriiformes, Sphenisciformes, Procellariiformes, Suliformes, and Pelecaniformes, 44.6%), followed by raptors (orders Accipitriformes, Falconiformes, and Strigiformes, 21.3%) and fowl (orders Anseriformes and Galliformes, 20.9%).</p>
 
 </section>
 </section>
