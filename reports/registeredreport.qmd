@@ -15,7 +15,7 @@ Open science practices, such as publishing data and code alongside manuscripts, 
 There have been numerous efforts within the biologging research community to promote open data sharing practices. Essential cyberinfrastructure include domain-specific data repositories (Movebank [@kays2021], Seabird Tracking Database [seabirdtracking.org](https://www.seabirdtracking.org), Euromammal [@urbano2021]) and data standards [@sequeira2021; @dettki2023; @kranstauber2011] that facilitate adoption of the FAIR principles ([@tbl-fair]).
 
 | FAIR principle   | Definition                                                                                                                                           | Application to biologging                                                                                                                                                                                                                                                | Example                                                                                                                                                                                                        |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-----------------|-----------------|----------------------|-----------------|
 | Findability      | Data and metadata have a globally unique and persistent identifier (e.g., a digital object identifier, DOI) and are indexed in a searchable resource | Data repositories, like the Movebank Data Repository, improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)                                                                                                     | A tracking dataset deposited in the Movebank Data Repository is findable by its permanent DOI or by searching the repository.                                                                                  |
 | Accessibility    | Data and metadata are retrievable by open and universal protocols, such as HTTP                                                                      | Data repositories allow scientists to retrieve biologging data via a web browser or other open source tools                                                                                                                                                              | Publicly available data on Movebank may be downloaded via the website, API, or with the `move2` R package [@kranstauber2023]                                                                                   |
 | Interoperability | Data use formal and shared formats and vocabularies                                                                                                  | Shared protocols like the Darwin Core standard [@wieczorek2012], Movebank data model [@MPIAB2023], and proposed bio-logging standardization framework [@sequeira2021] reduce barriers to combining datasets and increase uptake within and across scientific disciplines | Location and environmental data from seal-borne biologgers harmonized to a standard netCDF format facilitated their reuse by oceanographers to study polar regions [@treasure2017]                             |
@@ -27,70 +27,312 @@ Despite these biologging cyberinfrastructure developments, the general state of 
 
 **H1:** Open biologging data practices are increasing over time.
 
-**H2:** Overall rates of open biologging data practices remain low.
+**H2:** Open biologging data practices vary by ecosystem (marine or terrestrial).
 
-**H3:** Biologging studies use open data from external sources more than they generate open data.
-
-**H4:** Open biologging data practices vary by taxa, habitat, and spatial vs aspatial (e.g., accelerometer) data.
+**H3:** Spatial biologging data are shared more often than aspatial (e.g., accelerometer) data.
 
 In addition to hypothesis testing, our review will provide the first biologging bibliometric database, itself a valuable form of cyberinfrastrucure for future systematic reviews and meta-analyses. Based on the results of our review, we will also provide a set of minimum reporting standards (*sensu* MIAPE [@taylor2007] for proteomics experiments and MIReAD [@rund2019] for arthropod abundances) as a resource for authors, journal editors and funding bodies, to facilitate FAIR sharing of biologging data.
 
 ## Methods
 
+The scientific literature has yet to arrive on consensus definitions for biologging and related terms, such as biotelemetry, tagging, and tracking. Rutz and Hays [@rutz2009] defined biologging as "the use of miniaturized animal-attached tags for logging and/or relaying of data about an animal's movements, behaviour, physiology and/or environment" and Cooke et al. [@cooke2004] defined biotelemetry as "remote measurement of physiological, behavioural, or energetic data". These and other definitions share the following two characteristics:
+
+-   An electronic device is attached to an animal, externally or internally.
+
+-   The device uses sensors and memory to record observations (e.g. GPS and accelerometers) *or* produces a signal that may be recorded by other sensors (e.g. acoustic telemetry and Argos satellites).
+
+    -   Hybrid devices may do both, either separately (e.g. a tag that transmits to Argos but also records depth from a pressure sensor, which may be downloaded after recovering the device) or simultaneously (e.g. a tag that records location using a GPS sensor, then transmits that location to Argos).
+
+Further complicating matters, biologging may be used in many research contexts. Much of the biologger literature involves deployments on unrestrained, undomesticated animals for the purposes of addressing questions in biology, conservation, and related sciences. But agricultural research also uses biologging devices to assess animal welfare and resource use (domesticated animals) and biomedical research uses animal-borne heart rate sensors in lab experiments (restrained).
+
+The focus of this review is:
+
+1.  Biologging devices that use sensors (as opposed to acoustic or radio transmitters)
+2.  Deployed on unrestrained, undomesticated animals
+
+The choice to exclude transmitters was based on the properties of the data collected. Data from sensor-based biologgers can reasonably be considered self-contained, whereas data from transmitters depend equally on the receiver network. This external dependency complicates the assessment of open data sharing, the primary goal of this review. We make an exception for one type of transmitter, Argos tags, because the Argos system provides data to researchers with properties more similar to sensor-based biologgers.
+
 ### Literature review
 
-On such and such a date we searched Web of Science...
+On 2023-08-21, we queried Web of Science Core Collection for papers published since 2007 related to biologging with the following query:
+
+`animal AND (biologg* OR bio-logg* OR biotelemetry OR electronic tag* OR satellite track* OR GPS telemetry OR satellite telemetry OR satellite transmit* OR GPS collar* OR depth recorder* OR accelerometer OR archival tag*)`
+
+This yielded 6654 papers. We limited results to Web of Science categories with 100+ papers we deemed relevant, leaving 4799 papers. The categories we included were: Ecology, Zoology, Marine Freshwater Biology, Biodiversity Conservation, Multidisciplinary Sciences, Environmental Sciences, Oceanography, Biology, Behavioral Sciences, Ornithology, Evolutionary Biology, and Fisheries. We excluded the following categories with 100+ papers: Agriculture Dairy Animal Science, Veterinary Sciences, Engineering Electrical Electronic, Physiology, Food Science Technology, Engineering Biomedical, Agriculture Multidisciplinary, Computer Science Interdisciplinary Applications, Instruments Instrumentation.
 
 ### Initial classification
 
-Describe the broad rubric (study type, species instrumented, data availability statement, etc)
+Every paper will be reviewed by two individuals to assess its relevance to this review, record the presence or absence of a data availability statement, and to categorize the study by sensor type, taxonomy, and ecosystem. Papers will be considered relevant if they satisfy the following two characteristics:
 
-### Sampling plan
+1.  They involved the collection of previously unpublished biologging data. Our definition of biologging excludes telemetry devices (e.g., acoustic pingers and radiotransmitters) with the exception of devices that communicate with Argos satellites.
+2.  The biologgers were deployed on non-domesticated animals in unrestrained habitat. Studies involving domesticated animals (e.g., cattle) or animals in managed care (e.g., a zoo or aquarium) will be excluded.
 
-Stratified sampling across:
+We will consider a paper to have a data availability statement (DAS) if it states how to access the data or explicitly states why the data are not available. Any of the following examples would be considered a DAS: "Data were deposited in a repository" with an accompanying DOI, "Data are available at a website" with an accompanying URL, "Data are available upon request", or "Data withheld for the safety of the tracked animals".
+
+We will assign sensor types to one or more categories following Williams et al. [@williams2019]: location (e.g., GPS, depth), intrinsic (e.g., accelerometer, internal temperature), or environment (e.g., ambient temperature, camera). Biologgers can combine sensors from multiple categories (e.g., a GPS-accelerometer collar).
+
+We will resolve taxonomy to the species level using the Integrated Taxonomic Information System (www.itis.gov). Each study's ecosystem will be classified as one or more of aquatic, marine, and terrestrial according to the IUCN Red List (https://www.iucnredlist.org).
+
+### Assessing open data
+
+Following our initial classification, we will randomly sample 600 papers to assess the openness of biologging data. We will limit our sample to papers with a DAS, and we will stratify our sample by year, ecosystem, and sensor type. We will attempt to sample equal numbers of papers across the following categories:
 
 -   Time (early 2007-2015, middle 2016-2019, recent 2020-2023)
 
--   Taxa (mammal, bird, fish, other)
+-   Ecosystem (marine, terrestrial)
 
--   Habitat (marine, terrestrial)
+-   Sensor type (spatial, aspatial)
 
--   Spatial vs aspatial
+The sensor type of a study will be considered spatial if it includes a location sensor and aspatial if it includes an intrinsic or environmental sensor.
 
-### Open data assessment
+For each sampled paper, we will attempt to retrieve the biologging dataset underlying the study. If data are available upon request, we will email the corresponding author to request the data and send one follow-up email two weeks later if we do not receive a response. We will record whether each dataset satisfies the following properties:
 
-Describe the fine-scale rubric (FAIR principle compliance,
+-   Do the data have a permanent identifier, such as a DOI? (FAIR principle F1)
 
-### Analysis plan
+-   Are the data retrievable via a standard communications protocol, such as HTTP? (FAIR principle A1)
 
-We'll have multiple binary response variables (F1, F4, A1.1...), which we expect will be correlated (e.g., it's likely $p(F1|F4) > p(F1)$). Generalized estimating equations [@liang1986], as implemented in `geepack` [@halekoh2006], are suitable for this type of data, right?
+-   Do the data contain re-usable biologging data, as opposed to summaries?
 
-$$
-\begin{bmatrix}F1 \\ F4 \\ A1.1 \\ \vdots \end{bmatrix} \sim t + x + h + s
-$$
+-   Are the data sufficiently complete to reproduce the analyses in the study? I.e., are all necessary data and metadata included within the dataset.
 
-Where the response variables are compliance with individual FAIR principles, $t$ is years since 2007, $x$ is taxa (mammal, bird, fish, other), $h$ is habitat (marine, terrestrial) and $s$ is sensor type (spatial, aspatial).
+If we cannot retrieve the dataset for a study, we will consider the study to not satisfy any of the four properties listed above.
 
-Now this brings up an issue with sensor type. What do you do with GPS+accelerometer tags, for instance? GPS may be shared one way and accelerometer another.
+### Analysis
 
-#### **H1:** Open biologging data practices are increasing over time
-
-Coefficients for $t$ increase from early to middle to late.
-
-#### **H2:** Overall rates of open biologging data practices remain low
-
-How do we quantify "overall rates"? Examine each response individually? Restrict to late period?
-
-#### **H3:** Biologging studies use open data from external sources more than they generate open data
-
-How do we model this? This is probably wrong but it's a starting point.
+Our independent variables will be: year of publication ($t$), ecosystem ($e$), and sensor type ($s$) \[see "Initial classification"\]. Our dependent variables will be: the presence of a permanent identifier ($f$), whether data are retrievable by a standard protocol ($a$), whether data include re-usable biologging data ($r$), and whether data are complete ($c$) \[see "Assessing open data"\]. We will fit four Bayesian generalized linear models of the form:
 
 $$
-o \sim t + x + h + s
+\begin{align}
+DV_{i} &\sim Bernoulli(p) \\
+logit(p_i) &= \alpha - \beta_e e_i + \beta_s s_i + \phi_i \\
+\phi_i &= \beta_t mo(t, \delta) \\
+\alpha &\sim Normal(0, 1) \\
+\beta_e, \beta_s, \beta_t &\sim Normal(0, 1) \\
+\delta &\sim Dirichlet(1, ..., 1)
+\end{align}
 $$
 
-Where $o$ is a multinomial variable with four categories: no open data, open external, open biologging, both open.
+Where $DV$ is dependent variable ($f$, $a$, $r$, or $c$). $e$ and $s$ encode ecosystem (0 = marine, 1 = terrestrial) and sensor type (0 = aspatial, 1 = spatial), respectively. Year of publication ($t$) is treated as an ordinal categorical predictor [@bürkner2020]. Modeling $t$ this way, instead of as a metric continuous variable, allows the rate of change of the dependent variables to be nonlinear in time. $\phi$ represents the effect of year of publication, which is the product of a coefficient, $\beta_t$, and a monotonically increasing component, $\delta$, between 0 and 1. Thus $\phi$ takes on the value 0 at the beginning of the time period (2007) and increases to $\beta_t$ at the end (2023). $\delta$ controls the incremental steps between the two periods. The priors for $\alpha$ and $\beta_e, \beta_s, \beta_t$ are standard normal, and the prior for $\delta$ is a Dirichlet distribution with 1 for each step between years.
 
-#### **H4:** Open biologging data practices vary by taxa, habitat, and spatial vs aspatial (e.g., accelerometer) data
+We will use Stan [@Stan] and brms [@bürkner2018; @bürkner2021] for model fitting.
 
-$x$, $h$, and $s$ are all significant terms in GEE model. *A priori*, $s_{spatial}$ \> $s_{aspatial}$. But for taxa $x$ and habitat $h$, just predicting there are significant differences.
+#### H1: Open biologging data practices are increasing over time
+
+We will test hypothesis **H1** by comparing posterior predictions for 2023 and 2016. We will use 2016 as the baseline instead of the beginning of our study period (2007) to undertake a more stringent test of our hypothesis. Widespread adoption of open data policies by ecology and evolutionary biology journals began circa 2012-2014 [@roche2015] and the FAIR data principles were published in 2016 [@wilkinson2016]. Therefore we consider 2016 a more meaningful point of comparison.
+
+#### H2: Open biologging data practices vary by ecosystem
+
+We will test hypothesis **H2** by comparing posterior predictions for marine and terrestrial ecosystems for the year 2023.
+
+#### H3: Open biologging data practices vary by ecosystem
+
+We will test hypothesis **H3** by comparing posterior predictions for aspatial and spatial ecosystems for the year 2023.
+
+### Simulation
+
+We simulated reasonable values for $t$, $e$, $s$, and $f$ to demonstrate how we will perform our analysis.
+
+```{r}
+#| label: simulation
+
+library(brms)
+library(tidyverse)
+
+set.seed(1234)
+
+# Grid of independent variables
+biolog_grid <- expand_grid(
+  era = c("early", "middle", "recent"),
+  E = c("marine", "terrestrial"),
+  S = c("aspatial", "spatial")
+) %>%
+  slice(rep(1:12, each = 50)) %>%
+  mutate(T = case_when(
+    era == "early"  ~ sample(2007:2015, 600, replace = TRUE),
+    era == "middle" ~ sample(2016:2019, 600, replace = TRUE),
+    era == "recent" ~ sample(2020:2023, 600, replace = TRUE)
+  ))
+
+# Parameters for simulation
+# delta
+delta <- c(
+  # Dummy for 2007
+  0,
+  # slow increases in early period
+  rep(1, 8),
+  # fastest increases in middle period
+  rep(3, 4),
+  # moderate increases in recent period
+  rep(2, 4)
+)
+delta <- delta / sum(delta)
+# betas (E, S, T)
+beta_E <- c(marine = 0, terrestrial = 1)
+beta_S <- c(aspatial = 0, spatial = 1)
+beta_T <- 3
+alpha <- -4
+
+# Run simulation
+inv_logit <- \(x) exp(x) / (1 + exp(x))
+biolog <- biolog_grid %>%
+  mutate(cumsum_delta = map_dbl(T, \(t) sum(delta[1:(t - 2007)])),
+         phi = alpha + beta_E[E] + beta_S[S] + beta_T * cumsum_delta,
+         F = rbinom(600, size = 1, prob = inv_logit(phi)))
+
+# Visualize data
+biolog_summ <- biolog %>%
+  group_by(T, E, S) %>%
+  summarize(F = mean(F),
+            .groups = "drop")
+# phi ~ T
+ggplot(biolog, aes(T, phi, color = E)) +
+  geom_point() +
+  facet_wrap(~S) +
+  theme_classic() +
+  theme(legend.position = "bottom")
+# F ~ T
+ggplot(biolog, aes(T, F, color = E)) +
+  geom_jitter(aes(shape = S), alpha = 0.75, width = 0.25, height = 0.05) +
+  geom_line(aes(linetype = S), biolog_summ) +
+  scale_y_continuous(breaks = c(0, 0.5, 1)) +
+  theme_classic() +
+  theme(legend.position = "bottom")
+
+# Fit model
+biolog_prior <- c(
+  set_prior(prior = "normal(0, 1)", class = "Intercept"),
+  set_prior(prior = "normal(0, 1)", coef = "Eterrestrial"),
+  set_prior(prior = "normal(0, 1)", coef = "Sspatial"),
+  set_prior(prior = "normal(0, 1)", coef = "moT"),
+  set_prior(prior = "dirichlet(1)", class = "simo", coef = "moT1")
+)
+biolog_mod <- brm(F ~ E + S + mo(T),
+                  data = biolog,
+                  family = bernoulli(link = "logit"),
+                  prior = biolog_prior)
+posterior_summary(biolog_mod) %>%
+  round(digits = 3)
+
+# Hypothesis testing
+## H1
+### Calculate contrasts
+h1_data_2016 <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = c("aspatial", "spatial"),
+  T = 2016
+)
+h1_pred_2016 <- posterior_predict(biolog_mod,
+                                  newdata = h1_data_2016,
+                                  ndraws = 1000)
+h1_data_2023 <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = c("aspatial", "spatial"),
+  T = 2023
+)
+h1_pred_2023 <- posterior_predict(biolog_mod,
+                                  newdata = h1_data_2023,
+                                  ndraws = 1000)
+h1_contrast <- (h1_pred_2023 - h1_pred_2016) %>% 
+  t() %>% 
+  cbind(select(h1_data_2016, E, S), .) %>% 
+  pivot_longer(-c(E, S), names_to = "draw", values_to = "contrast")
+### Plot contrasts
+ggplot(h1_contrast, aes(contrast, fill = S)) +
+  geom_bar(aes(y = after_stat(prop)), position = "dodge") +
+  facet_wrap(~E) +
+  scale_fill_manual(values = c("firebrick", "cornflowerblue")) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
+  labs(x = "Contrast of F\n(2023 vs 2016)",
+       y = "Proportion",
+       fill = "Sensor type") +
+  theme_classic()
+### Table of contrasts
+h1_contrast %>% 
+  count(E, S, contrast) %>% 
+  group_by(E, S) %>% 
+  mutate(n = n / sum(n)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = "contrast", values_from = "n") %>% 
+  mutate(across(-c(E, S), scales::percent))
+
+## H2
+### Calculate contrasts
+h2_data_marine <- expand_grid(
+  E = "marine",
+  S = c("aspatial", "spatial"),
+  T = 2023
+)
+h2_pred_marine <- posterior_predict(biolog_mod,
+                                    newdata = h2_data_marine,
+                                    ndraws = 1000)
+h2_data_terrestrial <- expand_grid(
+  E = "terrestrial",
+  S = c("aspatial", "spatial"),
+  T = 2023
+)
+h2_pred_terrestrial <- posterior_predict(biolog_mod,
+                                         newdata = h2_data_terrestrial,
+                                         ndraws = 1000)
+h2_contrast <- (h2_pred_terrestrial - h2_pred_marine) %>% 
+  t() %>% 
+  cbind(select(h2_data_marine, S), .) %>% 
+  pivot_longer(-c(S), names_to = "draw", values_to = "contrast")
+### Plot contrasts
+ggplot(h2_contrast, aes(contrast, fill = S)) +
+  geom_bar(aes(y = after_stat(prop)), position = "dodge") +
+  scale_fill_manual(values = c("firebrick", "cornflowerblue")) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
+  labs(x = "Contrast of F\n(Terrestrial vs marine)",
+       y = "Proportion",
+       fill = "Sensor type") +
+  theme_classic()
+### Table of contrasts
+h2_contrast %>% 
+  count(S, contrast) %>% 
+  group_by(S) %>% 
+  mutate(n = n / sum(n)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = "contrast", values_from = "n") %>% 
+  mutate(across(-S, scales::percent))
+
+## H3
+### Calculate contrasts
+h3_data_aspatial <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = "aspatial",
+  T = 2023
+)
+h3_pred_aspatial <- posterior_predict(biolog_mod,
+                                      newdata = h3_data_aspatial,
+                                      ndraws = 1000)
+h3_data_spatial <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = "spatial",
+  T = 2023
+)
+h3_pred_spatial <- posterior_predict(biolog_mod,
+                                     newdata = h3_data_spatial,
+                                     ndraws = 1000)
+h3_contrast <- (h3_pred_spatial - h3_pred_aspatial) %>% 
+  t() %>% 
+  cbind(select(h3_data_aspatial, E), .) %>% 
+  pivot_longer(-E, names_to = "draw", values_to = "contrast")
+### Plot contrasts
+ggplot(h3_contrast, aes(contrast, fill = E)) +
+  geom_bar(aes(y = after_stat(prop)), position = "dodge") +
+  scale_fill_manual(values = c("mediumpurple", "tan")) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
+  labs(x = "Contrast of F\n(Spatial vs aspatial)",
+       y = "Proportion",
+       fill = "Ecosystem") +
+  theme_classic()
+### Table of contrasts
+h3_contrast %>% 
+  count(E, contrast) %>% 
+  group_by(E) %>% 
+  mutate(n = n / sum(n)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = "contrast", values_from = "n") %>% 
+  mutate(across(-E, scales::percent))
+
+```

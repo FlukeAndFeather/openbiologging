@@ -1,7 +1,7 @@
 library(brms)
 library(tidyverse)
 
-set.seed(702)
+set.seed(1234)
 
 # Grid of independent variables
 biolog_grid <- expand_grid(
@@ -76,76 +76,124 @@ biolog_mod <- brm(F ~ E + S + mo(T),
 posterior_summary(biolog_mod) %>%
   round(digits = 3)
 
-# Contrasts
-pred_grid <- expand_grid(
+# Hypothesis testing
+## H1
+### Calculate contrasts
+h1_data_2016 <- expand_grid(
   E = c("marine", "terrestrial"),
   S = c("aspatial", "spatial"),
-  T = 2007:2023
+  T = 2016
 )
-biolog_pred_wide <- posterior_predict(biolog_mod,
-                                      newdata = pred_grid,
-                                      ndraws = 1000)
-biolog_pred <- cbind(pred_grid, t(biolog_pred_wide)) %>%
-  pivot_longer(-c(E, S, T), names_to = "draw", values_to = "F")
-ggplot(biolog_pred, aes(T, F, color = E)) +
-  geom_line(aes(linetype = S), biolog_summ) +
-  scale_y_continuous(breaks = c(0, 0.5, 1), limits = c(0, 1)) +
-  theme_classic() +
-  theme(legend.position = "bottom")
-
-# Ecosystem: marine and terrestrial (in 2023)
-E_contrast <- biolog_pred %>%
-  filter(T == 2023) %>%
-  group_by(draw, S) %>%
-  summarize(contrast = F[E == "terrestrial"] - F[E == "marine"],
-            .groups = "drop")
-
-ggplot(E_contrast, aes(contrast, fill = S)) +
-  geom_bar(position = "dodge") +
-  labs(x = "Contrast of F (presence of permanent identifier)\n(Terrestrial relative to marine)",
-       y = "Count\n(1000 draws from posterior distribution)",
+h1_pred_2016 <- posterior_predict(biolog_mod,
+                                  newdata = h1_data_2016,
+                                  ndraws = 1000)
+h1_data_2023 <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = c("aspatial", "spatial"),
+  T = 2023
+)
+h1_pred_2023 <- posterior_predict(biolog_mod,
+                                  newdata = h1_data_2023,
+                                  ndraws = 1000)
+h1_contrast <- (h1_pred_2023 - h1_pred_2016) %>%
+  t() %>%
+  cbind(select(h1_data_2016, E, S), .) %>%
+  pivot_longer(-c(E, S), names_to = "draw", values_to = "contrast")
+### Plot contrasts
+ggplot(h1_contrast, aes(contrast, fill = S)) +
+  geom_bar(aes(y = after_stat(prop)), position = "dodge") +
+  facet_wrap(~E) +
+  scale_fill_manual(values = c("firebrick", "cornflowerblue")) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
+  labs(x = "Contrast of F\n(2023 vs 2016)",
+       y = "Proportion",
        fill = "Sensor type") +
   theme_classic()
-
-E_contrast %>%
-  group_by(S) %>%
-  summarize(`Mean contrast` = mean(contrast))
-
-# Sensor: aspatial and spatial
-S_contrast <- biolog_pred %>%
-  filter(T == 2023) %>%
-  group_by(draw, E) %>%
-  summarize(contrast = F[S == "spatial"] - F[S == "aspatial"],
-            .groups = "drop")
-
-ggplot(S_contrast, aes(contrast, fill = E)) +
-  geom_bar(position = "dodge") +
-  labs(x = "Contrast of F (presence of permanent identifier)\n(Spatial relative to aspatial)",
-       y = "Count\n(1000 draws from posterior distribution)",
-       fill = "Ecosystem") +
-  theme_classic()
-
-S_contrast %>%
-  group_by(E) %>%
-  summarize(`Mean contrast` = mean(contrast))
-
-# Time: 2023 vs 2013
-T_contrast <- biolog_pred %>%
-  filter(T %in% c(2013, 2023)) %>%
-  group_by(draw, E, S) %>%
-  summarize(contrast = mean(F[T == 2023] - F[T == 2013]),
-            .groups = "drop")
-
-ggplot(T_contrast, aes(contrast, fill = E)) +
-  geom_bar(position = "dodge") +
-  facet_wrap(~S) +
-  labs(x = "Contrast of F (presence of permanent identifier)\n(2023 relative to 2013)",
-       y = "Count\n(1000 draws from posterior distribution)",
-       fill = "Ecosystem") +
-  theme_classic()
-
-T_contrast %>%
+### Table of contrasts
+h1_contrast %>%
+  count(E, S, contrast) %>%
   group_by(E, S) %>%
-  summarize(`Mean contrast` = mean(contrast),
-            .groups = "drop") %>%
-  pivot_wider(names_from = "S", values_from = "Mean contrast")
+  mutate(n = n / sum(n)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = "contrast", values_from = "n") %>%
+  mutate(across(-c(E, S), scales::percent))
+
+## H2
+### Calculate contrasts
+h2_data_marine <- expand_grid(
+  E = "marine",
+  S = c("aspatial", "spatial"),
+  T = 2023
+)
+h2_pred_marine <- posterior_predict(biolog_mod,
+                                    newdata = h2_data_marine,
+                                    ndraws = 1000)
+h2_data_terrestrial <- expand_grid(
+  E = "terrestrial",
+  S = c("aspatial", "spatial"),
+  T = 2023
+)
+h2_pred_terrestrial <- posterior_predict(biolog_mod,
+                                         newdata = h2_data_terrestrial,
+                                         ndraws = 1000)
+h2_contrast <- (h2_pred_terrestrial - h2_pred_marine) %>%
+  t() %>%
+  cbind(select(h2_data_marine, S), .) %>%
+  pivot_longer(-c(S), names_to = "draw", values_to = "contrast")
+### Plot contrasts
+ggplot(h2_contrast, aes(contrast, fill = S)) +
+  geom_bar(aes(y = after_stat(prop)), position = "dodge") +
+  scale_fill_manual(values = c("firebrick", "cornflowerblue")) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
+  labs(x = "Contrast of F\n(Terrestrial vs marine)",
+       y = "Proportion",
+       fill = "Sensor type") +
+  theme_classic()
+### Table of contrasts
+h2_contrast %>%
+  count(S, contrast) %>%
+  group_by(S) %>%
+  mutate(n = n / sum(n)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = "contrast", values_from = "n") %>%
+  mutate(across(-S, scales::percent))
+
+## H3
+### Calculate contrasts
+h3_data_aspatial <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = "aspatial",
+  T = 2023
+)
+h3_pred_aspatial <- posterior_predict(biolog_mod,
+                                      newdata = h3_data_aspatial,
+                                      ndraws = 1000)
+h3_data_spatial <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = "spatial",
+  T = 2023
+)
+h3_pred_spatial <- posterior_predict(biolog_mod,
+                                     newdata = h3_data_spatial,
+                                     ndraws = 1000)
+h3_contrast <- (h3_pred_spatial - h3_pred_aspatial) %>%
+  t() %>%
+  cbind(select(h3_data_aspatial, E), .) %>%
+  pivot_longer(-E, names_to = "draw", values_to = "contrast")
+### Plot contrasts
+ggplot(h3_contrast, aes(contrast, fill = E)) +
+  geom_bar(aes(y = after_stat(prop)), position = "dodge") +
+  scale_fill_manual(values = c("mediumpurple", "tan")) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
+  labs(x = "Contrast of F\n(Spatial vs aspatial)",
+       y = "Proportion",
+       fill = "Ecosystem") +
+  theme_classic()
+### Table of contrasts
+h3_contrast %>%
+  count(E, contrast) %>%
+  group_by(E) %>%
+  mutate(n = n / sum(n)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = "contrast", values_from = "n") %>%
+  mutate(across(-E, scales::percent))
