@@ -9,7 +9,7 @@ bibliography: references.bib
 csl: nature.csl
 ---
 
-## Introduction 
+## Introduction
 
 (450/500 words)
 
@@ -20,7 +20,7 @@ Open science practices, such as publishing data and code alongside manuscripts, 
 There have been numerous efforts within the biologging research community to promote open data sharing practices. Essential cyberinfrastructure include domain-specific data repositories (Movebank [@kays2021], Seabird Tracking Database [seabirdtracking.org](https://www.seabirdtracking.org), Euromammal [@urbano2021]) and data standards [@sequeira2021; @dettki2023; @kranstauber2011] that facilitate adoption of the FAIR principles ([@tbl-fair]).
 
 | FAIR principle   | Definition                                                                                                                                           | Application to biologging                                                                                                                                                                                                                                                | Example                                                                                                                                                                                                        |
-|-----------------|-----------------|----------------------|-----------------|
+|-----------------|-----------------|--------------------|-----------------|
 | Findability      | Data and metadata have a globally unique and persistent identifier (e.g., a digital object identifier, DOI) and are indexed in a searchable resource | Data repositories, like the Movebank Data Repository, improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)                                                                                                     | A tracking dataset deposited in the Movebank Data Repository is findable by its permanent DOI or by searching the repository                                                                                   |
 | Accessibility    | Data and metadata are retrievable by open and universal protocols, such as HTTP                                                                      | Data repositories allow scientists to retrieve biologging data via a web browser or other open source tools                                                                                                                                                              | Publicly available data on Movebank may be downloaded via the website, API, or with the `move2` R package [@kranstauber2023]                                                                                   |
 | Interoperability | Data use formal and shared formats and vocabularies                                                                                                  | Shared protocols like the Darwin Core standard [@wieczorek2012], Movebank data model [@MPIAB2023], and proposed bio-logging standardization framework [@sequeira2021] reduce barriers to combining datasets and increase uptake within and across scientific disciplines | Location and environmental data from seal-borne biologgers harmonized to a standard netCDF format facilitated their reuse by oceanographers to study polar regions [@treasure2017]                             |
@@ -89,7 +89,7 @@ For each sampled paper, we will attempt to retrieve the biologging dataset under
 
 If we cannot retrieve the dataset for a study, we will consider the study to not satisfy any of the four properties listed above.
 
-To clarify our methods for spatial versus aspatial data, consider a hypothetical GPS-accelerometer biologging study sampled in the aspatial category. The authors deposited the GPS data in the Movebank Data Repository (which issues DOIs), but the accelerometer data are available upon request. We contact the author and they provide us with the raw accelerometer data, but they no longer have the files necessary to calibrate them. Then this study would be scored as $f=0,a=0,b=1,c=0$ because (1) the aspatial data do not have a DOI, (2) retrieving the aspatial data required contacting the author, (3) the accelerometer data were made available, and (4) without the calibration files we could not reproduce the analysis. Had this same study been sampled in the spatial category, we would have scored it as $f=1,a=1,b=1,c=1$ because (1) the spatial data have a DOI, (2) the data were retrievable via HTTP, (3) the GPS sensor data were available, and (4) all the (meta)data necessary for the analysis were present.
+To clarify our methods for spatial versus aspatial data, consider a hypothetical GPS-accelerometer biologging study sampled in the aspatial category. The authors deposited the GPS data in the Movebank Data Repository (which issues DOIs) and the accelerometer data are available upon request. We contact the author and they provide us with the raw accelerometer data, but they no longer have the files necessary to calibrate them. Then this study would be scored as $f=0,a=0,b=1,c=0$ because ($f$) the aspatial data do not have a DOI, ($a$) retrieving the aspatial data required contacting the author, ($b$) the accelerometer data were made available, and ($c$) without the calibration files we could not reproduce the analysis. Had this same study been sampled in the spatial category, we would have scored it as $f=1,a=1,b=1,c=1$ because ($f$) the spatial data have a DOI, ($a$) the data were retrievable via HTTP, ($b$) the GPS sensor data were available, and ($c$) all the (meta)data necessary for the analysis were present.
 
 ### Analysis
 
@@ -97,7 +97,7 @@ Our independent variables will be: year of publication ($t$), ecosystem ($e$), a
 
 $$
 \begin{align}
-DV_{i} &\sim Bernoulli(p) \\
+DV &\sim Bernoulli(p) \\
 logit(p_i) &= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 \alpha &\sim Normal(-1, 2) \\
 \beta_e, \beta_s &\sim Normal(0, 1) \\
@@ -106,9 +106,9 @@ logit(p_i) &= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 \end{align}
 $$
 
-Where $DV$ is the dependent variable ($f$, $a$, $r$, or $c$). $e$ and $s$ encode ecosystem (marine, terrestrial) and sensor type (aspatial, spatial), respectively. Year of publication ($t$) is treated as an ordinal categorical predictor [@bürkner2020]. Modeling $t$ this way, instead of as a metric continuous variable, allows the rate of change of the dependent variables to be nonlinear in time. $\beta_t$ is the coefficient for the effect of time and $mo(t,\delta)$ is a monotonic transformation of $t$ from 0 to 1. Thus $\beta_t mo(t, \delta)$ is 0 at the beginning of the time period (2007) and increases to $\beta_t$ at the end (2023). $\delta$ is a simplex that controls the incremental steps for each year in the time period.
+Where $DV$ is the dependent variable ($f$, $a$, $r$, or $c$). $e$ and $s$ encode ecosystem (marine, terrestrial) and sensor type (aspatial, spatial), respectively. Year of publication ($t$) is treated as an ordinal categorical predictor [@bürkner2020]. Modeling $t$ this way, instead of as a metric continuous variable, allows the rate of change of the dependent variables to be nonlinear in time (i.e., the change in $DV$ from 2007 to 2008 may be different than 2017 to 2018). $\beta_t$ is the coefficient for the effect of time and $mo(t,\delta)$ is a monotonic transformation of $t$ from 0 to 1. Thus $\beta_t mo(t, \delta)$ is 0 at the beginning of the time period (2007) and increases to $\beta_t$ at the end (2023). $\delta$ is a simplex that controls the incremental steps for each year in the time period.
 
-We will set priors according to available information in the literature. To our knowledge, there is no quantitative information about differences in open data practices within biologging. Therefore, the priors for $\beta_e$, $\beta_s$, and $\delta$ will be uninformative (standard normal and symmetric Dirichlet with concentration 1). More generally in ecology, open data rates remain relatively low (\~50%), but are increasing in recent years [@roche2022]. Therefore we chose a prior for $\alpha$ with a negative expected value ($Normal(-1, 2)$) and a prior for $\beta_t$ with a positive expected value ($Normal(1, 2$).
+We will set priors according to available information in the literature. To our knowledge, there is no quantitative information about differences in open data practices within biologging. Therefore, the priors for $\beta_e$, $\beta_s$, and $\delta$ will be uninformative (standard normal and symmetric Dirichlet with concentration 1). More generally in ecology, open data rates remain relatively low (\~50%), but are increasing in recent years [@roche2022]. Therefore we chose a prior for $\alpha$ with a negative expected value ($Normal(-1, 2)$) and a prior for $\beta_t$ with a positive expected value ($Normal(1, 2)$).
 
 We will use Stan [@Stan] and brms [@bürkner2018; @bürkner2021] for model fitting.
 
