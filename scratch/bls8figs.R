@@ -106,7 +106,7 @@ novel_biolog %>%
   mutate(Habitat = case_when(
     substr(habitat, 1, 1) == "M" ~ "Marine",
     substr(habitat, 1, 1) == "T" ~ "Terrestrial",
-    TRUE ~ "Other"
+    TRUE ~ "Aquatic"
   )) %>%
   group_by(Habitat) %>%
   summarize(
@@ -119,22 +119,22 @@ novel_biolog %>%
                       na.rm = TRUE)) %>%
   pivot_longer(-Habitat,
                names_to = "Sensor type",
-               values_to = "Papers") %>%
+               values_to = "Studies") %>%
   mutate(
     `Sensor type` = fct_reorder(`Sensor type`,
-                                Papers,
+                                Studies,
                                 .fun = \(x) -sum(x)),
-    Habitat = fct_reorder(Habitat, Papers, .fun = sum)
+    Ecosystem = fct_reorder(Habitat, Studies, .fun = sum)
   ) %>%
-  ggplot(aes(`Sensor type`, Papers, fill = Habitat)) +
+  ggplot(aes(`Sensor type`, Studies, fill = Ecosystem)) +
   geom_col() +
   scale_fill_manual(values = c(Terrestrial = "tan1",
                                Marine = "cornflowerblue",
-                               Other = "darkorchid2")) +
+                               Aquatic = "darkorchid2")) +
   theme_classic(base_size = 24) +
   theme(legend.position = c(0.9, 0.9),
         legend.justification = c(1, 1))
-ggsave("scratch/sensors.svg", width = 253, height = 213, units = "mm")
+ggsave("scratch/sensors.svg", width = 253, height = 273, units = "mm")
 
 data_avail <- novel_biolog %>%
   drop_na(biologging_availability) %>%
@@ -169,14 +169,38 @@ ggplot(data_avail, aes(year, biologging_availability)) +
                   ymin = biologging_availability_lwr,
                   ymax = biologging_availability_upr),
               data_avail_pred_df,
-              alpha = 0.5) +
+              alpha = 0.25) +
   geom_line(data = data_avail_pred_df,
-            color = "blue") +
+            color = "blue",
+            linewidth = 2) +
   labs(x = "Year", y = "Data Availability Statement") +
   theme_classic(base_size = 24)
 ggsave("scratch/das.svg", width = 253, height = 213, units = "mm")
 
+journal_abbrev <- read_csv("scratch/journal_abbrev.csv")
+data_avail %>%
+  left_join(journal_abbrev, by = "source") %>%
+  mutate(abbrev = ifelse(is.na(abbrev), source, abbrev),
+         journ = abbrev %>%
+           fct_infreq() %>%
+           fct_lump_n(20)) %>%
+  count(journ, biologging_availability) %>%
+  mutate(DAS = factor(biologging_availability,
+                      levels = 1:0,
+                      labels = c("Yes", "No"))) %>%
+  ggplot(aes(journ, n, fill = DAS)) +
+  geom_col(color = "black") +
+  labs(y = "Studies") +
+  scale_fill_manual(values = c(Yes = "black", No = "white")) +
+  theme_classic(base_size = 32) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1,
+                                   lineheight = 0.75, size = 14),
+        axis.title.x = element_blank(),
+        legend.position = c(0.1, 0.9),
+        legend.justification = c(0, 1))
+ggsave("scratch/journals.svg", width = 253, height = 233, units = "mm")
 
+library(ggalluvial)
 study_taxa_categorized <- study_taxa %>%
   mutate(group1 = ifelse(phylum == "Chordata", "Vertebrate", "Invertebrate"),
          group2 = case_when(
@@ -195,6 +219,9 @@ study_taxa_categorized <- study_taxa %>%
            order %in% c("Anseriformes", "Galliformes") ~ "Fowl",
            order %in% c("Accipitriformes", "Falconiformes", "Strigiformes") ~ "Raptors",
            class == "Aves" ~ "Other birds",
+           class == "Chondrichthyes" ~ "Sharks and rays",
+           class %in% c("Chondrostei", "Teleostei") ~ "Bony fish",
+           order == "Testudines" ~ "Turtles",
            TRUE ~ group2
          ),
          group2_fill = group2) %>%
@@ -207,7 +234,7 @@ ggplot(study_taxa_categorized, aes(x = x, stratum = stratum, alluvium = alluvium
                    geom = "text", decreasing = FALSE, size = 6) +
   theme_void() +
   theme(legend.position = "none")
-ggsave("scratch/sankey.svg", width = 253, height = 202, units = "mm")
+ggsave("scratch/sankey.svg", width = 253, height = 293, units = "mm")
 
 
 
