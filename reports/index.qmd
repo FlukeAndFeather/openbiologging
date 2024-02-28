@@ -1,23 +1,98 @@
 ---
 title: "Trends, challenges, and opportunities in open biologging data"
-format: html
+format: 
+  html:
+    toc: true
+    echo: false
 editor: visual
+bibliography: references.bib
 ---
 
 ## Authors
 
-Max Czapanskiy ([\@FlukeAndFeather](https://github.com/flukeandfeather)), Allison Payne ([\@allisonpayne](https://github.com/allisonpayne)), Conner Hale ([\@cmhale98](https://github.com/cmhale98)), Dom Roche ([\@DomRoche](https://github.com/DomRoche)), Emily Nazario ([\@enazario11](https://github.com/enazario11)), Jessie Kendall-Bar ([\@jmkendallbar](https://github.com/jmkendallbar)), Rachel Buxton ([\@RachelBuxton](https://github.com/RachelBuxton)), Sarah Davidson ([\@sarahcd](https://github.com/sarahcd)), Tommy Clay ([\@tommyclay](https://github.com/tommyclay)), Ana Nisi ([\@annanisi](https://github.com/annanisi)), Tate Linden, Mia Reynolds
+Max Czapanskiy ([\@FlukeAndFeather](https://github.com/flukeandfeather)), Allison Payne ([\@allisonpayne](https://github.com/allisonpayne)), Conner Hale ([\@cmhale98](https://github.com/cmhale98)), Dom Roche ([\@DomRoche](https://github.com/DomRoche)), Emily Nazario ([\@enazario11](https://github.com/enazario11)), Jessie Kendall-Bar ([\@jmkendallbar](https://github.com/jmkendallbar)), Rachel Buxton ([\@RachelBuxton](https://github.com/RachelBuxton)), Sarah Davidson ([\@sarahcd](https://github.com/sarahcd)), Tommy Clay ([\@tommyclay](https://github.com/tommyclay)), Ana Nisi ([\@annanisi](https://github.com/annanisi)), Tate Linden, Mia Reynolds, ... you??
+
+## Get involved!
+
+Do you use biologging in your research? Are you interested in open science? Do you wish sharing data was easier?
+
+Come collaborate with a great team of biologging scientists! Please fill out this [interest form](https://forms.gle/DJJtWtsUhyP8vvHR7) and we'll contact you about joining the team.
 
 ## Abstract
 
-The scientific community and its partners increasingly expect and rely on open science practices, especially open data. Many journals and funding bodies are adding requirements that research data be shared according to the FAIR principles: findable, accessible, interoperable, and reusable. These principles were developed collaboratively by scientists, funders, and publishers to facilitate the reuse of data by researchers and applied practitioners, including policy makers and resource managers. The biologging community is adapting to these changing norms and expectations by developing open data repositories (e.g., Movebank) and formal data standards. To measure the trajectory of open data practices in our field, we are conducting a systematic review of open data practices in biologging literature published since 2007 (the year Movebank came online).
+Biologgers are animal-borne devices that remotely observe the individual's location, behavior, physiology, and immediate environment. Over the last sixty years, biologging has become an invaluable tool for ecology, conservation, environmental science, and related fields. In recent decades, efforts such as Movebank have provided essential data standards and repositories to support data archiving and sharing. But despite these biologging cyberinfrastructure developments, the general state of open data within the community remains unknown, and there are indications that a majority of tracking data remain inaccessible. Even basic questions, such as how many species have been instrumented and how often are various sensors deployed, are currently unanswerable. A systematic review of the instruments, species, and data availability of biologging studies is thus essential to support ongoing and future efforts to promote collaborative data sharing and curation efforts. We are reviewing biologging studies published between 2007-2023 to test hypotheses pertaining to trends in biologging data. We predict open biologging data practices have increased over time, though open data availability remains under 50%. We also predict that spatial biologging data (e.g. GPS) is shared more openly than other types of biologging data (e.g. accelerometers), and that terrestrial biologging studies share data openly more often than marine biologging studies.
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+# Get the most recent set of reviews
+reviews <- dir(here::here("outputs", "reviews"), 
+                      "reviews.*rds", 
+                      full.names = TRUE) %>%
+  sort(decreasing = TRUE) %>%
+  first() %>%
+  readRDS()
+
+# Limit to novel biologging
+novel_biolog <- reviews %>% 
+  mutate(across(everything(), \(x) ifelse(x == "NA", NA, x))) %>% 
+  filter(reviewed,
+         manuscript_type != "U",
+         novel_biologging == "Y",
+         str_detect(biologging_context, "W"),
+         !is.na(novel_biologging)) 
+
+```
+
+```{r}
+#| fig-cap: "Our preliminary results indicate studies increasingly include data availability statements, exceeding 50% in 2020."
+
+data_avail <- novel_biolog %>% 
+  drop_na(biologging_availability) %>% 
+  mutate(
+    biologging_availability = ifelse(biologging_availability == "Y",
+                                     1, 0),
+    year = as.numeric(year),
+    year2007 = year - 2007
+  )
+
+data_avail_mod <- glm(biologging_availability ~ year2007,
+                      family = "binomial",
+                      data = data_avail)
+data_avail_grid <- tibble(year2007 = 0:16)
+data_avail_pred <- predict(data_avail_mod,
+                           newdata = data_avail_grid,
+                           se.fit = TRUE)
+invlogit <- binomial()$linkinv
+data_avail_pred_df <- data_avail_grid %>% 
+  mutate(eta = data_avail_pred$fit,
+         eta_lwr = data_avail_pred$fit - data_avail_pred$se.fit,
+         eta_upr = data_avail_pred$fit + data_avail_pred$se.fit,
+         biologging_availability = invlogit(eta),
+         biologging_availability_lwr = invlogit(eta_lwr),
+         biologging_availability_upr = invlogit(eta_upr),
+         year = year2007 + 2007)
+
+ggplot(data_avail, aes(year, biologging_availability)) +
+  geom_point(shape = 21, 
+             position = position_jitter(width = 0.2, height = 0.05)) +
+  geom_ribbon(aes(x = year,
+                  ymin = biologging_availability_lwr,
+                  ymax = biologging_availability_upr),
+              data_avail_pred_df,
+              alpha = 0.5) +
+  geom_line(data = data_avail_pred_df,
+            color = "blue") +
+  labs(x = "Year", y = "Data Availability Statement") +
+  theme_classic(base_size = 14)
+```
 
 ## Additional information
 
-[Methods](methods.html)
+We are planning to submit a [registered report](https://www.nature.com/natecolevol/submission-guidelines/registeredreports) to *Nature Ecology and Evolution* soon. This will pre-register our methods and planned analyses, which improves transparency and reduces publication bias [@odea2021]. Our current draft is [available here](registeredreport.html).
 
-[Registered report (draft)](registeredreport.html)
+We will not begin assessing open data practices of biologging studies until our registered report is accepted. But in the meantime we have begun our initial classification of biologging studies, recording taxa, sensors, and other baseline information. You can see our [progress here](progress.html).
 
-[Simulated data](sim_data.html)
-
-[Progress tracking](progress.html)
+[Info for co-authors](methods.html)

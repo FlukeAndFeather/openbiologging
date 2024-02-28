@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -37,10 +56,21 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#authors" id="toc-authors" class="nav-link active" data-scroll-target="#authors">Authors</a></li>
+  <li><a href="#get-involved" id="toc-get-involved" class="nav-link" data-scroll-target="#get-involved">Get involved!</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#additional-information" id="toc-additional-information" class="nav-link" data-scroll-target="#additional-information">Additional information</a></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -62,21 +92,40 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="authors" class="level2">
 <h2 class="anchored" data-anchor-id="authors">Authors</h2>
-<p>Max Czapanskiy (<a href="https://github.com/flukeandfeather">@FlukeAndFeather</a>), Allison Payne (<a href="https://github.com/allisonpayne">@allisonpayne</a>), Conner Hale (<a href="https://github.com/cmhale98">@cmhale98</a>), Dom Roche (<a href="https://github.com/DomRoche">@DomRoche</a>), Emily Nazario (<a href="https://github.com/enazario11">@enazario11</a>), Jessie Kendall-Bar (<a href="https://github.com/jmkendallbar">@jmkendallbar</a>), Rachel Buxton (<a href="https://github.com/RachelBuxton">@RachelBuxton</a>), Sarah Davidson (<a href="https://github.com/sarahcd">@sarahcd</a>), Tommy Clay (<a href="https://github.com/tommyclay">@tommyclay</a>), Ana Nisi (<a href="https://github.com/annanisi">@annanisi</a>), Tate Linden, Mia Reynolds</p>
+<p>Max Czapanskiy (<a href="https://github.com/flukeandfeather">@FlukeAndFeather</a>), Allison Payne (<a href="https://github.com/allisonpayne">@allisonpayne</a>), Conner Hale (<a href="https://github.com/cmhale98">@cmhale98</a>), Dom Roche (<a href="https://github.com/DomRoche">@DomRoche</a>), Emily Nazario (<a href="https://github.com/enazario11">@enazario11</a>), Jessie Kendall-Bar (<a href="https://github.com/jmkendallbar">@jmkendallbar</a>), Rachel Buxton (<a href="https://github.com/RachelBuxton">@RachelBuxton</a>), Sarah Davidson (<a href="https://github.com/sarahcd">@sarahcd</a>), Tommy Clay (<a href="https://github.com/tommyclay">@tommyclay</a>), Ana Nisi (<a href="https://github.com/annanisi">@annanisi</a>), Tate Linden, Mia Reynolds, … you??</p>
+</section>
+<section id="get-involved" class="level2">
+<h2 class="anchored" data-anchor-id="get-involved">Get involved!</h2>
+<p>Do you use biologging in your research? Are you interested in open science? Do you wish sharing data was easier?</p>
+<p>Come collaborate with a great team of biologging scientists! Please fill out this <a href="https://forms.gle/DJJtWtsUhyP8vvHR7">interest form</a> and we’ll contact you about joining the team.</p>
 </section>
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>The scientific community and its partners increasingly expect and rely on open science practices, especially open data. Many journals and funding bodies are adding requirements that research data be shared according to the FAIR principles: findable, accessible, interoperable, and reusable. These principles were developed collaboratively by scientists, funders, and publishers to facilitate the reuse of data by researchers and applied practitioners, including policy makers and resource managers. The biologging community is adapting to these changing norms and expectations by developing open data repositories (e.g., Movebank) and formal data standards. To measure the trajectory of open data practices in our field, we are conducting a systematic review of open data practices in biologging literature published since 2007 (the year Movebank came online).</p>
+<p>Biologgers are animal-borne devices that remotely observe the individual’s location, behavior, physiology, and immediate environment. Over the last sixty years, biologging has become an invaluable tool for ecology, conservation, environmental science, and related fields. In recent decades, efforts such as Movebank have provided essential data standards and repositories to support data archiving and sharing. But despite these biologging cyberinfrastructure developments, the general state of open data within the community remains unknown, and there are indications that a majority of tracking data remain inaccessible. Even basic questions, such as how many species have been instrumented and how often are various sensors deployed, are currently unanswerable. A systematic review of the instruments, species, and data availability of biologging studies is thus essential to support ongoing and future efforts to promote collaborative data sharing and curation efforts. We are reviewing biologging studies published between 2007-2023 to test hypotheses pertaining to trends in biologging data. We predict open biologging data practices have increased over time, though open data availability remains under 50%. We also predict that spatial biologging data (e.g.&nbsp;GPS) is shared more openly than other types of biologging data (e.g.&nbsp;accelerometers), and that terrestrial biologging studies share data openly more often than marine biologging studies.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Our preliminary results indicate studies increasingly include data availability statements, exceeding 50% in 2020.</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="additional-information" class="level2">
 <h2 class="anchored" data-anchor-id="additional-information">Additional information</h2>
-<p><a href="methods.html">Methods</a></p>
-<p><a href="registeredreport.html">Registered report (draft)</a></p>
-<p><a href="sim_data.html">Simulated data</a></p>
-<p><a href="progress.html">Progress tracking</a></p>
+<p>We are planning to submit a <a href="https://www.nature.com/natecolevol/submission-guidelines/registeredreports">registered report</a> to <em>Nature Ecology and Evolution</em> soon. This will pre-register our methods and planned analyses, which improves transparency and reduces publication bias <span class="citation" data-cites="odea2021">(<a href="#ref-odea2021" role="doc-biblioref">O’Dea et al. 2021</a>)</span>. Our current draft is <a href="registeredreport.html">available here</a>.</p>
+<p>We will not begin assessing open data practices of biologging studies until our registered report is accepted. But in the meantime we have begun our initial classification of biologging studies, recording taxa, sensors, and other baseline information. You can see our <a href="progress.html">progress here</a>.</p>
+<p><a href="methods.html">Info for co-authors</a></p>
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-odea2021" class="csl-entry" role="listitem">
+O’Dea, Rose E., Timothy H. Parker, Yung En Chee, Antica Culina, Szymon M. Drobniak, David H. Duncan, Fiona Fidler, et al. 2021. <span>“Towards Open, Reliable, and Transparent Ecology and Evolutionary Biology.”</span> <em>BMC Biology</em> 19 (1). <a href="https://doi.org/10.1186/s12915-021-01006-3">https://doi.org/10.1186/s12915-021-01006-3</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
