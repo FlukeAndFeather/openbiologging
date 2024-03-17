@@ -4,6 +4,7 @@ format:
   html:
     toc: true
 editor: visual
+bibliography: references.bib
 ---
 
 ## What are appropriate priors for our model?
@@ -213,7 +214,7 @@ biolog_dv <- sample_n(biolog_iv, 1000, replace = TRUE) %>%
 
 ```
 
-## Visualizing priors
+## Prior predictive simulation
 
 Each section below displays two figures: the distributions of $logit(p_i)$ and $p_i$ sampled from the prior.
 
@@ -286,10 +287,12 @@ plot_grid(
 ### Informative
 
 $$
-\alpha \sim Normal (0, 1) \\
-\beta_e \sim Normal (0, 0.5) \\
-\beta_s \sim Normal (0, 0.5) \\
-\beta_t \sim Normal(0, 0.1)
+\begin{align}
+\alpha &\sim Normal (0, 1) \\
+\beta_e &\sim Normal (0, 0.5) \\
+\beta_s &\sim Normal (0, 0.5) \\
+\beta_t &\sim Normal(0, 0.15)
+\end{align}
 $$
 
 The informative prior restricts parameters more than the other two options.
@@ -302,7 +305,7 @@ prior_informative <- c(
     set_prior(prior = "normal(0, 1)", class = "Intercept"),
     set_prior(prior = "normal(0, 0.5)", coef = "Eterrestrial"),
     set_prior(prior = "normal(0, 0.5)", coef = "Sspatial"),
-    set_prior(prior = "normal(0, 0.1)", coef = "moT"),
+    set_prior(prior = "normal(0, 0.15)", coef = "moT"),
     set_prior(prior = "dirichlet(1)", class = "simo", coef = "moT1")
   )
 prior_informative_draws <- sim_priors(prior_informative, biolog_iv)
@@ -321,7 +324,11 @@ plot_grid(
 
 ### Comparison
 
-The standard normal and uninformative priors explore a lot more parameter space compared to the informative prior. As a result, the distribution of $logit(p_i)$ is far wider. However, this (counter-intuitively) ends up limiting the distribution of $p_i$, clustering all the density on 0 and 1. This is because of the link function (see figures below). When $logit(p_i)=0$, $p_i=0.5$. When $logit(p_i)=3$, $p_i=0.95$. Effectively, when $|logit(p_i)|>3$, $p_i$ reaches a boundary (either 0 or 1). So more flexible priors start the MCMC sampling at the edges, and make it difficult to explore the part of the parameter space with more realistic values. Notice how with the informative prior option, the density of $p_i$ is relatively flat in the interval $0.2 \le p_i \le 0.8$. This encourages the sampler to explore more realistic probabilities, which should help the model converge on correct posterior distributions.
+The standard normal and uninformative priors explore a lot more parameter space compared to the informative prior. As a result, the distribution of $logit(p_i)$ is far wider. However, this (counter-intuitively) ends up limiting the distribution of $p_i$, clustering all the density on 0 and 1. This is because the logit link function compresses the prediction space (see figures below). When $logit(p_i)=0$, $p_i=0.5$. When $logit(p_i)=3$, $p_i=0.95$. Effectively, when $|logit(p_i)|>3$, $p_i$ reaches a boundary (either 0 or 1). So more flexible priors start the MCMC sampling at the edges, and make it difficult to explore the part of the parameter space with more realistic values. Notice how with the informative prior option, the density of $p_i$ is relatively flat in the interval $0.2 \le p_i \le 0.8$. This encourages the sampler to explore more realistic probabilities, which should help the model converge on correct posterior distributions.
+
+I'm paraphrasing McElreath's recommendations for priors in GLMs. In chapter 11 of *Statistical Rethinking* [@mcelreath2020], regarding flat priors in binomial models, McElreath writes:
+
+> "...most of the probability mass is piled up near zero and one. The model thinks, before it sees the data, that \[subjects\] either never or always \[succeed\]. This is clearly silly, and will generate unnecessary inference error. A flat prior in the logit space is not a flat prior in the outcome probability space."
 
 ```{r}
 #| label: inverse-logit
@@ -409,13 +416,44 @@ informative_mod <- brm(DV ~ E + S + mo(T),
                        seed = 6789,
                        refresh = 0)
 
+```
+
+```{r}
+#| label: viz-informative-model
+
 viz_posterior(informative_mod, biolog_dv, simulation_params)
+
+```
+
+### Comparison
+
+```{r}
+#| label: model-comparison
+
+model_comp <- loo_compare(add_criterion(standard_mod, "loo"), 
+                   add_criterion(uninformative_mod, "loo"), 
+                   add_criterion(informative_mod, "loo"),
+                   model_names = c("Standard", "Uninformative", "Informative"))
+model_comp
 
 ```
 
 ```{r}
-#| label: viz-uninformative-model
+#| label: viz-model-comp
 
-viz_posterior(informative_mod, biolog_dv, simulation_params)
+as_tibble(model_comp, rownames = "model") %>% 
+  mutate(across(-model, as.numeric),
+         model = fct_reorder(model, elpd_diff)) %>%
+  ggplot(aes(elpd_diff, model)) +
+  geom_pointrange(aes(xmin = elpd_diff - se_diff, 
+                      xmax = elpd_diff + se_diff)) +
+  labs(x = "ELPD difference", y = "Model") +
+  theme_classic()
 
 ```
+
+I used leave-one-out cross-validation to compare model performance with the different priors [@vehtari2017]. The theoretical expected log pointwise predictive density (ELPD) is an estimate of how well the model will perform on a new dataset. The ELPD difference, shown above as points with standard errors, is the difference in ELPD from the best performing model. The Standard and Informative models performed quite similarly, whereas the Uninformative model performed more poorly.
+
+## Conclusion
+
+We want a flat prior so the data have a strong influence on the inferred parameters. However, flat in logit space and flat in prediction space are not the same. By using "stronger" priors in logit space, we avoid the compression issue in prediction space and end up with a flatter prior where it matters.
