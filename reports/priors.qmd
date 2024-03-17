@@ -1,0 +1,421 @@
+---
+title: "Choosing priors"
+format: 
+  html:
+    toc: true
+editor: visual
+---
+
+## What are appropriate priors for our model?
+
+Our model is specified by:
+
+$$
+\begin{align}
+DV &\sim Bernoulli(p_i) \\
+logit(p_i) &= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
+\end{align}
+$$
+
+What should the priors for our parameters $\alpha$, $\beta_e$, $\beta_s$, and $B_t$ be? (Let's leave leave $\delta$'s prior as $\sim Dirichlet(1)$ for now.) I considered three options and tested them with our simulation data. Let's call the options *"Standard"*, *"Uninformative"*, and *"Informative"* . For each option, I'll simulate $logit(p_i)$ (i.e., our linear predictor) using the prior and all combinations of our independent variables. I'll plot the distributions of $logit(p_i)$ and $p_i$ to examine where MCMC will begin exploring the parameter space. Lastly, I'll simulate 1000 values for $DV$, fit the model, and examine how well the model recovers the simulation parameters.
+
+## Setup
+
+Required packages.
+
+```{r}
+#| label: setup
+#| results: "hide"
+#| code-fold: true
+
+library(brms)
+library(cowplot)
+library(tidyverse)
+set.seed(1234)
+
+```
+
+Functions for simulation, model fitting, and visualization.
+
+```{r}
+#| label: functions
+#| code-fold: true
+
+# Inverse logit i.e. logistic
+inv_logit <- \(x) exp(x) / (1 + exp(x))
+
+# logit_p and p from priors
+sim_priors <- function(prior, grid, n = 1000) {
+  prior_mod <- brm(DV ~ E + S + mo(T),
+                   data = grid,
+                   family = bernoulli(link = "logit"),
+                   prior = prior,
+                   chains = 1,
+                   iter = 4000,
+                   refresh = 0,
+                   sample_prior = TRUE)
+  biolog_prior_draws <- prior_draws(prior_mod) %>%
+    as_draws_df()
+  simo_moT1_cols <- str_subset(colnames(biolog_prior_draws), "simo_moT1")
+  grid %>%
+    select(-DV) %>%
+    distinct() %>%
+    cross_join(biolog_prior_draws) %>%
+    mutate(cumsum_delta = apply(.[c("T", simo_moT1_cols)],
+                                1,
+                                \(row) {
+                                  t <- row[1]
+                                  delta <- c(0, row[-1])
+                                  sum(delta[1:(t - 2007 + 1)])
+                                }),
+           logit_p = Intercept +
+             ifelse(E == "terrestrial", b_Eterrestrial, 0) +
+             ifelse(S == "spatial", b_Sspatial, 0) +
+             bsp_moT * length(simo_moT1_cols) * cumsum_delta,
+           p = inv_logit(logit_p))
+}
+
+# Visualize logit_p and p
+viz_logit_p <- function(prior_draws) {
+  ggplot(prior_draws, aes(T, logit_p, group = interaction(.draw, E, S))) +
+    geom_line(alpha = 0.1) +
+    theme_classic()
+}
+viz_p <- function(prior_draws) {
+  ggplot(prior_draws, aes(p)) +
+    geom_density() +
+    theme_classic()
+}
+
+# Visualize model posterior
+viz_posterior <- function(mod, grid, sim_params) {
+  D <- length(2007:2023) - 1
+  draws <- as_draws_df(mod)
+  simo_moT1_cols <- str_subset(colnames(draws), "simo_moT1")
+  draws <- draws %>% 
+    as_tibble() %>% 
+    cross_join(grid) %>% 
+    mutate(b_T = bsp_moT * D,
+           cumsum_delta = apply(.[c("T", simo_moT1_cols)],
+                                1,
+                                \(row) {
+                                  t <- row[1]
+                                  delta <- c(0, row[-1])
+                                  sum(delta[1:(t - 2007 + 1)])
+                                }),
+           logit_p = b_Intercept +
+             ifelse(E == "terrestrial", b_Eterrestrial, 0) +
+             ifelse(S == "spatial", b_Sspatial, 0) +
+             bsp_moT * length(simo_moT1_cols) * cumsum_delta,
+           p = inv_logit(logit_p))
+  grid_actual <- grid %>% 
+    mutate(cumsum_delta = map_dbl(
+      T, 
+      \(t) {
+        sum(sim_params[["delta"]][1:(t - 2007 + 1)])
+        }
+      ),
+      logit_p = sim_params[["alpha"]] + 
+        sim_params[["beta_E"]][E] +
+        sim_params[["beta_S"]][S] +
+        sim_params[["beta_T"]] * cumsum_delta,
+      p = inv_logit(logit_p))
+  
+  params <- c("b_Intercept", "b_Eterrestrial", "b_Sspatial", "b_T")
+  sim_params2 <- c(b_Intercept = sim_params[["alpha"]],
+                   b_Eterrestrial = sim_params[["beta_E"]][["terrestrial"]],
+                   b_Sspatial = sim_params[["beta_S"]][["spatial"]],
+                   b_T = sim_params[["beta_T"]])
+  dens_95 <- map(params, \(param) {
+    d <- density(draws[[param]])
+    cdf <- cumsum(d$y * mean(diff(d$x)))
+    tibble(x = d$x, y = d$y, is_95 = between(cdf, 0.025, 0.975))
+  }) %>% 
+    set_names(params)
+  
+  plot_post <- function(param, title) {
+    ggplot(draws, aes(.data[[param]])) +
+      geom_line(aes(x, y), 
+                   data = dens_95[[param]], 
+                   color = "darkblue", linewidth = 1.5) +
+      geom_area(aes(x, y),
+                data = filter(dens_95[[param]], is_95),
+                fill = "darkblue",
+                alpha = 0.5) +
+      geom_vline(xintercept = sim_params2[[param]], 
+                 linewidth = 2, color = "firebrick") +
+      labs(y = title) +
+      theme_classic()
+  }
+  
+  param_titles <- list(
+    expression(alpha),
+    expression(beta[E]),
+    expression(beta[S]),
+    expression(beta[T])
+  )
+  draws_summary <- draws %>% 
+    group_by(T) %>% 
+    summarize(p_lwr = quantile(p, 0.025),
+              p_upr = quantile(p, 0.975),
+              p = mean(p))
+  plot_grid(
+    plot_grid(plotlist = map2(params, param_titles, plot_post), nrow = 2),
+    ggplot(draws_summary, aes(T, p)) +
+      geom_ribbon(aes(ymin = p_lwr, ymax = p_upr), 
+                  alpha = 0.2, color = "darkblue") +
+      geom_line(linewidth = 1.2, color = "darkblue") +
+      geom_line(data = grid_actual, linewidth = 1.2, color = "firebrick") +
+      facet_grid(rows = vars(E), cols = vars(S)) +
+      theme_classic() +
+      theme(legend.position = "none")
+  )
+}
+
+```
+
+Simulation parameters and data.
+
+```{r}
+#| label: parameters
+#| code-fold: true
+
+# delta
+delta <- c(0, rep(1, 8), rep(3, 4), rep(2, 4))
+delta <- delta / sum(delta)
+# betas (E, S, T)
+beta_E <- c(marine = 0, terrestrial = 0.5)
+beta_S <- c(aspatial = 0, spatial = 1)
+beta_T <- 2.5
+# alpha
+alpha <- -4
+simulation_params = list(delta = delta, 
+                         beta_E = beta_E,
+                         beta_S = beta_S,
+                         beta_T = beta_T,
+                         alpha = alpha)
+
+# All combinations of independent variables
+biolog_iv <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = c("aspatial", "spatial"),
+  T = 2007:2023,
+  DV = 0
+)
+
+# Simulated dependent variables
+biolog_dv <- sample_n(biolog_iv, 1000, replace = TRUE) %>% 
+  select(-DV) %>% 
+  mutate(cumsum_delta = map_dbl(T, \(t) sum(delta[1:(t - 2007 + 1)])),
+         logit_p = alpha + beta_E[E] + beta_S[S] + beta_T * cumsum_delta,
+         p = inv_logit(logit_p),
+         DV = rbinom(nrow(.), size = 1, prob = p))
+
+```
+
+## Visualizing priors
+
+Each section below displays two figures: the distributions of $logit(p_i)$ and $p_i$ sampled from the prior.
+
+### Standard
+
+$$
+\alpha, \beta_e, \beta_s, \beta_t \sim Normal(0,1)
+$$
+
+In this option, all our priors are standard normal i.e., mean of 0, standard deviation of 1.
+
+```{r}
+#| label: standard-priors
+#| results: "hide"
+
+prior_stdnorm <- c(
+  set_prior(prior = "normal(0, 1)", class = "Intercept"),
+  set_prior(prior = "normal(0, 1)", coef = "Eterrestrial"),
+  set_prior(prior = "normal(0, 1)", coef = "Sspatial"),
+  set_prior(prior = "normal(0, 1)", coef = "moT"),
+  set_prior(prior = "dirichlet(1)", class = "simo", coef = "moT1")
+)
+prior_stdnorm_draws <- sim_priors(prior_stdnorm, biolog_iv)
+
+```
+
+```{r}
+#| label: standard-prior-plot
+
+plot_grid(
+  viz_logit_p(prior_stdnorm_draws),
+  viz_p(prior_stdnorm_draws)
+)
+
+```
+
+### Uninformative
+
+$$
+\alpha, \beta_e, \beta_s, \beta_t \sim Normal(0,100)
+$$
+
+In this option, all our priors are normal with a mean of 0, but the standard deviation is increased to 100. This will sample a wider range of parameters.
+
+```{r}
+#| label: uninformative-priors
+#| results: "hide"
+
+
+prior_uninformative <- c(
+    set_prior(prior = "normal(0, 100)", class = "Intercept"),
+    set_prior(prior = "normal(0, 100)", coef = "Eterrestrial"),
+    set_prior(prior = "normal(0, 100)", coef = "Sspatial"),
+    set_prior(prior = "normal(0, 100)", coef = "moT"),
+    set_prior(prior = "dirichlet(100)", class = "simo", coef = "moT1")
+  )
+prior_uninformative_draws <- sim_priors(prior_uninformative, biolog_iv)
+
+```
+
+```{r}
+#| label: uninformative-prior-plot
+
+plot_grid(
+  viz_logit_p(prior_uninformative_draws),
+  viz_p(prior_uninformative_draws)
+)
+```
+
+### Informative
+
+$$
+\alpha \sim Normal (0, 1) \\
+\beta_e \sim Normal (0, 0.5) \\
+\beta_s \sim Normal (0, 0.5) \\
+\beta_t \sim Normal(0, 0.1)
+$$
+
+The informative prior restricts parameters more than the other two options.
+
+```{r}
+#| label: informative-priors
+#| results: "hide"
+
+prior_informative <- c(
+    set_prior(prior = "normal(0, 1)", class = "Intercept"),
+    set_prior(prior = "normal(0, 0.5)", coef = "Eterrestrial"),
+    set_prior(prior = "normal(0, 0.5)", coef = "Sspatial"),
+    set_prior(prior = "normal(0, 0.1)", coef = "moT"),
+    set_prior(prior = "dirichlet(1)", class = "simo", coef = "moT1")
+  )
+prior_informative_draws <- sim_priors(prior_informative, biolog_iv)
+
+```
+
+```{r}
+#| label: informative-prior-plot
+
+plot_grid(
+  viz_logit_p(prior_informative_draws),
+  viz_p(prior_informative_draws)
+)
+
+```
+
+### Comparison
+
+The standard normal and uninformative priors explore a lot more parameter space compared to the informative prior. As a result, the distribution of $logit(p_i)$ is far wider. However, this (counter-intuitively) ends up limiting the distribution of $p_i$, clustering all the density on 0 and 1. This is because of the link function (see figures below). When $logit(p_i)=0$, $p_i=0.5$. When $logit(p_i)=3$, $p_i=0.95$. Effectively, when $|logit(p_i)|>3$, $p_i$ reaches a boundary (either 0 or 1). So more flexible priors start the MCMC sampling at the edges, and make it difficult to explore the part of the parameter space with more realistic values. Notice how with the informative prior option, the density of $p_i$ is relatively flat in the interval $0.2 \le p_i \le 0.8$. This encourages the sampler to explore more realistic probabilities, which should help the model converge on correct posterior distributions.
+
+```{r}
+#| label: inverse-logit
+
+inv_logit_df <- tibble(x = seq(-100, 100, length.out = 500),
+                       y = inv_logit(x))
+plot_grid(
+  ggplot(inv_logit_df, aes(x, y)) +
+    geom_line() +
+    labs(y = expression(logit^-1 * (x))) +
+    theme_classic(),
+  ggplot(inv_logit_df, aes(x, y)) +
+    geom_line() +
+    labs(y = expression(logit^-1 * (x))) +
+    xlim(-5, 5) +
+    theme_classic()
+)
+
+```
+
+Let's see if the informative prior helps the model recover the original simulation parameters.
+
+## Model performance
+
+### Standard
+
+```{r}
+#| label: standard-model
+#| results: "hide"
+
+standard_mod <- brm(DV ~ E + S + mo(T),
+                    data = biolog_dv,
+                    family = bernoulli(link = "logit"),
+                    prior = prior_stdnorm,
+                    chains = 4,
+                    iter = 5000,
+                    seed = 6789,
+                    refresh = 0)
+
+```
+
+```{r}
+#| label: viz-standard-model
+
+viz_posterior(standard_mod, biolog_dv, simulation_params)
+
+```
+
+### Uninformative
+
+```{r}
+#| label: uninformative-model
+#| results: "hide"
+
+uninformative_mod <- brm(DV ~ E + S + mo(T),
+                         data = biolog_dv,
+                         family = bernoulli(link = "logit"),
+                         prior = prior_uninformative,
+                         chains = 4,
+                         iter = 5000,
+                         seed = 6789,
+                         refresh = 0)
+
+```
+
+```{r}
+#| label: viz-uninformative-model
+
+viz_posterior(uninformative_mod, biolog_dv, simulation_params)
+
+```
+
+### Informative
+
+```{r}
+#| label: informative-model
+#| results: "hide"
+
+informative_mod <- brm(DV ~ E + S + mo(T),
+                       data = biolog_dv,
+                       family = bernoulli(link = "logit"),
+                       prior = prior_informative,
+                       chains = 4,
+                       iter = 5000,
+                       seed = 6789,
+                       refresh = 0)
+
+viz_posterior(informative_mod, biolog_dv, simulation_params)
+
+```
+
+```{r}
+#| label: viz-uninformative-model
+
+viz_posterior(informative_mod, biolog_dv, simulation_params)
+
+```

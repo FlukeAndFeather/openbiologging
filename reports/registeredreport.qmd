@@ -233,10 +233,10 @@ Here we specify our model, including priors, and fit it to our simulated data. T
 
 # Fit model
 biolog_prior <- c(
-  set_prior(prior = "normal(-1, 2)", class = "Intercept"),
-  set_prior(prior = "normal(0, 1)", coef = "Eterrestrial"),
-  set_prior(prior = "normal(0, 1)", coef = "Sspatial"),
-  set_prior(prior = "normal(1, 2)", coef = "moT"),
+  set_prior(prior = "normal(0, 1)", class = "Intercept"),
+  set_prior(prior = "normal(0, 0.5)", coef = "Eterrestrial"),
+  set_prior(prior = "normal(0, 0.5)", coef = "Sspatial"),
+  set_prior(prior = "normal(0, 0.1)", coef = "moT"),
   set_prior(prior = "dirichlet(1)", class = "simo", coef = "moT1")
 )
 biolog_mod <- brm(F ~ E + S + mo(T),

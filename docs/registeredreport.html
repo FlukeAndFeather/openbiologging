@@ -145,9 +145,9 @@ div.csl-indent {
 <table class="table">
 <caption>Table&nbsp;1: The FAIR principles<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">18</a></sup></span>, as implemented in biologging cyberinfrastructure, support data sharing and improve research transparency and efficiency.</caption>
 <colgroup>
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 28%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 31%">
 <col style="width: 23%">
 </colgroup>
 <thead>
@@ -364,10 +364,10 @@ logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>biolog_prior <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(-1, 2)"</span>, <span class="at">class =</span> <span class="st">"Intercept"</span>),</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 1)"</span>, <span class="at">coef =</span> <span class="st">"Eterrestrial"</span>),</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 1)"</span>, <span class="at">coef =</span> <span class="st">"Sspatial"</span>),</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(1, 2)"</span>, <span class="at">coef =</span> <span class="st">"moT"</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 1)"</span>, <span class="at">class =</span> <span class="st">"Intercept"</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 0.5)"</span>, <span class="at">coef =</span> <span class="st">"Eterrestrial"</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 0.5)"</span>, <span class="at">coef =</span> <span class="st">"Sspatial"</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 0.1)"</span>, <span class="at">coef =</span> <span class="st">"moT"</span>),</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"dirichlet(1)"</span>, <span class="at">class =</span> <span class="st">"simo"</span>, <span class="at">coef =</span> <span class="st">"moT1"</span>)</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>biolog_mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(F <span class="sc">~</span> E <span class="sc">+</span> S <span class="sc">+</span> <span class="fu">mo</span>(T),</span>
@@ -616,7 +616,7 @@ logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 <div id="fig-hypotheses" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="registeredreport_files/figure-html/fig-hypotheses-1.png" style="width:180mm;height:180mm" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: We determine support for our hypotheses through marginal contrasts of <span class="math inline">\(f\)</span>. A: Simulated studies in 2023 were on average 22% more likely to have a DOI than in 2016 (marginal over ecosystem and sensor type), providing support for hypothesis 1. B: Simulated terrestrial studies in 2023 were on average 15% more likely to have a DOI than marine studies (marginal over sensor type), providing support for hypothesis 2. C: Simulated spatial biologging data in 2023 were on average 25% more likely to have a DOI than aspatial data (marginal over ecosystem), providing support for hypothesis 3.</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;3: We determine support for our hypotheses through marginal contrasts of <span class="math inline">\(f\)</span>. A: Simulated studies in 2023 were on average 20% more likely to have a DOI than in 2016 (marginal over ecosystem and sensor type), providing support for hypothesis 1. B: Simulated terrestrial studies in 2023 were on average 12% more likely to have a DOI than marine studies (marginal over sensor type), providing support for hypothesis 2. C: Simulated spatial biologging data in 2023 were on average 21% more likely to have a DOI than aspatial data (marginal over ecosystem), providing support for hypothesis 3.</figcaption>
 </figure>
 </div>
 </div>
