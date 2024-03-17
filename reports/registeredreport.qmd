@@ -20,15 +20,15 @@ Open science practices, such as publishing data and code alongside manuscripts, 
 There have been numerous efforts within the biologging research community to promote open data sharing practices. Essential cyberinfrastructure include domain-specific data repositories (Movebank [@kays2021], Seabird Tracking Database [seabirdtracking.org](https://www.seabirdtracking.org), Euromammal [@urbano2021]) and data standards [@sequeira2021; @dettki2023; @kranstauber2011] that facilitate adoption of the FAIR principles ([@tbl-fair]).
 
 | FAIR principle   | Definition                                                                                                                                           | Application to biologging                                                                                                                                                                                                                                                | Example                                                                                                                                                                                                        |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Findability      | Data and metadata have a globally unique and persistent identifier (e.g., a digital object identifier, DOI) and are indexed in a searchable resource | Data repositories, like the Movebank Data Repository [@kays2021], improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)                                                                                                     | A tracking dataset deposited in the Movebank Data Repository is findable by its permanent DOI or by searching the repository                                                                                   |
+|--------------|--------------|-------------------------|-------------------|
+| Findability      | Data and metadata have a globally unique and persistent identifier (e.g., a digital object identifier, DOI) and are indexed in a searchable resource | Data repositories, like the Movebank Data Repository [@kays2021], improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)                                                                                         | A tracking dataset deposited in the Movebank Data Repository is findable by its permanent DOI or by searching the repository                                                                                   |
 | Accessibility    | Data and metadata are retrievable by open and universal protocols, such as HTTP                                                                      | Data repositories allow scientists to retrieve biologging data via a web browser or other open source tools                                                                                                                                                              | Publicly available data on Movebank may be downloaded via the website, API, or with the `move2` R package [@kranstauber2023]                                                                                   |
 | Interoperability | Data use formal and shared formats and vocabularies                                                                                                  | Shared protocols like the Darwin Core standard [@wieczorek2012], Movebank data model [@MPIAB2023], and proposed bio-logging standardization framework [@sequeira2021] reduce barriers to combining datasets and increase uptake within and across scientific disciplines | Location and environmental data from seal-borne biologgers harmonized to a standard netCDF format facilitated their reuse by oceanographers to study polar regions [@treasure2017]                             |
 | Reusability      | Data and metadata are richly described and reuse permissions are clearly defined                                                                     | Data repositories and standards together capture essential context for biologging data and provide licensing options for data reuse                                                                                                                                      | The Movebank Data Repository releases datasets under the CC0 license and the Movebank data model [@MPIAB2023] includes fields important for data reuse (e.g., whether the animal was relocated before release) |
 
 : The FAIR principles [@wilkinson2016], as implemented in biologging cyberinfrastructure, support data sharing and improve research transparency and efficiency. {#tbl-fair}
 
-Despite these biologging cyberinfrastructure developments, the general state of open data within the community remains unknown, and there are indications that a majority of tracking data remain inaccessible [@campbell2015; @scarpignato2023]. We will conduct a systematic review to quantify the diversity of instruments, species, and open data practices in biologging studies published 2007-2023. Our review will test the following three hypotheses:
+Despite these biologging cyberinfrastructure developments, the general state of open data within the community remains unknown, and there are indications that a majority of tracking data remain inaccessible [@campbell2015; @scarpignato2023]. We will conduct a systematic review to quantify the diversity of instruments, species, and open data practices in biologging studies published 2007-2023. We chose 2007 as the start of our study period because Movebank (the largest biologging data platform) began in 2007. Our review will test the following three hypotheses:
 
 **H1:** Open biologging data practices are increasing over time.
 
@@ -40,9 +40,9 @@ In addition to hypothesis testing, our review will provide the first biologging 
 
 ## Methods
 
-Biologging terminology is highly varied in the literature (e.g., tags, tracking devices, transmitters, data loggers) and the distinction between biologging (i.e., instruments with sensors and memory) and biotelemetry (i.e., instruments that generate a signal for an external receiver) is inconsistent [@rutz2009; @cooke2004]. Furthermore, biologgers may be used in a range of contexts outside of ecology and evolutionary biology, including agricultural and medical research. This review will only consider biologging studies in ecology, evolutionary biology, or related fields (see Initial Classification).
+Biologging terminology is highly varied in the literature (e.g., tags, tracking devices, transmitters, data loggers) and the distinction between biologging (i.e., instruments with sensors and memory) and biotelemetry (i.e., instruments that generate a signal for an external receiver) is inconsistent [@rutz2009; @cooke2004]. Furthermore, biologgers may be used in a range of contexts outside of ecology and evolutionary biology, including agricultural and medical research. This review will only consider biologging studies in ecology, evolutionary biology, conservation science, or related fields (see Initial Classification).
 
-We decided to exclude biotelemetry (e.g., VHF transmitters and acoustic pingers) based on the properties of the data collected. Biologging data can reasonably be considered self-contained, whereas biotelemetry data depends on the receiver network. This external dependency complicates the assessment of open data sharing, the primary goal of this review. We make an exception for satellite biotelemetry using the Argos network, because the Argos system provides data with properties more similar to biologgers.
+We decided to exclude biotelemetry (e.g., VHF transmitters and acoustic pingers) based on the properties of the data collected. Biologging data can reasonably be considered self-contained, whereas biotelemetry data depends on the receiver network. This external dependency complicates the assessment of open data sharing, the primary goal of this review. We make an exception for satellite biotelemetry using the Argos network, because the Argos system provides data with properties more similar to biologgers (i.e., timestamped locations).
 
 ### Literature review
 
@@ -50,7 +50,7 @@ On 2023-08-21, we queried Web of Science Core Collection for papers published si
 
 `animal AND (biologg* OR bio-logg* OR biotelemetry OR electronic tag* OR satellite track* OR GPS telemetry OR satellite telemetry OR satellite transmit* OR GPS collar* OR depth recorder* OR accelerometer OR archival tag*)`
 
-This yielded 6654 papers. We limited results to Web of Science categories with 100+ papers we deemed relevant, leaving 4799 papers. The categories we included were Ecology, Zoology, Marine Freshwater Biology, Biodiversity Conservation, Multidisciplinary Sciences, Environmental Sciences, Oceanography, Biology, Behavioral Sciences, Ornithology, Evolutionary Biology, and Fisheries. We excluded the following categories with 100+ papers: Agriculture Dairy Animal Science, Veterinary Sciences, Engineering Electrical Electronic, Physiology, Food Science Technology, Engineering Biomedical, Agriculture Multidisciplinary, Computer Science Interdisciplinary Applications, Instruments Instrumentation.
+This yielded 6654 papers. We limited results to relevant Web of Science categories with 100+ papers, leaving 4799 papers. The categories we included were Ecology, Zoology, Marine Freshwater Biology, Biodiversity Conservation, Multidisciplinary Sciences, Environmental Sciences, Oceanography, Biology, Behavioral Sciences, Ornithology, Evolutionary Biology, and Fisheries. We excluded the following categories with 100+ papers: Agriculture Dairy Animal Science, Veterinary Sciences, Engineering Electrical Electronic, Physiology, Food Science Technology, Engineering Biomedical, Agriculture Multidisciplinary, Computer Science Interdisciplinary Applications, Instruments Instrumentation.
 
 ### Initial classification
 
@@ -85,11 +85,9 @@ For each sampled paper, we will attempt to retrieve the biologging dataset under
 
 3.  ( $b$ ) Do the data contain biologging data (raw or processed), as opposed to tabular summaries?
 
-4.  ( $c$ ) Are the data sufficiently complete to reproduce the analyses in the study? I.e., are all necessary data and metadata included within the dataset.
-
 If we cannot retrieve the dataset for a study, we will consider the study to not satisfy any of the four properties listed above.
 
-To clarify our methods for spatial versus aspatial data, consider a hypothetical GPS-accelerometer biologging study sampled in the aspatial category. The authors deposited the GPS data in the Movebank Data Repository (which issues DOIs) and the accelerometer data are available upon request. We contact the author and they provide us with the raw accelerometer data, but they no longer have the files necessary to calibrate them. Then this study would be scored as $f=0,a=0,b=1,c=0$ because ($f$) the aspatial data do not have a DOI, ($a$) retrieving the aspatial data required contacting the author, ($b$) the accelerometer data were made available, and ($c$) without the calibration files we could not reproduce the analysis. Had this same study been sampled in the spatial category, we would have scored it as $f=1,a=1,b=1,c=1$ because ($f$) the spatial data have a DOI, ($a$) the data were retrievable via HTTP, ($b$) the GPS sensor data were available, and ($c$) all the (meta)data necessary for the analysis were present.
+To clarify our methods for spatial versus aspatial data, consider a hypothetical GPS-accelerometer biologging study sampled in the aspatial category. The authors deposited the GPS data in the Movebank Data Repository (which issues DOIs) and the accelerometer data are available upon request. We contact the author and they provide us with a summary table of the accelerometer data, where each row is a deployment and columns are characteristics of the deployment, such as duration. Then this study would be scored as $f=0,a=0,b=0$ because ($f$) the aspatial data do not have a DOI, ($a$) retrieving the aspatial data required contacting the author, and ($b$) only summaries of the accelerometer data were made available. Had this same study been sampled in the spatial category, we would have scored it as $f=1,a=1,b=1$ because ($f$) the spatial data have a DOI, ($a$) the data were retrievable via HTTP, and ($b$) the GPS sensor data were available.
 
 ### Analysis
 
@@ -114,7 +112,7 @@ We will use Stan [@Stan] and brms [@bürkner2018; @bürkner2021] for model fitti
 
 #### H1: Open biologging data practices are increasing over time
 
-We will test hypothesis **H1** by comparing posterior predictions for 2023 and 2016. We will use 2016 as the baseline instead of the beginning of our study period (2007) to undertake a more stringent test of our hypothesis. Widespread adoption of open data policies by ecology and evolutionary biology journals began circa 2012-2014 [@roche2015] and the FAIR data principles were published in 2016 [@wilkinson2016]. Therefore we consider 2016 a more meaningful point of comparison.
+We will test hypothesis **H1** by comparing posterior predictions for 2023 to 2007 and 2016. We will compare 2023 to 2016 as well as 2007 because widespread adoption of open data policies by ecology and evolutionary biology journals began circa 2012-2014 [@roche2015] and the FAIR data principles were published in 2016 [@wilkinson2016]. Therefore, we consider the 2023 versus 2016 a more stringent test of our hypothesis than 2023 versus 2007.
 
 #### H2: Open biologging data practices vary by ecosystem
 
@@ -124,13 +122,15 @@ We will test hypothesis **H2** by contrasting posterior predictions for marine a
 
 We will test hypothesis **H3** by contrasting posterior predictions for aspatial and spatial ecosystems for the year 2023.
 
+Note the tests for **H2** and **H3** will use model predictions for 2023, rather than the whole time period. Our reasoning is we expect open data practices were generally low across categories early in the study period, and have diverged over time due to differential adoption rates. Therefore, we expect the greatest differences occur at the end of the study period.
+
 ## Results
 
 We conducted a simulation to demonstrate how we will conduct our analysis. We also present preliminary data from the "initial classification" step, which was necessary to design our protocol for the "assessing open data" step.
 
 ### Simulation
 
-We simulated resonable values for $t$, $e$, $s$ (independent variables), and $f$ (dependent variable) to demonstrate how we will perform our analysis. The full analysis will also include dependent variables $a$, $b$, and $c$.
+We simulated reasonable values for $t$, $e$, $s$ (independent variables), and $f$ (dependent variable) to demonstrate how we will perform our analysis. The full analysis will also include dependent variables $a$ and $b$.
 
 We set up our analysis by loading necessary packages and setting the seed.
 
@@ -236,7 +236,7 @@ biolog_prior <- c(
   set_prior(prior = "normal(0, 1)", class = "Intercept"),
   set_prior(prior = "normal(0, 0.5)", coef = "Eterrestrial"),
   set_prior(prior = "normal(0, 0.5)", coef = "Sspatial"),
-  set_prior(prior = "normal(0, 0.1)", coef = "moT"),
+  set_prior(prior = "normal(0, 0.15)", coef = "moT"),
   set_prior(prior = "dirichlet(1)", class = "simo", coef = "moT1")
 )
 biolog_mod <- brm(F ~ E + S + mo(T),
@@ -252,7 +252,7 @@ biolog_mod <- brm(F ~ E + S + mo(T),
 
 ```{r}
 #| label: fig-param
-#| fig-cap: "Posterior distributions of model parameters (blue) compared to simulation parameters (red). A-D: Intercept and coefficients for ecosystem, sensor type, and time. 95% interval shaded. E: Cumulative effect of year ($mo(t,delta)$). Blue points and lines represent the mean and 95% CI of $mo(t,delta)$."
+#| fig-cap: "Performance of the model fit to simulated data. Posterior distributions of model parameters in blue, compared to simulation parameters in red. A-D: Intercept and coefficients for ecosystem, sensor type, and time. 95% interval shaded. E: Cumulative effect of year ($mo(t,delta)$). Blue lines and ribbons represent the mean and 95% CI of $mo(t,delta)$."
 
 D <- length(2007:2023) - 1
 draws <- as_draws_df(biolog_mod) %>% 
@@ -334,12 +334,15 @@ plot_grid(
               delta_lwr = quantile(delta, 0.025),
               delta_upr = quantile(delta, 0.975)) %>% 
     ggplot(aes(x = year, y = delta_mean)) +
-    geom_pointrange(aes(ymin = delta_lwr, ymax = delta_upr),
-                    color = "darkblue") +
-    geom_point(data = tibble(year = factor(2008:2023), 
-                             delta_mean = cumsum(delta[-1])), 
-               color = "firebrick", size = 2) +
-    labs(y = expression(delta)) +
+    geom_ribbon(aes(ymin = delta_lwr, ymax = delta_upr, group = 1),
+                fill = "darkblue",
+                alpha = 0.5) +
+    geom_line(aes(group = 1), color = "darkblue", linewidth = 2) +
+    geom_line(aes(group = 1),
+              tibble(year = factor(2008:2023), 
+                     delta_mean = cumsum(delta[-1])), 
+              color = "firebrick", linewidth = 2, alpha = 0.75) +
+    labs(y = expression(Sigma * delta)) +
     theme_classic() +
     theme(axis.title.x = element_blank(),
           axis.text.x = element_text(angle = 90, vjust = 0.5)),
@@ -432,7 +435,7 @@ mean_h3 <- mean(h3_contrast$contrast) * 100
 
 ```{r}
 #| label: fig-hypotheses
-#| fig-cap: !expr 'sprintf("We determine support for our hypotheses through marginal contrasts of $f$. A: Simulated studies in 2023 were on average %0.f%% more likely to have a DOI than in 2016 (marginal over ecosystem and sensor type), providing support for hypothesis 1. B: Simulated terrestrial studies in 2023 were on average %0.f%% more likely to have a DOI than marine studies (marginal over sensor type), providing support for hypothesis 2. C: Simulated spatial biologging data in 2023 were on average %0.f%% more likely to have a DOI than aspatial data (marginal over ecosystem), providing support for hypothesis 3.", mean_h1, mean_h2, mean_h3)'
+#| fig-cap: !expr 'sprintf("Determining support for our hypotheses in the simulated data, using marginal contrasts of $f$. A: Simulated studies in 2023 were on average %0.f%% more likely to have a DOI than in 2016 (marginal over ecosystem and sensor type), providing support for hypothesis 1. B: Simulated terrestrial studies in 2023 were on average %0.f%% more likely to have a DOI than marine studies (marginal over sensor type), providing support for hypothesis 2. C: Simulated spatial biologging data in 2023 were on average %0.f%% more likely to have a DOI than aspatial data (marginal over ecosystem), providing support for hypothesis 3.", mean_h1, mean_h2, mean_h3)'
 #| out-width: 180mm
 #| out-height: 180mm
 #| fig-width: 9
