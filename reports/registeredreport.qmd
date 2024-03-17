@@ -11,7 +11,7 @@ csl: nature.csl
 
 ## Introduction
 
-(450/500 words)
+(575/500 words)
 
 Biologging is the practice of using animal-borne sensors to remotely observe animals and their environments [@rutz2009]. In the six decades since a biologist first attached a modified kitchen timer to a seal [@kooyman1966], biologging has become an invaluable, multidisciplinary tool to address questions in ecology [@wilmers2015], atmospheric science [@weinzierl2016; @yonehara2016], and oceanography [@treasure2017]. As biologging data continue to grow in size and complexity (e.g., millions of new records daily in Movebank [@kays2021] and novel sensors like infrasound recorders [@denouden2021]), "big data" methods have been highlighted as a key direction for future developments [@nathan2022; @grémillet2022]. Simultaneously, biologging data are increasingly used to inform conservation efforts across taxonomic groups [@beal2021; @queiroz2019] and regions [@hindell2020]. However, the envisioned impacts of aggregated biologging data on research (expanding modes and scope of inquiry) and conservation (providing robust evidence to guide policy and management) are limited by a lack of standardization, discoverability and accessibility [@sequeira2021], which has become a growing matter of practical and ethical concern [@rutz2022]. To date there has been no systematic review of published biologging studies, including the instruments used, species investigated, and availability of the data collected. The insight from such a review can support collaborative data sharing and curation efforts, and direct approaches to drive greater research and conservation impacts.
 
@@ -20,7 +20,7 @@ Open science practices, such as publishing data and code alongside manuscripts, 
 Numerous efforts within the biologging research community have sought to promote open data. For example, domain-specific data repositories (Movebank [@kays2021], Seabird Tracking Database [seabirdtracking.org](https://www.seabirdtracking.org), Euromammal [@urbano2021]) and data standards [@sequeira2021; @dettki2023; @kranstauber2011] facilitate the adoption of the FAIR principles ([@tbl-fair]). However, despite developments in biologging cyberinfrastructure, the overall state of open data in biologging research remains unknown, and there are indications that most tracking data remain inaccessible [@campbell2015; @scarpignato2023].
 
 | FAIR principle   | Definition                                                                                                                                           | Application to biologging                                                                                                                                                                                                                                                | Example                                                                                                                                                                                                        |
-|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|----------------|----------------|-----------------------|-----------------|
 | Findability      | Data and metadata have a globally unique and persistent identifier (e.g., a digital object identifier, DOI) and are indexed in a searchable resource | Data repositories, like the Movebank Data Repository [@kays2021], improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)                                                                                         | A tracking dataset deposited in the Movebank Data Repository is findable by its permanent DOI or by searching the repository                                                                                   |
 | Accessibility    | Data and metadata are retrievable by open and universal protocols, such as HTTP                                                                      | Data repositories allow scientists to retrieve biologging data via a web browser or other open source tools                                                                                                                                                              | Publicly available data on Movebank may be downloaded via the website, API, or with the `move2` R package [@kranstauber2023]                                                                                   |
 | Interoperability | Data use formal and shared formats and vocabularies                                                                                                  | Shared protocols like the Darwin Core standard [@wieczorek2012], Movebank data model [@MPIAB2023], and proposed bio-logging standardization framework [@sequeira2021] reduce barriers to combining datasets and increase uptake within and across scientific disciplines | Location and environmental data from seal-borne biologgers harmonized to a standard netCDF format facilitated their reuse by oceanographers to study polar regions [@treasure2017]                             |
@@ -60,7 +60,7 @@ This yielded 6654 papers. We limited results to relevant Web of Science categori
 
 ### Initial classification
 
-Every paper will be separately reviewed by two individuals to assess its relevance to this review, record the presence or absence of a data availability statement, and categorize the study by sensor type, taxonomy, and ecosystem. Papers will be considered relevant if they satisfy the following two characteristics:
+Every paper will be separately reviewed by two individuals to assess its relevance to this review, record the presence or absence of a data availability statement, and categorize the study by sensor type, taxonomy, and ecosystem. In cases where the reviewers disagree, a third reviewer will decide which value to use. Papers will be considered relevant if they satisfy the following two characteristics:
 
 1.  They involved the collection of previously unpublished biologging data. Our definition of biologging excludes telemetry devices (e.g., acoustic pingers and radiotransmitters) with the exception of devices that communicate with Argos satellites.
 2.  The biologgers were deployed on non-domesticated animals in unrestrained habitat. Studies involving domesticated animals (e.g., cattle), animals in managed care (e.g., a zoo or aquarium), or biomedical laboratories will be excluded.
@@ -69,7 +69,7 @@ We will consider a paper to have a data availability statement (DAS) if it state
 
 We will assign sensor types to one or more categories following Williams et al. [@williams2019]: location (e.g., GPS, depth), intrinsic (e.g., accelerometer, internal temperature), or environment (e.g., ambient temperature, camera). Biologgers can combine sensors from multiple categories (e.g., a GPS-accelerometer collar). We will consider all sensors reported in the methods, whether or not they are analyzed in the paper.
 
-We will resolve taxonomy to the species level using the Integrated Taxonomic Information System (www.itis.gov). Each study's ecosystem will be classified as one or more of aquatic, marine, and terrestrial according to the IUCN Red List (https://www.iucnredlist.org).
+We will resolve taxonomy to the species level using the Integrated Taxonomic Information System (www.itis.gov). Each study's ecosystem will be classified as one or more of aquatic (i.e., freshwater), marine (i.e., saltwater), and terrestrial according to the IUCN Red List (https://www.iucnredlist.org).
 
 ### Assessing open data
 
@@ -103,16 +103,16 @@ $$
 \begin{align}
 DV &\sim Bernoulli(p) \\
 logit(p_i) &= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
-\alpha &\sim Normal(-1, 2) \\
-\beta_e, \beta_s &\sim Normal(0, 1) \\
-\beta_t &\sim Normal(1, 2) \\
+\alpha &\sim Normal(0, 1) \\
+\beta_e, \beta_s &\sim Normal(0, 0.5) \\
+\beta_t &\sim Normal(0, 0.15) \\
 \delta &\sim Dirichlet(1)
 \end{align}
 $$
 
 Where $DV$ is the dependent variable ($f$, $a$, $r$, or $c$). $e$ and $s$ encode ecosystem (marine, terrestrial) and sensor type (aspatial, spatial), respectively. Year of publication ($t$) is treated as an ordinal categorical predictor [@bürkner2020]. Modeling $t$ this way, instead of as a metric continuous variable, allows the rate of change of the dependent variables to be nonlinear in time (i.e., the change in $DV$ from 2007 to 2008 may be different than 2017 to 2018). $\beta_t$ is the coefficient for the effect of time and $mo(t,\delta)$ is a monotonic transformation of $t$ from 0 to 1. Thus $\beta_t mo(t, \delta)$ is 0 at the beginning of the time period (2007) and increases to $\beta_t$ at the end (2023). $\delta$ is a simplex that controls the incremental steps for each year in the time period.
 
-We will set priors according to available information in the literature. To our knowledge, there is no quantitative information about differences in open data practices within biologging. Therefore, the priors for $\beta_e$, $\beta_s$, and $\delta$ will be uninformative (standard normal and symmetric Dirichlet with concentration 1). More generally in ecology, open data rates remain relatively low (\~50%), but are increasing in recent years [@roche2022]. Therefore we chose a prior for $\alpha$ with a negative expected value ($Normal(-1, 2)$) and a prior for $\beta_t$ with a positive expected value ($Normal(1, 2)$).
+We will use flat priors in the prediction space. Prior predictive simulation of our chosen priors produces relatively flat prior probabilities for $p_i$. Comparatively, flat priors in logit space (e.g., $\alpha,\beta_e,\beta_s,\beta_t \sim Normal(0, 100)$) concentrate prior probabilities of $p_i$ on 0 and 1 To our knowledge, there is no quantitative information about differences in open data practices within biologging. Therefore, the priors for $\beta_e$, $\beta_s$, and $\delta$ will be uninformative (standard normal and symmetric Dirichlet with concentration 1). More generally in ecology, open data rates remain relatively low (\~50%), but are increasing in recent years [@roche2022]. Therefore we chose a prior for $\alpha$ with a negative expected value ($Normal(-1, 2)$) and a prior for $\beta_t$ with a positive expected value ($Normal(1, 2)$).
 
 We will use Stan [@Stan] and brms [@bürkner2018; @bürkner2021] for model fitting.
 
@@ -130,13 +130,9 @@ We will test hypothesis **H3** by contrasting posterior predictions for aspatial
 
 Note the tests for **H2** and **H3** will use model predictions for 2023, rather than the whole time period. Our reasoning is we expect open data practices were generally low across categories early in the study period, and have diverged over time due to differential adoption rates. Therefore, we expect the greatest differences occur at the end of the study period.
 
-## Results
+## Analysis of simulated data
 
-We conducted a simulation to demonstrate how we will conduct our analysis. We also present preliminary data from the "initial classification" step, which was necessary to design our protocol for the "assessing open data" step.
-
-### Simulation
-
-We simulated reasonable values for $t$, $e$, $s$ (independent variables), and $f$ (dependent variable) to demonstrate how we will perform our analysis. The full analysis will also include dependent variables $a$ and $b$.
+We conducted a simulation to demonstrate how we will conduct our analysis. We simulated values for $t$, $e$, $s$ (independent variables), and $f$ (dependent variable) according to our predictions, to demonstrate how we will perform our analysis. The full analysis will also include dependent variables $a$ (accessibility) and $b$ (biologging data).
 
 We set up our analysis by loading necessary packages and setting the seed.
 
@@ -374,6 +370,14 @@ h1_data_2016 <- expand_grid(
 h1_pred_2016 <- posterior_predict(biolog_mod,
                                   newdata = h1_data_2016,
                                   ndraws = 1000)
+h1_data_2007 <- expand_grid(
+  E = c("marine", "terrestrial"),
+  S = c("aspatial", "spatial"),
+  T = 2007
+)
+h1_pred_2007 <- posterior_predict(biolog_mod,
+                                  newdata = h1_data_2007,
+                                  ndraws = 1000)
 h1_data_2023 <- expand_grid(
   E = c("marine", "terrestrial"),
   S = c("aspatial", "spatial"),
@@ -382,7 +386,11 @@ h1_data_2023 <- expand_grid(
 h1_pred_2023 <- posterior_predict(biolog_mod,
                                   newdata = h1_data_2023,
                                   ndraws = 1000)
-h1_contrast <- (h1_pred_2023 - h1_pred_2016) %>% 
+h1a_contrast <- (h1_pred_2023 - h1_pred_2007) %>% 
+  t() %>% 
+  cbind(select(h1_data_2007, E, S), .) %>% 
+  pivot_longer(-c(E, S), names_to = "draw", values_to = "contrast")
+h1b_contrast <- (h1_pred_2023 - h1_pred_2016) %>% 
   t() %>% 
   cbind(select(h1_data_2016, E, S), .) %>% 
   pivot_longer(-c(E, S), names_to = "draw", values_to = "contrast")
@@ -433,7 +441,8 @@ h3_contrast <- (h3_pred_spatial - h3_pred_aspatial) %>%
   cbind(select(h3_data_aspatial, E), .) %>% 
   pivot_longer(-E, names_to = "draw", values_to = "contrast")
 
-mean_h1 <- mean(h1_contrast$contrast) * 100
+mean_h1a <- mean(h1a_contrast$contrast) * 100
+mean_h1b <- mean(h1b_contrast$contrast) * 100
 mean_h2 <- mean(h2_contrast$contrast) * 100
 mean_h3 <- mean(h3_contrast$contrast) * 100
 
@@ -441,24 +450,38 @@ mean_h3 <- mean(h3_contrast$contrast) * 100
 
 ```{r}
 #| label: fig-hypotheses
-#| fig-cap: !expr 'sprintf("Determining support for our hypotheses in the simulated data, using marginal contrasts of $f$. A: Simulated studies in 2023 were on average %0.f%% more likely to have a DOI than in 2016 (marginal over ecosystem and sensor type), providing support for hypothesis 1. B: Simulated terrestrial studies in 2023 were on average %0.f%% more likely to have a DOI than marine studies (marginal over sensor type), providing support for hypothesis 2. C: Simulated spatial biologging data in 2023 were on average %0.f%% more likely to have a DOI than aspatial data (marginal over ecosystem), providing support for hypothesis 3.", mean_h1, mean_h2, mean_h3)'
+#| fig-cap: !expr 'sprintf("Determining support for our hypotheses in the simulated data, using marginal contrasts of $f$. A,B: Simulated studies in 2023 were on average %0.f%% more likely to have a DOI than in 2007, and %0.f%% more likely to have a DOI than in 2016 (marginal over ecosystem and sensor type), providing support for hypothesis 1. B: Simulated terrestrial studies in 2023 were on average %0.f%% more likely to have a DOI than marine studies (marginal over sensor type), providing support for hypothesis 2. C: Simulated spatial biologging data in 2023 were on average %0.f%% more likely to have a DOI than aspatial data (marginal over ecosystem), providing support for hypothesis 3.", mean_h1a, mean_h1b, mean_h2, mean_h3)'
 #| out-width: 180mm
 #| out-height: 180mm
 #| fig-width: 9
 #| fig-height: 9
 
 ### Plot contrasts
-h1_plot <- ggplot(h1_contrast, aes(contrast)) +
+h1a_plot <- ggplot(h1a_contrast, aes(contrast)) +
   geom_bar(aes(y = after_stat(prop)), position = "dodge") +
-  geom_vline(xintercept = mean(h1_contrast$contrast), 
+  geom_vline(xintercept = mean(h1a_contrast$contrast), 
              color = "firebrick",
              linewidth = 2) +
   annotate("text", 
-           x = mean(h1_contrast$contrast) + 0.1, y = 0.75,
-           label = sprintf("Mean = %0.2f", mean(h1_contrast$contrast)),
+           x = mean(h1a_contrast$contrast) + 0.1, y = 0.75,
+           label = sprintf("Mean = %0.2f", mean(h1a_contrast$contrast)),
            hjust = 0) +
   scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
-  labs(x = "Contrast of f (2023 vs 2016)",
+  labs(x = "H1a: Contrast of f (2023 vs 2007)",
+       y = "Proportion") +
+  theme_classic()
+
+h1b_plot <- ggplot(h1b_contrast, aes(contrast)) +
+  geom_bar(aes(y = after_stat(prop)), position = "dodge") +
+  geom_vline(xintercept = mean(h1b_contrast$contrast), 
+             color = "firebrick",
+             linewidth = 2) +
+  annotate("text", 
+           x = mean(h1b_contrast$contrast) + 0.1, y = 0.75,
+           label = sprintf("Mean = %0.2f", mean(h1b_contrast$contrast)),
+           hjust = 0) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
+  labs(x = "H1b: Contrast of f (2023 vs 2016)",
        y = "Proportion") +
   theme_classic()
 
@@ -472,7 +495,7 @@ h2_plot <- ggplot(h2_contrast, aes(contrast)) +
            label = sprintf("Mean = %0.2f", mean(h2_contrast$contrast)),
            hjust = 0) +
   scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
-  labs(x = "Contrast of f (Terrestrial vs marine)",
+  labs(x = "H2: Contrast of f (Terrestrial vs marine)",
        y = "Proportion") +
   theme_classic()
 
@@ -486,95 +509,20 @@ h3_plot <- ggplot(h3_contrast, aes(contrast)) +
            label = sprintf("Mean = %0.2f", mean(h3_contrast$contrast)),
            hjust = 0) +
   scale_y_continuous(limits = c(0, 1), labels = scales::percent) +
-  labs(x = "Contrast of f (Spatial vs aspatial)",
+  labs(x = "H3: Contrast of f (Spatial vs aspatial)",
        y = "Proportion") +
   theme_classic()
 
-plot_grid(h1_plot, h2_plot, h3_plot, ncol = 2, labels = "AUTO")
+plot_grid(h1a_plot, h1b_plot, h2_plot, h3_plot, ncol = 2, labels = "AUTO")
 
 ```
 
-### Preliminary results
+## Planned figures
 
-We have begun the initial classification step, which will quantify our independent variables and is a prerequisite for sampling studies for the assessment of open data practices.
+Figure 1: Results of the initial classification. **A** Sankey diagram showing the frequencies of instrumented species by number of studies, with aggregations at higher taxa. **B** Frequencies of location, intrinsic, and environmental sensors used in studies. **C** Prevalence of data availability statements over time. **D** Cumulative biologging studies published over time in the ten journals with the most published biologging studies.
 
-```{r}
-#| label: prelim-results
-#| echo: false
+Figure 2: Results of the open data assessment. Mean and standard error of dependent variables ($f$ findability, $a$ accessibility, $b$ biologging data) aggregated over **A** sensor type (aspatial or spatial), **B** ecosystem (marine or terrestrial), and **C** time (year of publication).
 
-# Get the most recent set of reviews
-reviews <- dir(here::here("outputs", "reviews"), 
-                      "reviews.*rds", 
-                      full.names = TRUE) %>%
-  sort(decreasing = TRUE) %>%
-  first() %>%
-  readRDS()
+Figure 3: Model parameter estimates. Posterior distribution of parameters, as in [@fig-param] from the analysis of simulated data.
 
-# And most recent studies-by-taxonomy
-study_taxa <- readRDS(here::here("outputs", "taxa", "study_taxa.rds"))
-
-# Summarize totals 
-scored_papers <- reviews %>% 
-  mutate(across(everything(), \(x) ifelse(x == "NA", NA, x))) %>% 
-  filter(reviewed)
-n_papers <- n_distinct(scored_papers$id)
-two_reviewers <- nrow(scored_papers) - n_papers
-
-scored_summary <- scored_papers %>% 
-  mutate(related = manuscript_type != "U" & 
-           str_detect(biologging_context, "W"),
-         novel = related & novel_biologging == "Y",
-         das = related & biologging_availability == "Y") %>% 
-  summarize(
-    total = n(),
-    related = sum(related, na.rm = TRUE),
-    novel = sum(novel, na.rm = TRUE),
-    das = sum(das, na.rm = TRUE))
-scored_summary <- scored_summary / scored_summary$total
-
-perc <- partial(scales::percent, accuracy = 0.1)
-```
-
-As of February 11, 2024, we have reviewed `r n_papers` papers, `r two_reviewers` of which have been reviewed by two individuals. `r perc(scored_summary$related)` of papers met our standards for relevance, `r perc(scored_summary$novel)` of papers presented novel biologging data, and `r perc(scored_summary$das)` of papers contained a data availability statement.
-
-```{r}
-#| label: sensor-types
-#| echo: false
-
-sensors <- scored_papers %>% 
-  mutate(related = manuscript_type != "U" & 
-           str_detect(biologging_context, "W"),
-         novel = related & novel_biologging == "Y") %>% 
-  filter(related, novel) %>% 
-  mutate(L = str_detect(device_cat, "L"),
-         I = str_detect(device_cat, "I"),
-         E = str_detect(device_cat, "E"))
-
-has_L <- sum(sensors$L) / nrow(sensors)
-has_I <- sum(sensors$I) / nrow(sensors)
-has_E <- sum(sensors$E) / nrow(sensors)
-
-is_aspatial <- sum(sensors$I | sensors$E) / nrow(sensors)
-
-```
-
-Location sensors (e.g., GPS, depth, or altitude) were deployed most frequently, in `r perc(has_L)` of relevant studies that presented novel biologging data. Intrinsic (e.g., accelerometers, heart rate monitors) and environmental (e.g., ambient temperature, cameras) sensors were deployed in `r perc(has_I)` and `r perc(has_E)` of studies, respectively.
-
-```{r}
-#| label: study-taxa
-#| echo: false
-
-n_taxa <- nrow(study_taxa)
-is_vertebrate <- sum(study_taxa$phylum == "Chordata")
-is_mammal <- sum(study_taxa$class == "Mammalia")
-is_bird <- sum(study_taxa$class == "Aves")
-is_ungulate <- sum(study_taxa$order %in% c("Artiodactyla", "Perissodactyla"))
-is_carnivore <- sum(study_taxa$order == "Carnivora")
-is_cetacean <- sum(study_taxa$order == "Cetacea")
-is_seabird <- sum(study_taxa$order %in% c("Charadriiformes", "Sphenisciformes", "Procellariiformes", "Suliformes", "Pelecaniformes"))
-is_raptor <- sum(study_taxa$order %in% c("Accipitriformes", "Falconiformes", "Strigiformes"))
-is_fowl <- sum(study_taxa$order %in% c("Anseriformes", "Galliformes"))
-
-```
-
-We identified `r n_taxa` species that have been instrumented with biologgers. `r perc(is_vertebrate / n_taxa)` of species were vertebrates. Most instrumented vertebrates were mammals (`r perc(is_mammal / is_vertebrate)`) or birds (`r perc(is_bird / is_vertebrate)`). The most commonly instrumented mammals were carnivores (`r perc(is_carnivore / is_mammal)`), ungulates (Perrisodactyla and non-cetacean Artiodatyla, `r perc(is_ungulate / is_mammal)`), and cetaceans (`r perc(is_cetacean / is_mammal)`). Among birds, seabirds were instrumented most often (orders Charadriiformes, Sphenisciformes, Procellariiformes, Suliformes, and Pelecaniformes, `r perc(is_seabird / is_bird)`), followed by raptors (orders Accipitriformes, Falconiformes, and Strigiformes, `r perc(is_raptor / is_bird)`) and fowl (orders Anseriformes and Galliformes, `r perc(is_fowl / is_bird)`).
+Figure 4: Hypothesis tests. Contrasts of posterior predictions for hypotheses H1, H2, and H3, as in [@fig-hypotheses] from the analysis of simulated data.

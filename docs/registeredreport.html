@@ -108,11 +108,8 @@ div.csl-indent {
   <li><a href="#assessing-open-data" id="toc-assessing-open-data" class="nav-link" data-scroll-target="#assessing-open-data">Assessing open data</a></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   </ul></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
-  <ul class="collapse">
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation">Simulation</a></li>
-  <li><a href="#preliminary-results" id="toc-preliminary-results" class="nav-link" data-scroll-target="#preliminary-results">Preliminary results</a></li>
-  </ul></li>
+  <li><a href="#analysis-of-simulated-data" id="toc-analysis-of-simulated-data" class="nav-link" data-scroll-target="#analysis-of-simulated-data">Analysis of simulated data</a></li>
+  <li><a href="#planned-figures" id="toc-planned-figures" class="nav-link" data-scroll-target="#planned-figures">Planned figures</a></li>
   </ul>
 </nav>
 </div>
@@ -137,13 +134,13 @@ div.csl-indent {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>(450/500 words)</p>
-<p>Biologging is the practice of using animal-borne sensors to remotely observe animals and their environments<span class="citation" data-cites="rutz2009"><sup><a href="#ref-rutz2009" role="doc-biblioref">1</a></sup></span>. In the six decades since a biologist first attached a modified kitchen timer to a seal<span class="citation" data-cites="kooyman1966"><sup><a href="#ref-kooyman1966" role="doc-biblioref">2</a></sup></span>, biologging has become an invaluable, multidisciplinary tool to address questions in ecology<span class="citation" data-cites="wilmers2015"><sup><a href="#ref-wilmers2015" role="doc-biblioref">3</a></sup></span>, atmospheric science<span class="citation" data-cites="weinzierl2016 yonehara2016"><sup><a href="#ref-weinzierl2016" role="doc-biblioref">4</a>,<a href="#ref-yonehara2016" role="doc-biblioref">5</a></sup></span>, and oceanography<span class="citation" data-cites="treasure2017"><sup><a href="#ref-treasure2017" role="doc-biblioref">6</a></sup></span>. As biologging data continue to grow in size and complexity (e.g., millions of new records daily in Movebank<span class="citation" data-cites="kays2021"><sup><a href="#ref-kays2021" role="doc-biblioref">7</a></sup></span> and novel sensors like infrasound recorders<span class="citation" data-cites="denouden2021"><sup><a href="#ref-denouden2021" role="doc-biblioref">8</a></sup></span>), “big data” methods have been highlighted as a key direction for future developments<span class="citation" data-cites="nathan2022 grémillet2022"><sup><a href="#ref-nathan2022" role="doc-biblioref">9</a>,<a href="#ref-grémillet2022" role="doc-biblioref">10</a></sup></span>. Simultaneously, biologging data are increasingly used to inform conservation efforts across taxonomic groups<span class="citation" data-cites="beal2021 queiroz2019"><sup><a href="#ref-beal2021" role="doc-biblioref">11</a>,<a href="#ref-queiroz2019" role="doc-biblioref">12</a></sup></span> and regions<span class="citation" data-cites="hindell2020"><sup><a href="#ref-hindell2020" role="doc-biblioref">13</a></sup></span>. However, the envisioned impacts of aggregated biologging data on research (expanding modes and scope of inquiry) and conservation (providing robust evidence to guide policy and management) are limited by inconsistent standardization and discoverability, which has become a growing matter of practical and ethical concern<span class="citation" data-cites="rutz2022"><sup><a href="#ref-rutz2022" role="doc-biblioref">14</a></sup></span>. A systematic review of the instruments, species, and data availability of biologging studies is thus essential to support ongoing and future efforts to promote collaborative data sharing and curation efforts.</p>
-<p>Open science practices, such as publishing data and code alongside manuscripts, improve research transparency and efficiency<span class="citation" data-cites="lowndes2017 hampton2017"><sup><a href="#ref-lowndes2017" role="doc-biblioref">15</a>,<a href="#ref-hampton2017" role="doc-biblioref">16</a></sup></span>. However, data “openness” is determined by multiple factors, and poor research data management and sharing practices are a major source of biodiversity data loss<span class="citation" data-cites="peterson2018"><sup><a href="#ref-peterson2018" role="doc-biblioref">17</a></sup></span>. Fortunately, the advent of the FAIR principles<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">18</a></sup></span> (<a href="#tbl-fair">Table&nbsp;1</a>) has provided a useful framework to facilitate open data sharing, with FAIR data enabling groundbreaking advances in synthesis, biodiversity, and conservation science<span class="citation" data-cites="halpern2020 fredston2023 roche2021 buxton2021"><sup><a href="#ref-halpern2020" role="doc-biblioref">19</a>–<a href="#ref-buxton2021" role="doc-biblioref">22</a></sup></span> .</p>
-<p>There have been numerous efforts within the biologging research community to promote open data sharing practices. Essential cyberinfrastructure include domain-specific data repositories (Movebank<span class="citation" data-cites="kays2021"><sup><a href="#ref-kays2021" role="doc-biblioref">7</a></sup></span>, Seabird Tracking Database <a href="https://www.seabirdtracking.org">seabirdtracking.org</a>, Euromammal<span class="citation" data-cites="urbano2021"><sup><a href="#ref-urbano2021" role="doc-biblioref">23</a></sup></span>) and data standards<span class="citation" data-cites="sequeira2021 dettki2023 kranstauber2011"><sup><a href="#ref-sequeira2021" role="doc-biblioref">24</a>–<a href="#ref-kranstauber2011" role="doc-biblioref">26</a></sup></span> that facilitate adoption of the FAIR principles (<a href="#tbl-fair">Table&nbsp;1</a>).</p>
+<p>(575/500 words)</p>
+<p>Biologging is the practice of using animal-borne sensors to remotely observe animals and their environments<span class="citation" data-cites="rutz2009"><sup><a href="#ref-rutz2009" role="doc-biblioref">1</a></sup></span>. In the six decades since a biologist first attached a modified kitchen timer to a seal<span class="citation" data-cites="kooyman1966"><sup><a href="#ref-kooyman1966" role="doc-biblioref">2</a></sup></span>, biologging has become an invaluable, multidisciplinary tool to address questions in ecology<span class="citation" data-cites="wilmers2015"><sup><a href="#ref-wilmers2015" role="doc-biblioref">3</a></sup></span>, atmospheric science<span class="citation" data-cites="weinzierl2016 yonehara2016"><sup><a href="#ref-weinzierl2016" role="doc-biblioref">4</a>,<a href="#ref-yonehara2016" role="doc-biblioref">5</a></sup></span>, and oceanography<span class="citation" data-cites="treasure2017"><sup><a href="#ref-treasure2017" role="doc-biblioref">6</a></sup></span>. As biologging data continue to grow in size and complexity (e.g., millions of new records daily in Movebank<span class="citation" data-cites="kays2021"><sup><a href="#ref-kays2021" role="doc-biblioref">7</a></sup></span> and novel sensors like infrasound recorders<span class="citation" data-cites="denouden2021"><sup><a href="#ref-denouden2021" role="doc-biblioref">8</a></sup></span>), “big data” methods have been highlighted as a key direction for future developments<span class="citation" data-cites="nathan2022 grémillet2022"><sup><a href="#ref-nathan2022" role="doc-biblioref">9</a>,<a href="#ref-grémillet2022" role="doc-biblioref">10</a></sup></span>. Simultaneously, biologging data are increasingly used to inform conservation efforts across taxonomic groups<span class="citation" data-cites="beal2021 queiroz2019"><sup><a href="#ref-beal2021" role="doc-biblioref">11</a>,<a href="#ref-queiroz2019" role="doc-biblioref">12</a></sup></span> and regions<span class="citation" data-cites="hindell2020"><sup><a href="#ref-hindell2020" role="doc-biblioref">13</a></sup></span>. However, the envisioned impacts of aggregated biologging data on research (expanding modes and scope of inquiry) and conservation (providing robust evidence to guide policy and management) are limited by a lack of standardization, discoverability and accessibility<span class="citation" data-cites="sequeira2021"><sup><a href="#ref-sequeira2021" role="doc-biblioref">14</a></sup></span>, which has become a growing matter of practical and ethical concern<span class="citation" data-cites="rutz2022"><sup><a href="#ref-rutz2022" role="doc-biblioref">15</a></sup></span>. To date there has been no systematic review of published biologging studies, including the instruments used, species investigated, and availability of the data collected. The insight from such a review can support collaborative data sharing and curation efforts, and direct approaches to drive greater research and conservation impacts.</p>
+<p>Open science practices, such as publishing data and code alongside manuscripts, improve research transparency and efficiency<span class="citation" data-cites="lowndes2017 hampton2017"><sup><a href="#ref-lowndes2017" role="doc-biblioref">16</a>,<a href="#ref-hampton2017" role="doc-biblioref">17</a></sup></span>. However, data “openness” is determined by multiple factors, and poor research data management and sharing practices are a major source of biodiversity data loss<span class="citation" data-cites="peterson2018"><sup><a href="#ref-peterson2018" role="doc-biblioref">18</a></sup></span>. Fortunately, the advent of the FAIR principles<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">19</a></sup></span> (<a href="#tbl-fair">Table&nbsp;1</a>) has provided a useful framework to facilitate open data, with FAIR data enabling groundbreaking advances in synthesis, biodiversity, and conservation science<span class="citation" data-cites="halpern2020 fredston2023 roche2021 buxton2021"><sup><a href="#ref-halpern2020" role="doc-biblioref">20</a>–<a href="#ref-buxton2021" role="doc-biblioref">23</a></sup></span> .</p>
+<p>Numerous efforts within the biologging research community have sought to promote open data. For example, domain-specific data repositories (Movebank<span class="citation" data-cites="kays2021"><sup><a href="#ref-kays2021" role="doc-biblioref">7</a></sup></span>, Seabird Tracking Database <a href="https://www.seabirdtracking.org">seabirdtracking.org</a>, Euromammal<span class="citation" data-cites="urbano2021"><sup><a href="#ref-urbano2021" role="doc-biblioref">24</a></sup></span>) and data standards<span class="citation" data-cites="sequeira2021 dettki2023 kranstauber2011"><sup><a href="#ref-sequeira2021" role="doc-biblioref">14</a>,<a href="#ref-dettki2023" role="doc-biblioref">25</a>,<a href="#ref-kranstauber2011" role="doc-biblioref">26</a></sup></span> facilitate the adoption of the FAIR principles (<a href="#tbl-fair">Table&nbsp;1</a>). However, despite developments in biologging cyberinfrastructure, the overall state of open data in biologging research remains unknown, and there are indications that most tracking data remain inaccessible<span class="citation" data-cites="campbell2015 scarpignato2023"><sup><a href="#ref-campbell2015" role="doc-biblioref">27</a>,<a href="#ref-scarpignato2023" role="doc-biblioref">28</a></sup></span>.</p>
 <div id="tbl-fair" class="anchored">
 <table class="table">
-<caption>Table&nbsp;1: The FAIR principles<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">18</a></sup></span>, as implemented in biologging cyberinfrastructure, support data sharing and improve research transparency and efficiency.</caption>
+<caption>Table&nbsp;1: The FAIR principles<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">19</a></sup></span>, as implemented in biologging cyberinfrastructure, support data sharing and improve research transparency and efficiency.</caption>
 <colgroup>
 <col style="width: 22%">
 <col style="width: 22%">
@@ -162,60 +159,69 @@ div.csl-indent {
 <tr class="odd">
 <td>Findability</td>
 <td>Data and metadata have a globally unique and persistent identifier (e.g., a digital object identifier, DOI) and are indexed in a searchable resource</td>
-<td>Data repositories, like the Movebank Data Repository, improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)</td>
+<td>Data repositories, like the Movebank Data Repository<span class="citation" data-cites="kays2021"><sup><a href="#ref-kays2021" role="doc-biblioref">7</a></sup></span>, improve data discoverability and may assign DOIs to data (avoiding issues with broken hyperlinks, for example)</td>
 <td>A tracking dataset deposited in the Movebank Data Repository is findable by its permanent DOI or by searching the repository</td>
 </tr>
 <tr class="even">
 <td>Accessibility</td>
 <td>Data and metadata are retrievable by open and universal protocols, such as HTTP</td>
 <td>Data repositories allow scientists to retrieve biologging data via a web browser or other open source tools</td>
-<td>Publicly available data on Movebank may be downloaded via the website, API, or with the <code>move2</code> R package<span class="citation" data-cites="kranstauber2023"><sup><a href="#ref-kranstauber2023" role="doc-biblioref">27</a></sup></span></td>
+<td>Publicly available data on Movebank may be downloaded via the website, API, or with the <code>move2</code> R package<span class="citation" data-cites="kranstauber2023"><sup><a href="#ref-kranstauber2023" role="doc-biblioref">29</a></sup></span></td>
 </tr>
 <tr class="odd">
 <td>Interoperability</td>
 <td>Data use formal and shared formats and vocabularies</td>
-<td>Shared protocols like the Darwin Core standard<span class="citation" data-cites="wieczorek2012"><sup><a href="#ref-wieczorek2012" role="doc-biblioref">28</a></sup></span>, Movebank data model<span class="citation" data-cites="MPIAB2023"><sup><a href="#ref-MPIAB2023" role="doc-biblioref">29</a></sup></span>, and proposed bio-logging standardization framework<span class="citation" data-cites="sequeira2021"><sup><a href="#ref-sequeira2021" role="doc-biblioref">24</a></sup></span> reduce barriers to combining datasets and increase uptake within and across scientific disciplines</td>
+<td>Shared protocols like the Darwin Core standard<span class="citation" data-cites="wieczorek2012"><sup><a href="#ref-wieczorek2012" role="doc-biblioref">30</a></sup></span>, Movebank data model<span class="citation" data-cites="MPIAB2023"><sup><a href="#ref-MPIAB2023" role="doc-biblioref">31</a></sup></span>, and proposed bio-logging standardization framework<span class="citation" data-cites="sequeira2021"><sup><a href="#ref-sequeira2021" role="doc-biblioref">14</a></sup></span> reduce barriers to combining datasets and increase uptake within and across scientific disciplines</td>
 <td>Location and environmental data from seal-borne biologgers harmonized to a standard netCDF format facilitated their reuse by oceanographers to study polar regions<span class="citation" data-cites="treasure2017"><sup><a href="#ref-treasure2017" role="doc-biblioref">6</a></sup></span></td>
 </tr>
 <tr class="even">
 <td>Reusability</td>
 <td>Data and metadata are richly described and reuse permissions are clearly defined</td>
 <td>Data repositories and standards together capture essential context for biologging data and provide licensing options for data reuse</td>
-<td>The Movebank Data Repository releases datasets under the CC0 license and the Movebank data model<span class="citation" data-cites="MPIAB2023"><sup><a href="#ref-MPIAB2023" role="doc-biblioref">29</a></sup></span> includes fields important for data reuse (e.g., whether the animal was relocated before release)</td>
+<td>The Movebank Data Repository releases datasets under the CC0 license and the Movebank data model<span class="citation" data-cites="MPIAB2023"><sup><a href="#ref-MPIAB2023" role="doc-biblioref">31</a></sup></span> includes fields important for data reuse (e.g., whether the animal was relocated before release)</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Despite these biologging cyberinfrastructure developments, the general state of open data within the community remains unknown, and there are indications that a majority of tracking data remain inaccessible<span class="citation" data-cites="campbell2015 scarpignato2023"><sup><a href="#ref-campbell2015" role="doc-biblioref">30</a>,<a href="#ref-scarpignato2023" role="doc-biblioref">31</a></sup></span>. We will conduct a systematic review to quantify the diversity of instruments, species, and open data practices in biologging studies published 2007-2023. Our review will test the following three hypotheses:</p>
+<p>We will conduct a systematic review to quantify the diversity of instruments, species, and open data practices in biologging studies published between 2007-2023. We chose 2007 as the start of our study period because Movebank (the largest biologging data platform) began in 2007. Our review will test the following three hypotheses:</p>
 <p><strong>H1:</strong> Open biologging data practices are increasing over time.</p>
+<ul>
+<li>Prediction: we expect open data to increase slowly 2007-2016, then more rapidly 2016-2023 following the publication of the FAIR principles and increasing adoption of open data policies by journals<span class="citation" data-cites="roche2015"><sup><a href="#ref-roche2015" role="doc-biblioref">32</a></sup></span>.</li>
+</ul>
 <p><strong>H2:</strong> Open biologging data practices vary by ecosystem (marine or terrestrial).</p>
-<p><strong>H3:</strong> Open biologging data practices are greater for spatial biologging data than aspatial (e.g., accelerometer) data.</p>
-<p>In addition to hypothesis testing, our review will provide the first biologging bibliometric database, itself a valuable form of cyberinfrastrucure for future systematic reviews and meta-analyses. Based on the results of our review, we will also provide a minimum information standard (<em>sensu</em> MIAPE<span class="citation" data-cites="taylor2007"><sup><a href="#ref-taylor2007" role="doc-biblioref">32</a></sup></span> for proteomics experiments and MIReAD<span class="citation" data-cites="rund2019"><sup><a href="#ref-rund2019" role="doc-biblioref">33</a></sup></span> for arthropod abundances) as a resource for authors, journal editors, and funding bodies to facilitate FAIR sharing of biologging data.</p>
+<ul>
+<li>Prediction: we expect terrestrial biologging data to be more open than marine, as some leading journals for marine biologging studies (e.g.&nbsp;<em>Marine Ecology Progress Series</em>, <em>Marine Mammal Science</em>) do not have open data requirements for publication.</li>
+</ul>
+<p><strong>H3:</strong> Open biologging data practices are greater for spatial biologging data than aspatial (e.g., accelerometer) biologging data.</p>
+<ul>
+<li>Prediction: we expect spatial data to be more open than aspatial data because more repositories and data standards exist for the former than the latter<span class="citation" data-cites="grémillet2022"><sup><a href="#ref-grémillet2022" role="doc-biblioref">10</a></sup></span>.</li>
+</ul>
+<p>In addition to hypothesis testing, our review will provide the first biologging bibliometric database, itself a valuable form of cyberinfrastrucure for future systematic reviews and meta-analyses. Based on the results of our review, we will also provide a minimum information standard (<em>sensu</em> MIAPE<span class="citation" data-cites="taylor2007"><sup><a href="#ref-taylor2007" role="doc-biblioref">33</a></sup></span> for proteomics experiments and MIReAD<span class="citation" data-cites="rund2019"><sup><a href="#ref-rund2019" role="doc-biblioref">34</a></sup></span> for arthropod abundances) as a resource for authors, journal editors, and funding bodies to facilitate FAIR sharing of biologging data.</p>
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>Biologging terminology is highly varied in the literature (e.g., tags, tracking devices, data loggers) and the distinction between biologging (i.e., instruments with sensors and memory) and biotelemetry (i.e., instruments that generate a signal for an external receiver) is inconsistent<span class="citation" data-cites="rutz2009 cooke2004"><sup><a href="#ref-rutz2009" role="doc-biblioref">1</a>,<a href="#ref-cooke2004" role="doc-biblioref">34</a></sup></span>. Furthermore, biologgers may be used in a range of contexts outside of ecology and evolutionary biology, including agricultural and medical research. This review will only consider biologging studies in ecology, evolutionary biology, or related fields (see Initial Classification).</p>
-<p>We decided to exclude biotelemetry (e.g., VHF transmitters and acoustic pingers) based on the properties of the data collected. Biologging data can reasonably be considered self-contained, whereas biotelemetry data depends on the receiver network. This external dependency complicates the assessment of open data sharing, the primary goal of this review. We make an exception for satellite biotelemetry using the Argos network, because the Argos system provides data with properties more similar to biologgers.</p>
+<p>We will systematically review biologging studies published between 2007-2023. We define biologging as animal-borne instruments with sensors and memory, and will not include biotelemetry (defined as animal-borne instruments that emit a signal for an external receiver)<span class="citation" data-cites="rutz2009 cooke2004"><sup><a href="#ref-rutz2009" role="doc-biblioref">1</a>,<a href="#ref-cooke2004" role="doc-biblioref">35</a></sup></span>. We will exclude biotelemetry (with the exception of Argos network satellite telemetry, see below) from our review to make our open data assessments more consistent and comparable. Furthermore, we will limit our review to ecology, evolutionary biology, conservation science, or related fields.</p>
+<p>We will exclude biotelemetry data (e.g., VHF transmitters and acoustic pingers) because their analyses require data describing both instrument transmissions and the configuration of the receiver network. Conversely, biologging data is typically self-contained. Comparing open data between biotelemetry and biologging is thus complicated by the former’s external dependency on the receiver network. We make an exception for satellite biotelemetry using the Argos network, because the Argos system resolves transmissions to timestamped locations, and thus provides researchers with data more similar to biologgers.</p>
 <section id="literature-review" class="level3">
 <h3 class="anchored" data-anchor-id="literature-review">Literature review</h3>
-<p>On 2023-08-21, we queried Web of Science Core Collection for papers published since 2007 related to biologging with the following query:</p>
+<p>On 2023-08-21, we queried Web of Science Core Collection for papers published between 2007-2023 related to biologging with the following query:</p>
 <p><code>animal AND (biologg* OR bio-logg* OR biotelemetry OR electronic tag* OR satellite track* OR GPS telemetry OR satellite telemetry OR satellite transmit* OR GPS collar* OR depth recorder* OR accelerometer OR archival tag*)</code></p>
-<p>This yielded 6654 papers. We limited results to Web of Science categories with 100+ papers we deemed relevant, leaving 4799 papers. The categories we included were: Ecology, Zoology, Marine Freshwater Biology, Biodiversity Conservation, Multidisciplinary Sciences, Environmental Sciences, Oceanography, Biology, Behavioral Sciences, Ornithology, Evolutionary Biology, and Fisheries. We excluded the following categories with 100+ papers: Agriculture Dairy Animal Science, Veterinary Sciences, Engineering Electrical Electronic, Physiology, Food Science Technology, Engineering Biomedical, Agriculture Multidisciplinary, Computer Science Interdisciplinary Applications, Instruments Instrumentation.</p>
+<p>This yielded 6654 papers. We limited results to relevant Web of Science categories with 100+ papers, leaving 4799 papers. The categories we included were Ecology, Zoology, Marine Freshwater Biology, Biodiversity Conservation, Multidisciplinary Sciences, Environmental Sciences, Oceanography, Biology, Behavioral Sciences, Ornithology, Evolutionary Biology, and Fisheries. We excluded the following categories with 100+ papers: Agriculture Dairy Animal Science, Veterinary Sciences, Engineering Electrical Electronic, Physiology, Food Science Technology, Engineering Biomedical, Agriculture Multidisciplinary, Computer Science Interdisciplinary Applications, Instruments Instrumentation.</p>
 </section>
 <section id="initial-classification" class="level3">
 <h3 class="anchored" data-anchor-id="initial-classification">Initial classification</h3>
-<p>Every paper will be reviewed by two individuals to assess its relevance to this review, record the presence or absence of a data availability statement, and to categorize the study by sensor type, taxonomy, and ecosystem. Papers will be considered relevant if they satisfy the following two characteristics:</p>
+<p>Every paper will be separately reviewed by two individuals to assess its relevance to this review, record the presence or absence of a data availability statement, and categorize the study by sensor type, taxonomy, and ecosystem. In cases where the reviewers disagree, a third reviewer will decide which value to use. Papers will be considered relevant if they satisfy the following two characteristics:</p>
 <ol type="1">
 <li>They involved the collection of previously unpublished biologging data. Our definition of biologging excludes telemetry devices (e.g., acoustic pingers and radiotransmitters) with the exception of devices that communicate with Argos satellites.</li>
 <li>The biologgers were deployed on non-domesticated animals in unrestrained habitat. Studies involving domesticated animals (e.g., cattle), animals in managed care (e.g., a zoo or aquarium), or biomedical laboratories will be excluded.</li>
 </ol>
 <p>We will consider a paper to have a data availability statement (DAS) if it states how to access the data or explicitly states why the data are not available. Any of the following examples would be considered a DAS: “Data were deposited in a repository” with an accompanying DOI, “Data are available at a website” with an accompanying URL, “Data are available upon request”, or “Data withheld for the safety of the tracked animals”.</p>
-<p>We will assign sensor types to one or more categories following Williams et al.<span class="citation" data-cites="williams2019"><sup><a href="#ref-williams2019" role="doc-biblioref">35</a></sup></span>: location (e.g., GPS, depth), intrinsic (e.g., accelerometer, internal temperature), or environment (e.g., ambient temperature, camera). Biologgers can combine sensors from multiple categories (e.g., a GPS-accelerometer collar).</p>
-<p>We will resolve taxonomy to the species level using the Integrated Taxonomic Information System (www.itis.gov). Each study’s ecosystem will be classified as one or more of aquatic, marine, and terrestrial according to the IUCN Red List (https://www.iucnredlist.org).</p>
+<p>We will assign sensor types to one or more categories following Williams et al.<span class="citation" data-cites="williams2019"><sup><a href="#ref-williams2019" role="doc-biblioref">36</a></sup></span>: location (e.g., GPS, depth), intrinsic (e.g., accelerometer, internal temperature), or environment (e.g., ambient temperature, camera). Biologgers can combine sensors from multiple categories (e.g., a GPS-accelerometer collar). We will consider all sensors reported in the methods, whether or not they are analyzed in the paper.</p>
+<p>We will resolve taxonomy to the species level using the Integrated Taxonomic Information System (www.itis.gov). Each study’s ecosystem will be classified as one or more of aquatic (i.e., freshwater), marine (i.e., saltwater), and terrestrial according to the IUCN Red List (https://www.iucnredlist.org).</p>
 </section>
 <section id="assessing-open-data" class="level3">
 <h3 class="anchored" data-anchor-id="assessing-open-data">Assessing open data</h3>
-<p>Following our initial classification, we will randomly sample 600 studies to assess the openness of biologging data. We will limit our sample to studies with a DAS, and we will stratify our sample by year, ecosystem, and sensor type. We will attempt to sample fifty studies in each combination of the following categories:</p>
+<p>Following our initial classification, we will randomly sample 600 studies to assess the openness of biologging data. We will limit our sample to studies with a DAS, and we will stratify our sample by year, ecosystem, and sensor type. We will attempt to sample 50 studies in each combination of the following categories:</p>
 <ul>
 <li><p>Time period (early 2007-2015, middle 2016-2019, recent 2020-2023)</p></li>
 <li><p>Ecosystem (marine, terrestrial)</p></li>
@@ -224,33 +230,32 @@ div.csl-indent {
 <p>The sensor type of a study will be considered spatial if it includes a location sensor and aspatial if it includes an intrinsic or environmental sensor. Our preliminary results indicate spatial sensors are deployed in the vast majority of studies (93%), whereas aspatial sensors are deployed less frequently (35% of studies). Therefore, at the time of sampling, we will assign each paper to either the aspatial or spatial category and limit our assessment to the corresponding sensor data. For example, if we sample a study for the aspatial category that deployed GPS-accelerometer biologgers, we would exclude the GPS data and only assess the accelerometer data.</p>
 <p>For each sampled paper, we will attempt to retrieve the biologging dataset underlying the study. If data are available upon request, we will email the corresponding author to request the data and, if we do not receive a response within two weeks, we will send one follow-up email. We will record whether each dataset satisfies the following properties:</p>
 <ol type="1">
-<li><p>( <span class="math inline">\(f\)</span> ) Do the data have a permanent identifier, such as a DOI? I.e., FAIR principle F1<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">18</a></sup></span>.</p></li>
-<li><p>( <span class="math inline">\(a\)</span> ) Are the data retrievable via a standard communications protocol, such as HTTP? I.e., FAIR principle A1<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">18</a></sup></span>.</p></li>
+<li><p>( <span class="math inline">\(f\)</span> ) Do the data have a permanent identifier, such as a DOI? I.e., FAIR principle F1<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">19</a></sup></span>.</p></li>
+<li><p>( <span class="math inline">\(a\)</span> ) Are the data retrievable via a standard communications protocol, such as HTTP? I.e., FAIR principle A1<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">19</a></sup></span>.</p></li>
 <li><p>( <span class="math inline">\(b\)</span> ) Do the data contain biologging data (raw or processed), as opposed to tabular summaries?</p></li>
-<li><p>( <span class="math inline">\(c\)</span> ) Are the data sufficiently complete to reproduce the analyses in the study? I.e., are all necessary data and metadata included within the dataset.</p></li>
 </ol>
 <p>If we cannot retrieve the dataset for a study, we will consider the study to not satisfy any of the four properties listed above.</p>
-<p>To clarify our methods for spatial versus aspatial data, consider a hypothetical GPS-accelerometer biologging study sampled in the aspatial category. The authors deposited the GPS data in the Movebank Data Repository (which issues DOIs) and the accelerometer data are available upon request. We contact the author and they provide us with the raw accelerometer data, but they no longer have the files necessary to calibrate them. Then this study would be scored as <span class="math inline">\(f=0,a=0,b=1,c=0\)</span> because (<span class="math inline">\(f\)</span>) the aspatial data do not have a DOI, (<span class="math inline">\(a\)</span>) retrieving the aspatial data required contacting the author, (<span class="math inline">\(b\)</span>) the accelerometer data were made available, and (<span class="math inline">\(c\)</span>) without the calibration files we could not reproduce the analysis. Had this same study been sampled in the spatial category, we would have scored it as <span class="math inline">\(f=1,a=1,b=1,c=1\)</span> because (<span class="math inline">\(f\)</span>) the spatial data have a DOI, (<span class="math inline">\(a\)</span>) the data were retrievable via HTTP, (<span class="math inline">\(b\)</span>) the GPS sensor data were available, and (<span class="math inline">\(c\)</span>) all the (meta)data necessary for the analysis were present.</p>
+<p>To clarify our methods for spatial versus aspatial data, consider a hypothetical GPS-accelerometer biologging study sampled in the aspatial category. The authors deposited the GPS data in the Movebank Data Repository (which issues DOIs) and the accelerometer data are available upon request. We contact the author and they provide us with a summary table of the accelerometer data, where each row is a deployment and columns are characteristics of the deployment, such as duration. Then this study would be scored as <span class="math inline">\(f=0,a=0,b=0\)</span> because (<span class="math inline">\(f\)</span>) the aspatial data do not have a DOI, (<span class="math inline">\(a\)</span>) retrieving the aspatial data required contacting the author, and (<span class="math inline">\(b\)</span>) only summaries of the accelerometer data were made available. Had this same study been sampled in the spatial category, we would have scored it as <span class="math inline">\(f=1,a=1,b=1\)</span> because (<span class="math inline">\(f\)</span>) the spatial data have a DOI, (<span class="math inline">\(a\)</span>) the data were retrievable via HTTP, and (<span class="math inline">\(b\)</span>) the GPS sensor data were available.</p>
 </section>
 <section id="analysis" class="level3">
 <h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
-<p>Our independent variables will be: year of publication (<span class="math inline">\(t\)</span>), ecosystem (<span class="math inline">\(e\)</span>), and sensor type (<span class="math inline">\(s\)</span>) [see “Initial classification”]. Our dependent variables will be: the presence of a permanent identifier (<span class="math inline">\(f\)</span>), whether data are retrievable by a standard protocol (<span class="math inline">\(a\)</span>), whether data include biologging data (<span class="math inline">\(b\)</span>), and whether data are complete (<span class="math inline">\(c\)</span>) [see “Assessing open data”]. We will fit four Bayesian generalized linear models of the form:</p>
+<p>Our independent variables will be year of publication (<span class="math inline">\(t\)</span>), ecosystem (<span class="math inline">\(e\)</span>), and sensor type (<span class="math inline">\(s\)</span>) [see “Initial classification”]. Our dependent variables will be the presence of a permanent identifier (<span class="math inline">\(f\)</span>), whether data are retrievable by a standard protocol (<span class="math inline">\(a\)</span>), whether data include biologging data (<span class="math inline">\(b\)</span>), and whether data are complete (<span class="math inline">\(c\)</span>) [see “Assessing open data”]. We will fit four Bayesian generalized linear models of the form:</p>
 <p><span class="math display">\[
 \begin{align}
 DV &amp;\sim Bernoulli(p) \\
 logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
-\alpha &amp;\sim Normal(-1, 2) \\
-\beta_e, \beta_s &amp;\sim Normal(0, 1) \\
-\beta_t &amp;\sim Normal(1, 2) \\
+\alpha &amp;\sim Normal(0, 1) \\
+\beta_e, \beta_s &amp;\sim Normal(0, 0.5) \\
+\beta_t &amp;\sim Normal(0, 0.15) \\
 \delta &amp;\sim Dirichlet(1)
 \end{align}
 \]</span></p>
-<p>Where <span class="math inline">\(DV\)</span> is the dependent variable (<span class="math inline">\(f\)</span>, <span class="math inline">\(a\)</span>, <span class="math inline">\(r\)</span>, or <span class="math inline">\(c\)</span>). <span class="math inline">\(e\)</span> and <span class="math inline">\(s\)</span> encode ecosystem (marine, terrestrial) and sensor type (aspatial, spatial), respectively. Year of publication (<span class="math inline">\(t\)</span>) is treated as an ordinal categorical predictor<span class="citation" data-cites="bürkner2020"><sup><a href="#ref-bürkner2020" role="doc-biblioref">36</a></sup></span>. Modeling <span class="math inline">\(t\)</span> this way, instead of as a metric continuous variable, allows the rate of change of the dependent variables to be nonlinear in time (i.e., the change in <span class="math inline">\(DV\)</span> from 2007 to 2008 may be different than 2017 to 2018). <span class="math inline">\(\beta_t\)</span> is the coefficient for the effect of time and <span class="math inline">\(mo(t,\delta)\)</span> is a monotonic transformation of <span class="math inline">\(t\)</span> from 0 to 1. Thus <span class="math inline">\(\beta_t mo(t, \delta)\)</span> is 0 at the beginning of the time period (2007) and increases to <span class="math inline">\(\beta_t\)</span> at the end (2023). <span class="math inline">\(\delta\)</span> is a simplex that controls the incremental steps for each year in the time period.</p>
-<p>We will set priors according to available information in the literature. To our knowledge, there is no quantitative information about differences in open data practices within biologging. Therefore, the priors for <span class="math inline">\(\beta_e\)</span>, <span class="math inline">\(\beta_s\)</span>, and <span class="math inline">\(\delta\)</span> will be uninformative (standard normal and symmetric Dirichlet with concentration 1). More generally in ecology, open data rates remain relatively low (~50%), but are increasing in recent years<span class="citation" data-cites="roche2022"><sup><a href="#ref-roche2022" role="doc-biblioref">37</a></sup></span>. Therefore we chose a prior for <span class="math inline">\(\alpha\)</span> with a negative expected value (<span class="math inline">\(Normal(-1, 2)\)</span>) and a prior for <span class="math inline">\(\beta_t\)</span> with a positive expected value (<span class="math inline">\(Normal(1, 2)\)</span>).</p>
-<p>We will use Stan<span class="citation" data-cites="Stan"><sup><a href="#ref-Stan" role="doc-biblioref">38</a></sup></span> and brms<span class="citation" data-cites="bürkner2018 bürkner2021"><sup><a href="#ref-bürkner2018" role="doc-biblioref">39</a>,<a href="#ref-bürkner2021" role="doc-biblioref">40</a></sup></span> for model fitting.</p>
+<p>Where <span class="math inline">\(DV\)</span> is the dependent variable (<span class="math inline">\(f\)</span>, <span class="math inline">\(a\)</span>, <span class="math inline">\(r\)</span>, or <span class="math inline">\(c\)</span>). <span class="math inline">\(e\)</span> and <span class="math inline">\(s\)</span> encode ecosystem (marine, terrestrial) and sensor type (aspatial, spatial), respectively. Year of publication (<span class="math inline">\(t\)</span>) is treated as an ordinal categorical predictor<span class="citation" data-cites="bürkner2020"><sup><a href="#ref-bürkner2020" role="doc-biblioref">37</a></sup></span>. Modeling <span class="math inline">\(t\)</span> this way, instead of as a metric continuous variable, allows the rate of change of the dependent variables to be nonlinear in time (i.e., the change in <span class="math inline">\(DV\)</span> from 2007 to 2008 may be different than 2017 to 2018). <span class="math inline">\(\beta_t\)</span> is the coefficient for the effect of time and <span class="math inline">\(mo(t,\delta)\)</span> is a monotonic transformation of <span class="math inline">\(t\)</span> from 0 to 1. Thus <span class="math inline">\(\beta_t mo(t, \delta)\)</span> is 0 at the beginning of the time period (2007) and increases to <span class="math inline">\(\beta_t\)</span> at the end (2023). <span class="math inline">\(\delta\)</span> is a simplex that controls the incremental steps for each year in the time period.</p>
+<p>We will use flat priors in the prediction space. Prior predictive simulation of our chosen priors produces relatively flat prior probabilities for <span class="math inline">\(p_i\)</span>. Comparatively, flat priors in logit space (e.g., <span class="math inline">\(\alpha,\beta_e,\beta_s,\beta_t \sim Normal(0, 100)\)</span>) concentrate prior probabilities of <span class="math inline">\(p_i\)</span> on 0 and 1 To our knowledge, there is no quantitative information about differences in open data practices within biologging. Therefore, the priors for <span class="math inline">\(\beta_e\)</span>, <span class="math inline">\(\beta_s\)</span>, and <span class="math inline">\(\delta\)</span> will be uninformative (standard normal and symmetric Dirichlet with concentration 1). More generally in ecology, open data rates remain relatively low (~50%), but are increasing in recent years<span class="citation" data-cites="roche2022"><sup><a href="#ref-roche2022" role="doc-biblioref">38</a></sup></span>. Therefore we chose a prior for <span class="math inline">\(\alpha\)</span> with a negative expected value (<span class="math inline">\(Normal(-1, 2)\)</span>) and a prior for <span class="math inline">\(\beta_t\)</span> with a positive expected value (<span class="math inline">\(Normal(1, 2)\)</span>).</p>
+<p>We will use Stan<span class="citation" data-cites="Stan"><sup><a href="#ref-Stan" role="doc-biblioref">39</a></sup></span> and brms<span class="citation" data-cites="bürkner2018 bürkner2021"><sup><a href="#ref-bürkner2018" role="doc-biblioref">40</a>,<a href="#ref-bürkner2021" role="doc-biblioref">41</a></sup></span> for model fitting.</p>
 <section id="h1-open-biologging-data-practices-are-increasing-over-time" class="level4">
 <h4 class="anchored" data-anchor-id="h1-open-biologging-data-practices-are-increasing-over-time">H1: Open biologging data practices are increasing over time</h4>
-<p>We will test hypothesis <strong>H1</strong> by comparing posterior predictions for 2023 and 2016. We will use 2016 as the baseline instead of the beginning of our study period (2007) to undertake a more stringent test of our hypothesis. Widespread adoption of open data policies by ecology and evolutionary biology journals began circa 2012-2014<span class="citation" data-cites="roche2015"><sup><a href="#ref-roche2015" role="doc-biblioref">41</a></sup></span> and the FAIR data principles were published in 2016<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">18</a></sup></span>. Therefore we consider 2016 a more meaningful point of comparison.</p>
+<p>We will test hypothesis <strong>H1</strong> by comparing posterior predictions for 2023 to 2007 and 2016. We will compare 2023 to 2016 as well as 2007 because widespread adoption of open data policies by ecology and evolutionary biology journals began circa 2012-2014<span class="citation" data-cites="roche2015"><sup><a href="#ref-roche2015" role="doc-biblioref">32</a></sup></span> and the FAIR data principles were published in 2016<span class="citation" data-cites="wilkinson2016"><sup><a href="#ref-wilkinson2016" role="doc-biblioref">19</a></sup></span>. Therefore, we consider the 2023 versus 2016 a more stringent test of our hypothesis than 2023 versus 2007.</p>
 </section>
 <section id="h2-open-biologging-data-practices-vary-by-ecosystem" class="level4">
 <h4 class="anchored" data-anchor-id="h2-open-biologging-data-practices-vary-by-ecosystem">H2: Open biologging data practices vary by ecosystem</h4>
@@ -259,15 +264,13 @@ logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 <section id="h3-open-biologging-data-practices-vary-by-sensor-class" class="level4">
 <h4 class="anchored" data-anchor-id="h3-open-biologging-data-practices-vary-by-sensor-class">H3: Open biologging data practices vary by sensor class</h4>
 <p>We will test hypothesis <strong>H3</strong> by contrasting posterior predictions for aspatial and spatial ecosystems for the year 2023.</p>
+<p>Note the tests for <strong>H2</strong> and <strong>H3</strong> will use model predictions for 2023, rather than the whole time period. Our reasoning is we expect open data practices were generally low across categories early in the study period, and have diverged over time due to differential adoption rates. Therefore, we expect the greatest differences occur at the end of the study period.</p>
 </section>
 </section>
 </section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>We conducted a simulation to demonstrate how we will conduct our analysis. We also present preliminary data from the “initial classification” step, which was necessary to design our protocol for the “assessing open data” step.</p>
-<section id="simulation" class="level3">
-<h3 class="anchored" data-anchor-id="simulation">Simulation</h3>
-<p>We simulated resonable values for <span class="math inline">\(t\)</span>, <span class="math inline">\(e\)</span>, <span class="math inline">\(s\)</span> (independent variables), and <span class="math inline">\(f\)</span> (dependent variable) to demonstrate how we will perform our analysis. The full analysis will also include dependent variables <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>.</p>
+<section id="analysis-of-simulated-data" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-of-simulated-data">Analysis of simulated data</h2>
+<p>We conducted a simulation to demonstrate how we will conduct our analysis. We simulated values for <span class="math inline">\(t\)</span>, <span class="math inline">\(e\)</span>, <span class="math inline">\(s\)</span> (independent variables), and <span class="math inline">\(f\)</span> (dependent variable) according to our predictions, to demonstrate how we will perform our analysis. The full analysis will also include dependent variables <span class="math inline">\(a\)</span> (accessibility) and <span class="math inline">\(b\)</span> (biologging data).</p>
 <p>We set up our analysis by loading necessary packages and setting the seed.</p>
 <div class="cell">
 <details>
@@ -367,7 +370,7 @@ logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 1)"</span>, <span class="at">class =</span> <span class="st">"Intercept"</span>),</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 0.5)"</span>, <span class="at">coef =</span> <span class="st">"Eterrestrial"</span>),</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 0.5)"</span>, <span class="at">coef =</span> <span class="st">"Sspatial"</span>),</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 0.1)"</span>, <span class="at">coef =</span> <span class="st">"moT"</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"normal(0, 0.15)"</span>, <span class="at">coef =</span> <span class="st">"moT"</span>),</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_prior</span>(<span class="at">prior =</span> <span class="st">"dirichlet(1)"</span>, <span class="at">class =</span> <span class="st">"simo"</span>, <span class="at">coef =</span> <span class="st">"moT1"</span>)</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>biolog_mod <span class="ot">&lt;-</span> <span class="fu">brm</span>(F <span class="sc">~</span> E <span class="sc">+</span> S <span class="sc">+</span> <span class="fu">mo</span>(T),</span>
@@ -463,24 +466,27 @@ logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 <span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>              <span class="at">delta_lwr =</span> <span class="fu">quantile</span>(delta, <span class="fl">0.025</span>),</span>
 <span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>              <span class="at">delta_upr =</span> <span class="fu">quantile</span>(delta, <span class="fl">0.975</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> delta_mean)) <span class="sc">+</span></span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> delta_lwr, <span class="at">ymax =</span> delta_upr),</span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>                    <span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">year =</span> <span class="fu">factor</span>(<span class="dv">2008</span><span class="sc">:</span><span class="dv">2023</span>), </span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>                             <span class="at">delta_mean =</span> <span class="fu">cumsum</span>(delta[<span class="sc">-</span><span class="dv">1</span>])), </span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="fu">expression</span>(delta)) <span class="sc">+</span></span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>)),</span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"E"</span>)</span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> delta_lwr, <span class="at">ymax =</span> delta_upr, <span class="at">group =</span> <span class="dv">1</span>),</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> <span class="st">"darkblue"</span>,</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>), <span class="at">color =</span> <span class="st">"darkblue"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>),</span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>              <span class="fu">tibble</span>(<span class="at">year =</span> <span class="fu">factor</span>(<span class="dv">2008</span><span class="sc">:</span><span class="dv">2023</span>), </span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>                     <span class="at">delta_mean =</span> <span class="fu">cumsum</span>(delta[<span class="sc">-</span><span class="dv">1</span>])), </span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">y =</span> <span class="fu">expression</span>(Sigma <span class="sc">*</span> delta)) <span class="sc">+</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>)),</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"E"</span>)</span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-param" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="registeredreport_files/figure-html/fig-param-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Posterior distributions of model parameters (blue) compared to simulation parameters (red). A-D: Intercept and coefficients for ecosystem, sensor type, and time. 95% interval shaded. E: Cumulative effect of year (<span class="math inline">\(mo(t,delta)\)</span>). Blue points and lines represent the mean and 95% CI of <span class="math inline">\(mo(t,delta)\)</span>.</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;2: Performance of the model fit to simulated data. Posterior distributions of model parameters in blue, compared to simulation parameters in red. A-D: Intercept and coefficients for ecosystem, sensor type, and time. 95% interval shaded. E: Cumulative effect of year (<span class="math inline">\(mo(t,delta)\)</span>). Blue lines and ribbons represent the mean and 95% CI of <span class="math inline">\(mo(t,delta)\)</span>.</figcaption>
 </figure>
 </div>
 </div>
@@ -500,136 +506,162 @@ logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>h1_pred_2016 <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">newdata =</span> h1_data_2016,</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>h1_data_2023 <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>h1_data_2007 <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="fu">c</span>(<span class="st">"marine"</span>, <span class="st">"terrestrial"</span>),</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="fu">c</span>(<span class="st">"aspatial"</span>, <span class="st">"spatial"</span>),</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2007</span></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>h1_pred_2023 <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">newdata =</span> h1_data_2023,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>h1_pred_2007 <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">newdata =</span> h1_data_2007,</span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>h1_contrast <span class="ot">&lt;-</span> (h1_pred_2023 <span class="sc">-</span> h1_pred_2016) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">select</span>(h1_data_2016, E, S), .) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(E, S), <span class="at">names_to =</span> <span class="st">"draw"</span>, <span class="at">values_to =</span> <span class="st">"contrast"</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="do">## H2</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate contrasts</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>h2_data_marine <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="st">"marine"</span>,</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="fu">c</span>(<span class="st">"aspatial"</span>, <span class="st">"spatial"</span>),</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>h2_pred_marine <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">newdata =</span> h2_data_marine,</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>h2_data_terrestrial <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="st">"terrestrial"</span>,</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="fu">c</span>(<span class="st">"aspatial"</span>, <span class="st">"spatial"</span>),</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>h2_pred_terrestrial <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">newdata =</span> h2_data_terrestrial,</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>h2_contrast <span class="ot">&lt;-</span> (h2_pred_terrestrial <span class="sc">-</span> h2_pred_marine) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">select</span>(h2_data_marine, S), .) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(S), <span class="at">names_to =</span> <span class="st">"draw"</span>, <span class="at">values_to =</span> <span class="st">"contrast"</span>)</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="do">## H3</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate contrasts</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>h3_data_aspatial <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="fu">c</span>(<span class="st">"marine"</span>, <span class="st">"terrestrial"</span>),</span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="st">"aspatial"</span>,</span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>h3_pred_aspatial <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">newdata =</span> h3_data_aspatial,</span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>h3_data_spatial <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="fu">c</span>(<span class="st">"marine"</span>, <span class="st">"terrestrial"</span>),</span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="st">"spatial"</span>,</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>h3_pred_spatial <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">newdata =</span> h3_data_spatial,</span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>h3_contrast <span class="ot">&lt;-</span> (h3_pred_spatial <span class="sc">-</span> h3_pred_aspatial) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">select</span>(h3_data_aspatial, E), .) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>E, <span class="at">names_to =</span> <span class="st">"draw"</span>, <span class="at">values_to =</span> <span class="st">"contrast"</span>)</span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>mean_h1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(h1_contrast<span class="sc">$</span>contrast) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>mean_h2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(h2_contrast<span class="sc">$</span>contrast) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>mean_h3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(h3_contrast<span class="sc">$</span>contrast) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>h1_data_2023 <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="fu">c</span>(<span class="st">"marine"</span>, <span class="st">"terrestrial"</span>),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="fu">c</span>(<span class="st">"aspatial"</span>, <span class="st">"spatial"</span>),</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>h1_pred_2023 <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">newdata =</span> h1_data_2023,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>h1a_contrast <span class="ot">&lt;-</span> (h1_pred_2023 <span class="sc">-</span> h1_pred_2007) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">select</span>(h1_data_2007, E, S), .) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(E, S), <span class="at">names_to =</span> <span class="st">"draw"</span>, <span class="at">values_to =</span> <span class="st">"contrast"</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>h1b_contrast <span class="ot">&lt;-</span> (h1_pred_2023 <span class="sc">-</span> h1_pred_2016) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">select</span>(h1_data_2016, E, S), .) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(E, S), <span class="at">names_to =</span> <span class="st">"draw"</span>, <span class="at">values_to =</span> <span class="st">"contrast"</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="do">## H2</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate contrasts</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>h2_data_marine <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="st">"marine"</span>,</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="fu">c</span>(<span class="st">"aspatial"</span>, <span class="st">"spatial"</span>),</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>h2_pred_marine <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">newdata =</span> h2_data_marine,</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>h2_data_terrestrial <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="st">"terrestrial"</span>,</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="fu">c</span>(<span class="st">"aspatial"</span>, <span class="st">"spatial"</span>),</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>h2_pred_terrestrial <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">newdata =</span> h2_data_terrestrial,</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>h2_contrast <span class="ot">&lt;-</span> (h2_pred_terrestrial <span class="sc">-</span> h2_pred_marine) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">select</span>(h2_data_marine, S), .) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(S), <span class="at">names_to =</span> <span class="st">"draw"</span>, <span class="at">values_to =</span> <span class="st">"contrast"</span>)</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="do">## H3</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="do">### Calculate contrasts</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>h3_data_aspatial <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="fu">c</span>(<span class="st">"marine"</span>, <span class="st">"terrestrial"</span>),</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="st">"aspatial"</span>,</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>h3_pred_aspatial <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">newdata =</span> h3_data_aspatial,</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>h3_data_spatial <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">E =</span> <span class="fu">c</span>(<span class="st">"marine"</span>, <span class="st">"terrestrial"</span>),</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="st">"spatial"</span>,</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>  <span class="at">T =</span> <span class="dv">2023</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>h3_pred_spatial <span class="ot">&lt;-</span> <span class="fu">posterior_predict</span>(biolog_mod,</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">newdata =</span> h3_data_spatial,</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">ndraws =</span> <span class="dv">1000</span>)</span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>h3_contrast <span class="ot">&lt;-</span> (h3_pred_spatial <span class="sc">-</span> h3_pred_aspatial) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="fu">select</span>(h3_data_aspatial, E), .) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>E, <span class="at">names_to =</span> <span class="st">"draw"</span>, <span class="at">values_to =</span> <span class="st">"contrast"</span>)</span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>mean_h1a <span class="ot">&lt;-</span> <span class="fu">mean</span>(h1a_contrast<span class="sc">$</span>contrast) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>mean_h1b <span class="ot">&lt;-</span> <span class="fu">mean</span>(h1b_contrast<span class="sc">$</span>contrast) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>mean_h2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(h2_contrast<span class="sc">$</span>contrast) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>mean_h3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(h3_contrast<span class="sc">$</span>contrast) <span class="sc">*</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Plot contrasts</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>h1_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(h1_contrast, <span class="fu">aes</span>(contrast)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>h1a_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(h1a_contrast, <span class="fu">aes</span>(contrast)) <span class="sc">+</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(prop)), <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(h1_contrast<span class="sc">$</span>contrast), </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(h1a_contrast<span class="sc">$</span>contrast), </span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"firebrick"</span>,</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fu">mean</span>(h1_contrast<span class="sc">$</span>contrast) <span class="sc">+</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.75</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"Mean = %0.2f"</span>, <span class="fu">mean</span>(h1_contrast<span class="sc">$</span>contrast)),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fu">mean</span>(h1a_contrast<span class="sc">$</span>contrast) <span class="sc">+</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.75</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"Mean = %0.2f"</span>, <span class="fu">mean</span>(h1a_contrast<span class="sc">$</span>contrast)),</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Contrast of f (2023 vs 2016)"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"H1a: Contrast of f (2023 vs 2007)"</span>,</span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion"</span>) <span class="sc">+</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>h2_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(h2_contrast, <span class="fu">aes</span>(contrast)) <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>h1b_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(h1b_contrast, <span class="fu">aes</span>(contrast)) <span class="sc">+</span></span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(prop)), <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(h2_contrast<span class="sc">$</span>contrast), </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(h1b_contrast<span class="sc">$</span>contrast), </span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"firebrick"</span>,</span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fu">mean</span>(h2_contrast<span class="sc">$</span>contrast) <span class="sc">+</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.75</span>,</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"Mean = %0.2f"</span>, <span class="fu">mean</span>(h2_contrast<span class="sc">$</span>contrast)),</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fu">mean</span>(h1b_contrast<span class="sc">$</span>contrast) <span class="sc">+</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.75</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"Mean = %0.2f"</span>, <span class="fu">mean</span>(h1b_contrast<span class="sc">$</span>contrast)),</span>
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Contrast of f (Terrestrial vs marine)"</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"H1b: Contrast of f (2023 vs 2016)"</span>,</span>
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion"</span>) <span class="sc">+</span></span>
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>h3_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(h3_contrast, <span class="fu">aes</span>(contrast)) <span class="sc">+</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>h2_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(h2_contrast, <span class="fu">aes</span>(contrast)) <span class="sc">+</span></span>
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(prop)), <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(h3_contrast<span class="sc">$</span>contrast), </span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(h2_contrast<span class="sc">$</span>contrast), </span>
 <span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"firebrick"</span>,</span>
 <span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fu">mean</span>(h3_contrast<span class="sc">$</span>contrast) <span class="sc">+</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.75</span>,</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"Mean = %0.2f"</span>, <span class="fu">mean</span>(h3_contrast<span class="sc">$</span>contrast)),</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fu">mean</span>(h2_contrast<span class="sc">$</span>contrast) <span class="sc">+</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.75</span>,</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"Mean = %0.2f"</span>, <span class="fu">mean</span>(h2_contrast<span class="sc">$</span>contrast)),</span>
 <span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Contrast of f (Spatial vs aspatial)"</span>,</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"H2: Contrast of f (Terrestrial vs marine)"</span>,</span>
 <span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion"</span>) <span class="sc">+</span></span>
 <span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
 <span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(h1_plot, h2_plot, h3_plot, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">labels =</span> <span class="st">"AUTO"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>h3_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(h3_contrast, <span class="fu">aes</span>(contrast)) <span class="sc">+</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(prop)), <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(h3_contrast<span class="sc">$</span>contrast), </span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"firebrick"</span>,</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>             <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, </span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="fu">mean</span>(h3_contrast<span class="sc">$</span>contrast) <span class="sc">+</span> <span class="fl">0.1</span>, <span class="at">y =</span> <span class="fl">0.75</span>,</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"Mean = %0.2f"</span>, <span class="fu">mean</span>(h3_contrast<span class="sc">$</span>contrast)),</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>           <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"H3: Contrast of f (Spatial vs aspatial)"</span>,</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Proportion"</span>) <span class="sc">+</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(h1a_plot, h1b_plot, h2_plot, h3_plot, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">labels =</span> <span class="st">"AUTO"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-hypotheses" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="registeredreport_files/figure-html/fig-hypotheses-1.png" style="width:180mm;height:180mm" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: We determine support for our hypotheses through marginal contrasts of <span class="math inline">\(f\)</span>. A: Simulated studies in 2023 were on average 20% more likely to have a DOI than in 2016 (marginal over ecosystem and sensor type), providing support for hypothesis 1. B: Simulated terrestrial studies in 2023 were on average 12% more likely to have a DOI than marine studies (marginal over sensor type), providing support for hypothesis 2. C: Simulated spatial biologging data in 2023 were on average 21% more likely to have a DOI than aspatial data (marginal over ecosystem), providing support for hypothesis 3.</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;3: Determining support for our hypotheses in the simulated data, using marginal contrasts of <span class="math inline">\(f\)</span>. A,B: Simulated studies in 2023 were on average 29% more likely to have a DOI than in 2007, and 21% more likely to have a DOI than in 2016 (marginal over ecosystem and sensor type), providing support for hypothesis 1. B: Simulated terrestrial studies in 2023 were on average 13% more likely to have a DOI than marine studies (marginal over sensor type), providing support for hypothesis 2. C: Simulated spatial biologging data in 2023 were on average 21% more likely to have a DOI than aspatial data (marginal over ecosystem), providing support for hypothesis 3.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="preliminary-results" class="level3">
-<h3 class="anchored" data-anchor-id="preliminary-results">Preliminary results</h3>
-<p>We have initiated the initial classification step, which will quantify our independent variables and is a prerequisite for sampling studies for the assessment of open data practices.</p>
-<p>As of February 11, 2024, we have reviewed 1521 papers, 51 of which have been reviewed by two individuals. 63.5% of papers met our standards for relevance, 59.5% of papers presented novel biologging data, and 20.9% of papers contained a data availability statement.</p>
-<p>Location sensors (e.g., GPS, depth, or altitude) were deployed most frequently, in 93.1% of relevant studies that presented novel biologging data. Intrinsic (e.g., accelerometers, heart rate monitors) and environmental (e.g., ambient temperature, cameras) sensors were deployed in 23.8% and 20.3% of studies, respectively.</p>
-<p>We identified 1108 species that have been instrumented with biologgers. 99.1% of species were vertebrates. Most instrumented vertebrates were mammals (52.2%) or birds (26.1%). The most commonly instrumented mammals were carnivores (42.6%), ungulates (Perrisodactyla and non-cetacean Artiodatyla, 27.9%), and cetaceans (14.3%). Among birds, seabirds were instrumented most often (orders Charadriiformes, Sphenisciformes, Procellariiformes, Suliformes, and Pelecaniformes, 44.6%), followed by raptors (orders Accipitriformes, Falconiformes, and Strigiformes, 21.3%) and fowl (orders Anseriformes and Galliformes, 20.9%).</p>
+<section id="planned-figures" class="level2">
+<h2 class="anchored" data-anchor-id="planned-figures">Planned figures</h2>
+<p>Figure 1: Results of the initial classification. <strong>A</strong> Sankey diagram showing the frequencies of instrumented species by number of studies, with aggregations at higher taxa. <strong>B</strong> Frequencies of location, intrinsic, and environmental sensors used in studies. <strong>C</strong> Prevalence of data availability statements over time. <strong>D</strong> Cumulative biologging studies published over time in the ten journals with the most published biologging studies.</p>
+<p>Figure 2: Results of the open data assessment. Mean and standard error of dependent variables (<span class="math inline">\(f\)</span> findability, <span class="math inline">\(a\)</span> accessibility, <span class="math inline">\(b\)</span> biologging data) aggregated over <strong>A</strong> sensor type (aspatial or spatial), <strong>B</strong> ecosystem (marine or terrestrial), and <strong>C</strong> time (year of publication).</p>
+<p>Figure 3: Model parameter estimates. Posterior distribution of parameters, as in <a href="#fig-param">Figure&nbsp;2</a> from the analysis of simulated data.</p>
+<p>Figure 4: Hypothesis tests. Contrasts of posterior predictions for hypotheses H1, H2, and H3, as in <a href="#fig-hypotheses">Figure&nbsp;3</a> from the analysis of simulated data.</p>
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-line-spacing="2" role="list">
@@ -672,38 +704,38 @@ logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 <div id="ref-hindell2020" class="csl-entry" role="listitem">
 <div class="csl-left-margin">13. </div><div class="csl-right-inline">Hindell, M. A. <em>et al.</em> <a href="https://doi.org/10.1038/s41586-020-2126-y">Tracking of marine predators to protect Southern Ocean ecosystems</a>. <em>Nature</em> <strong>580</strong>, 87–92 (2020).</div>
 </div>
+<div id="ref-sequeira2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Sequeira, A. M. M. <em>et al.</em> <a href="https://doi.org/10.1111/2041-210x.13593">A standardisation framework for bio<span>-</span>logging data to advance ecological research and conservation</a>. <em>Methods in Ecology and Evolution</em> <strong>12</strong>, 996–1007 (2021).</div>
+</div>
 <div id="ref-rutz2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">14. </div><div class="csl-right-inline">Rutz, C. <a href="https://doi.org/10.1038/d41586-022-02821-6">Register animal-tracking tags to boost conservation</a>. <em>Nature</em> <strong>609</strong>, 221–221 (2022).</div>
+<div class="csl-left-margin">15. </div><div class="csl-right-inline">Rutz, C. <a href="https://doi.org/10.1038/d41586-022-02821-6">Register animal-tracking tags to boost conservation</a>. <em>Nature</em> <strong>609</strong>, 221–221 (2022).</div>
 </div>
 <div id="ref-lowndes2017" class="csl-entry" role="listitem">
-<div class="csl-left-margin">15. </div><div class="csl-right-inline">Lowndes, J. S. S. <em>et al.</em> <a href="https://doi.org/10.1038/s41559-017-0160">Our path to better science in less time using open data science tools</a>. <em>Nature Ecology &amp; Evolution</em> <strong>1</strong>, 1–7 (2017).</div>
+<div class="csl-left-margin">16. </div><div class="csl-right-inline">Lowndes, J. S. S. <em>et al.</em> <a href="https://doi.org/10.1038/s41559-017-0160">Our path to better science in less time using open data science tools</a>. <em>Nature Ecology &amp; Evolution</em> <strong>1</strong>, 1–7 (2017).</div>
 </div>
 <div id="ref-hampton2017" class="csl-entry" role="listitem">
-<div class="csl-left-margin">16. </div><div class="csl-right-inline">Hampton, S. E. <em>et al.</em> <a href="https://doi.org/10.1093/biosci/bix025">Skills and Knowledge for Data-Intensive Environmental Research</a>. <em>BioScience</em> <strong>67</strong>, 546–557 (2017).</div>
+<div class="csl-left-margin">17. </div><div class="csl-right-inline">Hampton, S. E. <em>et al.</em> <a href="https://doi.org/10.1093/biosci/bix025">Skills and Knowledge for Data-Intensive Environmental Research</a>. <em>BioScience</em> <strong>67</strong>, 546–557 (2017).</div>
 </div>
 <div id="ref-peterson2018" class="csl-entry" role="listitem">
-<div class="csl-left-margin">17. </div><div class="csl-right-inline">Peterson, A. T., Asase, A., Canhos, D., Souza, S. de &amp; Wieczorek, J. <a href="https://doi.org/10.3897/bdj.6.e26826">Data leakage and loss in biodiversity informatics</a>. <em>Biodiversity Data Journal</em> <strong>6</strong>, (2018).</div>
+<div class="csl-left-margin">18. </div><div class="csl-right-inline">Peterson, A. T., Asase, A., Canhos, D., Souza, S. de &amp; Wieczorek, J. <a href="https://doi.org/10.3897/bdj.6.e26826">Data leakage and loss in biodiversity informatics</a>. <em>Biodiversity Data Journal</em> <strong>6</strong>, (2018).</div>
 </div>
 <div id="ref-wilkinson2016" class="csl-entry" role="listitem">
-<div class="csl-left-margin">18. </div><div class="csl-right-inline">Wilkinson, M. D. <em>et al.</em> <a href="https://doi.org/10.1038/sdata.2016.18">The FAIR Guiding Principles for scientific data management and stewardship</a>. <em>Scientific Data</em> <strong>3</strong>, 160018 (2016).</div>
+<div class="csl-left-margin">19. </div><div class="csl-right-inline">Wilkinson, M. D. <em>et al.</em> <a href="https://doi.org/10.1038/sdata.2016.18">The FAIR Guiding Principles for scientific data management and stewardship</a>. <em>Scientific Data</em> <strong>3</strong>, 160018 (2016).</div>
 </div>
 <div id="ref-halpern2020" class="csl-entry" role="listitem">
-<div class="csl-left-margin">19. </div><div class="csl-right-inline">Halpern, B. S. <em>et al.</em> Ecological Synthesis and Its Role in Advancing Knowledge. <em>BioScience</em> (2020) doi:<a href="https://doi.org/10.1093/biosci/biaa105">10.1093/biosci/biaa105</a>.</div>
+<div class="csl-left-margin">20. </div><div class="csl-right-inline">Halpern, B. S. <em>et al.</em> Ecological Synthesis and Its Role in Advancing Knowledge. <em>BioScience</em> (2020) doi:<a href="https://doi.org/10.1093/biosci/biaa105">10.1093/biosci/biaa105</a>.</div>
 </div>
 <div id="ref-fredston2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">20. </div><div class="csl-right-inline">Fredston, A. L. &amp; Lowndes, J. S. S. <a href="https://doi.org/10.1146/annurev-marine-041723-094741">Welcoming More Participation in Open Data Science for the Oceans</a>. <em>Annual Review of Marine Science</em> <strong>16</strong>, (2023).</div>
+<div class="csl-left-margin">21. </div><div class="csl-right-inline">Fredston, A. L. &amp; Lowndes, J. S. S. <a href="https://doi.org/10.1146/annurev-marine-041723-094741">Welcoming More Participation in Open Data Science for the Oceans</a>. <em>Annual Review of Marine Science</em> <strong>16</strong>, (2023).</div>
 </div>
 <div id="ref-roche2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">21. </div><div class="csl-right-inline">Roche, D. G. <em>et al.</em> <a href="https://doi.org/10.1111/cobi.13835">Closing the knowledge<span>-</span>action gap in conservation with open science</a>. <em>Conservation Biology</em> <strong>36</strong>, (2021).</div>
+<div class="csl-left-margin">22. </div><div class="csl-right-inline">Roche, D. G. <em>et al.</em> <a href="https://doi.org/10.1111/cobi.13835">Closing the knowledge<span>-</span>action gap in conservation with open science</a>. <em>Conservation Biology</em> <strong>36</strong>, (2021).</div>
 </div>
 <div id="ref-buxton2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">22. </div><div class="csl-right-inline">Buxton, R. T. <em>et al.</em> <a href="https://doi.org/10.1111/csp2.329">Avoiding wasted research resources in conservation science</a>. <em>Conservation Science and Practice</em> <strong>3</strong>, (2021).</div>
+<div class="csl-left-margin">23. </div><div class="csl-right-inline">Buxton, R. T. <em>et al.</em> <a href="https://doi.org/10.1111/csp2.329">Avoiding wasted research resources in conservation science</a>. <em>Conservation Science and Practice</em> <strong>3</strong>, (2021).</div>
 </div>
 <div id="ref-urbano2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">23. </div><div class="csl-right-inline">Urbano, F. &amp; Cagnacci, F. <a href="https://doi.org/10.3389/fevo.2021.727023">Data management and sharing for collaborative science: Lessons learnt from the euromammals initiative</a>. <em>Frontiers in Ecology and Evolution</em> <strong>9</strong>, (2021).</div>
-</div>
-<div id="ref-sequeira2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">24. </div><div class="csl-right-inline">Sequeira, A. M. M. <em>et al.</em> <a href="https://doi.org/10.1111/2041-210x.13593">A standardisation framework for bio<span>-</span>logging data to advance ecological research and conservation</a>. <em>Methods in Ecology and Evolution</em> <strong>12</strong>, 996–1007 (2021).</div>
+<div class="csl-left-margin">24. </div><div class="csl-right-inline">Urbano, F. &amp; Cagnacci, F. <a href="https://doi.org/10.3389/fevo.2021.727023">Data management and sharing for collaborative science: Lessons learnt from the euromammals initiative</a>. <em>Frontiers in Ecology and Evolution</em> <strong>9</strong>, (2021).</div>
 </div>
 <div id="ref-dettki2023" class="csl-entry" role="listitem">
 <div class="csl-left-margin">25. </div><div class="csl-right-inline">Dettki, H., Arlt, D., Bäckman, J. &amp; Blanchet, M. <a href="https://doi.org/10.3897/biss.7.111438">Key-value pairs and NoSQL databases: A novel concept to manage biologging data in data repositories</a>. <em>Biodiversity Information Science and Standards</em> <strong>7</strong>, (2023).</div>
@@ -711,50 +743,50 @@ logit(p_i) &amp;= \alpha + \beta_e e_i + \beta_s s_i + \beta_t mo(t, \delta) \\
 <div id="ref-kranstauber2011" class="csl-entry" role="listitem">
 <div class="csl-left-margin">26. </div><div class="csl-right-inline">Kranstauber, B. <em>et al.</em> <a href="https://doi.org/10.1016/j.envsoft.2010.12.005">The Movebank data model for animal tracking</a>. <em>Environmental Modelling &amp; Software</em> <strong>26</strong>, 834–835 (2011).</div>
 </div>
-<div id="ref-kranstauber2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">27. </div><div class="csl-right-inline">Kranstauber, B., Safi, K. &amp; Scharf, A. K. <em><a href="https://CRAN.R-project.org/package=move2">move2: Processing and analysing animal trajectories</a></em>. (2023).</div>
-</div>
-<div id="ref-wieczorek2012" class="csl-entry" role="listitem">
-<div class="csl-left-margin">28. </div><div class="csl-right-inline">Wieczorek, J. <em>et al.</em> <a href="https://doi.org/10.1371/journal.pone.0029715">Darwin Core: an evolving community-developed biodiversity data standard</a>. <em>PLoS ONE</em> <strong>7</strong>, e29715 (2012).</div>
-</div>
-<div id="ref-MPIAB2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">29. </div><div class="csl-right-inline">Animal Behavior, M. P. I. of. <a href="http://dx.doi.org/10.1038/s41597-019-0042-5">Movebank Attribute Dictionary</a>.</div>
-</div>
 <div id="ref-campbell2015" class="csl-entry" role="listitem">
-<div class="csl-left-margin">30. </div><div class="csl-right-inline">Campbell, H. A. <em>et al.</em> <a href="https://doi.org/10.1016/j.scitotenv.2015.01.089">Finding our way: On the sharing and reuse of animal telemetry data in Australasia</a>. <em>Science of The Total Environment</em> <strong>534</strong>, 79–84 (2015).</div>
+<div class="csl-left-margin">27. </div><div class="csl-right-inline">Campbell, H. A. <em>et al.</em> <a href="https://doi.org/10.1016/j.scitotenv.2015.01.089">Finding our way: On the sharing and reuse of animal telemetry data in Australasia</a>. <em>Science of The Total Environment</em> <strong>534</strong>, 79–84 (2015).</div>
 </div>
 <div id="ref-scarpignato2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">31. </div><div class="csl-right-inline">Scarpignato, A. L. <em>et al.</em> <a href="https://doi.org/10.1016/j.biocon.2023.110224">Shortfalls in tracking data available to inform North American migratory bird conservation</a>. <em>Biological Conservation</em> <strong>286</strong>, 110224 (2023).</div>
+<div class="csl-left-margin">28. </div><div class="csl-right-inline">Scarpignato, A. L. <em>et al.</em> <a href="https://doi.org/10.1016/j.biocon.2023.110224">Shortfalls in tracking data available to inform North American migratory bird conservation</a>. <em>Biological Conservation</em> <strong>286</strong>, 110224 (2023).</div>
 </div>
-<div id="ref-taylor2007" class="csl-entry" role="listitem">
-<div class="csl-left-margin">32. </div><div class="csl-right-inline">Taylor, C. F. <em>et al.</em> <a href="https://doi.org/10.1038/nbt1329">The minimum information about a proteomics experiment (MIAPE)</a>. <em>Nature Biotechnology</em> <strong>25</strong>, 887–893 (2007).</div>
+<div id="ref-kranstauber2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">29. </div><div class="csl-right-inline">Kranstauber, B., Safi, K. &amp; Scharf, A. K. <em><a href="https://CRAN.R-project.org/package=move2">move2: Processing and analysing animal trajectories</a></em>. (2023).</div>
 </div>
-<div id="ref-rund2019" class="csl-entry" role="listitem">
-<div class="csl-left-margin">33. </div><div class="csl-right-inline">Rund, S. S. C. <em>et al.</em> <a href="https://doi.org/10.1038/s41597-019-0042-5">MIReAD, a minimum information standard for reporting arthropod abundance data</a>. <em>Scientific Data</em> <strong>6</strong>, (2019).</div>
+<div id="ref-wieczorek2012" class="csl-entry" role="listitem">
+<div class="csl-left-margin">30. </div><div class="csl-right-inline">Wieczorek, J. <em>et al.</em> <a href="https://doi.org/10.1371/journal.pone.0029715">Darwin Core: an evolving community-developed biodiversity data standard</a>. <em>PLoS ONE</em> <strong>7</strong>, e29715 (2012).</div>
 </div>
-<div id="ref-cooke2004" class="csl-entry" role="listitem">
-<div class="csl-left-margin">34. </div><div class="csl-right-inline">Cooke, S. J. <em>et al.</em> <a href="https://doi.org/10.1016/j.tree.2004.04.003">Biotelemetry: a mechanistic approach to ecology</a>. <em>Trends in Ecology &amp; Evolution</em> <strong>19</strong>, 334–343 (2004).</div>
-</div>
-<div id="ref-williams2019" class="csl-entry" role="listitem">
-<div class="csl-left-margin">35. </div><div class="csl-right-inline">Williams, H. J. <em>et al.</em> <a href="https://doi.org/10.1111/1365-2656.13094">Optimizing the use of biologgers for movement ecology research</a>. <em>Journal of Animal Ecology</em> <strong>89</strong>, 186–206 (2019).</div>
-</div>
-<div id="ref-bürkner2020" class="csl-entry" role="listitem">
-<div class="csl-left-margin">36. </div><div class="csl-right-inline">Bürkner, P.-C. &amp; Charpentier, E. <a href="https://doi.org/10.1111/bmsp.12195">Modelling monotonic effects of ordinal predictors in Bayesian regression models</a>. <em>British Journal of Mathematical and Statistical Psychology</em> <strong>73</strong>, 420–451 (2020).</div>
-</div>
-<div id="ref-roche2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">37. </div><div class="csl-right-inline">Roche, D. G. <em>et al.</em> <a href="https://doi.org/10.1098/rspb.2021.2780">Slow improvement to the archiving quality of open datasets shared by researchers in ecology and evolution</a>. <em>Proceedings of the Royal Society B: Biological Sciences</em> <strong>289</strong>, (2022).</div>
-</div>
-<div id="ref-Stan" class="csl-entry" role="listitem">
-<div class="csl-left-margin">38. </div><div class="csl-right-inline">Stan Development Team. <a href="https://mc-stan.org">Stan modeling language users guide and reference manual, version 2.34</a>. (2024).</div>
-</div>
-<div id="ref-bürkner2018" class="csl-entry" role="listitem">
-<div class="csl-left-margin">39. </div><div class="csl-right-inline">Bürkner, P.-C. <a href="https://doi.org/10.32614/rj-2018-017">Advanced Bayesian Multilevel Modeling with the R Package brms</a>. <em>The R Journal</em> <strong>10</strong>, 395 (2018).</div>
-</div>
-<div id="ref-bürkner2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">40. </div><div class="csl-right-inline">Bürkner, P.-C. <a href="https://doi.org/10.18637/jss.v100.i05">Bayesian Item Response Modeling in <span><em>R</em></span> with <span><strong>brms</strong></span> and <span><em>Stan</em></span></a>. <em>Journal of Statistical Software</em> <strong>100</strong>, (2021).</div>
+<div id="ref-MPIAB2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">31. </div><div class="csl-right-inline">Animal Behavior, M. P. I. of. <a href="http://dx.doi.org/10.1038/s41597-019-0042-5">Movebank Attribute Dictionary</a>.</div>
 </div>
 <div id="ref-roche2015" class="csl-entry" role="listitem">
-<div class="csl-left-margin">41. </div><div class="csl-right-inline">Roche, D. G., Kruuk, L. E. B., Lanfear, R. &amp; Binning, S. A. <a href="https://doi.org/10.1371/journal.pbio.1002295">Public Data Archiving in Ecology and Evolution: How Well Are We Doing?</a> <em>PLOS Biology</em> <strong>13</strong>, e1002295 (2015).</div>
+<div class="csl-left-margin">32. </div><div class="csl-right-inline">Roche, D. G., Kruuk, L. E. B., Lanfear, R. &amp; Binning, S. A. <a href="https://doi.org/10.1371/journal.pbio.1002295">Public Data Archiving in Ecology and Evolution: How Well Are We Doing?</a> <em>PLOS Biology</em> <strong>13</strong>, e1002295 (2015).</div>
+</div>
+<div id="ref-taylor2007" class="csl-entry" role="listitem">
+<div class="csl-left-margin">33. </div><div class="csl-right-inline">Taylor, C. F. <em>et al.</em> <a href="https://doi.org/10.1038/nbt1329">The minimum information about a proteomics experiment (MIAPE)</a>. <em>Nature Biotechnology</em> <strong>25</strong>, 887–893 (2007).</div>
+</div>
+<div id="ref-rund2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">34. </div><div class="csl-right-inline">Rund, S. S. C. <em>et al.</em> <a href="https://doi.org/10.1038/s41597-019-0042-5">MIReAD, a minimum information standard for reporting arthropod abundance data</a>. <em>Scientific Data</em> <strong>6</strong>, (2019).</div>
+</div>
+<div id="ref-cooke2004" class="csl-entry" role="listitem">
+<div class="csl-left-margin">35. </div><div class="csl-right-inline">Cooke, S. J. <em>et al.</em> <a href="https://doi.org/10.1016/j.tree.2004.04.003">Biotelemetry: a mechanistic approach to ecology</a>. <em>Trends in Ecology &amp; Evolution</em> <strong>19</strong>, 334–343 (2004).</div>
+</div>
+<div id="ref-williams2019" class="csl-entry" role="listitem">
+<div class="csl-left-margin">36. </div><div class="csl-right-inline">Williams, H. J. <em>et al.</em> <a href="https://doi.org/10.1111/1365-2656.13094">Optimizing the use of biologgers for movement ecology research</a>. <em>Journal of Animal Ecology</em> <strong>89</strong>, 186–206 (2019).</div>
+</div>
+<div id="ref-bürkner2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">37. </div><div class="csl-right-inline">Bürkner, P.-C. &amp; Charpentier, E. <a href="https://doi.org/10.1111/bmsp.12195">Modelling monotonic effects of ordinal predictors in Bayesian regression models</a>. <em>British Journal of Mathematical and Statistical Psychology</em> <strong>73</strong>, 420–451 (2020).</div>
+</div>
+<div id="ref-roche2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">38. </div><div class="csl-right-inline">Roche, D. G. <em>et al.</em> <a href="https://doi.org/10.1098/rspb.2021.2780">Slow improvement to the archiving quality of open datasets shared by researchers in ecology and evolution</a>. <em>Proceedings of the Royal Society B: Biological Sciences</em> <strong>289</strong>, (2022).</div>
+</div>
+<div id="ref-Stan" class="csl-entry" role="listitem">
+<div class="csl-left-margin">39. </div><div class="csl-right-inline">Stan Development Team. <a href="https://mc-stan.org">Stan modeling language users guide and reference manual, version 2.34</a>. (2024).</div>
+</div>
+<div id="ref-bürkner2018" class="csl-entry" role="listitem">
+<div class="csl-left-margin">40. </div><div class="csl-right-inline">Bürkner, P.-C. <a href="https://doi.org/10.32614/rj-2018-017">Advanced Bayesian Multilevel Modeling with the R Package brms</a>. <em>The R Journal</em> <strong>10</strong>, 395 (2018).</div>
+</div>
+<div id="ref-bürkner2021" class="csl-entry" role="listitem">
+<div class="csl-left-margin">41. </div><div class="csl-right-inline">Bürkner, P.-C. <a href="https://doi.org/10.18637/jss.v100.i05">Bayesian Item Response Modeling in <span><em>R</em></span> with <span><strong>brms</strong></span> and <span><em>Stan</em></span></a>. <em>Journal of Statistical Software</em> <strong>100</strong>, (2021).</div>
 </div>
 </div></section></div></main>
 <!-- /main column -->
