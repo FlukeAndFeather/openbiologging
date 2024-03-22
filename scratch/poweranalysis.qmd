@@ -1,0 +1,259 @@
+---
+title: "Power analysis"
+format: html
+editor: visual
+---
+
+```{r}
+#| label: setup
+
+library(brms)
+library(cowplot)
+library(HDInterval)
+library(tidybayes)
+library(tidyverse)
+set.seed(1234)
+
+inv_logit <- function(x) exp(x) / (1 + exp(x))
+# Find the minimum Highest Density Interval in draws that contains value
+find_min_hdi <- function(draws, value, tol = 1e-3) {
+  lwr <- tol
+  upr <- 1 - tol
+  cred <- mean(c(lwr, upr))
+  int <- hdi(draws, cred)
+  while (upr - lwr > tol) {
+    if (between(value, int[1], int[2])) {
+      upr <- cred
+    } else {
+      lwr <- cred
+    }
+    cred <- mean(c(lwr, upr))
+    int <- hdi(draws, cred)
+  }
+  cred
+}
+
+```
+
+## Simulated data
+
+Simulation specified by:
+
+$$
+\begin{align}
+DV_i &\sim Bernoulli(p_i) \\
+logit(p_i) &= \alpha + \beta_e[e_i] + \beta_s[s_i] + \beta_t \times t_i
+\end{align}
+$$
+
+Where:
+
+-   $DV$ is a dependent variable ( $f$, $a$, or $r$ )
+
+-   $p$ is the probability of the dependent variable
+
+-   $\alpha$ is the intercept
+
+-   $\beta_e$ and $\beta_s$ are coefficients for the categorical predictors *ecosystem* and *sensor class*, and $e$ and $s$ are the ecosystem and sensor class of the observation
+
+-   $\beta_t$ is the coefficient for time, $t_i$, which is quantified as "years since 2007"
+
+For this analysis, assume the following values for the coefficients:
+
+$$
+\begin{align}
+\alpha &= -4 \\
+\beta_e &= [marine = 0, terrestrial = 0.5] \\
+\beta_s &= [aspatial = 0, spatial = 1.5] \\
+\beta_t &= 0.2
+\end{align}
+$$
+
+The independent variables $t$, $e$, and $s$ are generated through stratified sampling. We simulate equal sample sizes from all combinations of the following categories:
+
+-   $e$ in *marine*, *terrestrial*
+
+-   $s$ in *aspatial*, *spatial*
+
+-   Early (2007 - 2015), middle (2016-2019), and recent (2020-2023) periods
+
+$t$ will be uniformly distributed within each period.
+
+For the power analysis, we vary the sample size ( $n^*$ ) within each of the 12 combinations of categories. For example, if $n^*=50$, then total sample size $n=12 \times n^*=600$. Simulated data for $n^*=50$ shown in figure [@fig-n50].
+
+```{r}
+#| label: sim-params
+
+alpha <- -4
+beta_E <- c(marine = 0, terrestrial = 0.5)
+beta_S <- c(aspatial = 0, spatial = 1.5)
+beta_T = 0.2
+
+```
+
+```{r}
+#| label: fig-n50
+#| fig-caption: "Simulated data for dependent variable $DV$ when sampling 50 papers within each combination of categories for $e$, $s$, and $t$. Points represent simulated studies, lines represent probability of the dependent variable $p(DV)$. Gold indicates terrestrial, navy indicates marine. Triangle points/dashed lines represent spatial data, circle points/solid lines represent aspatial data."
+
+biolog_n50 <- expand_grid(
+    era = c("early", "middle", "recent"),
+    E = c("marine", "terrestrial"),
+    S = c("aspatial", "spatial")
+  ) %>%
+    slice(rep(seq(nrow(.)), each = 50)) %>%
+    mutate(.id = seq(nrow(.)),
+           T = case_when(
+             era == "early"  ~ sample(2007:2015, nrow(.), replace = TRUE),
+             era == "middle" ~ sample(2016:2019, nrow(.), replace = TRUE),
+             era == "recent" ~ sample(2020:2023, nrow(.), replace = TRUE)
+           )) %>%
+    mutate(
+      T2007 = T - 2007,
+      logit_p = alpha + beta_E[E] + beta_S[S] + beta_T * T2007,
+      p = inv_logit(logit_p),
+      DV = rbinom(nrow(.), size = 1, prob = p)
+    )
+
+e_palette <- c(marine = "navy", terrestrial = "goldenrod")
+
+biolog_text <- filter(biolog_n50, T == 2023) %>%
+  distinct(E, S, p) %>%
+  mutate(label = str_to_title(paste(E, S, sep = "\n")))
+
+ggplot(biolog_n50, aes(T, p, color = E)) +
+  geom_jitter(aes(y = DV, shape = S),
+              width = 0.25, height = 0.05,
+              alpha = 0.5) +
+  geom_line(aes(linetype = S)) +
+  geom_text(aes(label = label), biolog_text,
+            x = 2023.1, hjust = 0) +
+  scale_color_manual(values = e_palette) +
+  scale_x_continuous(limits = c(NA, 2025),
+                     breaks = seq(2010, 2020, by = 5)) +
+  labs(y = expression(italic(p(DV)))) +
+  expand_limits(x = 2025) +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_blank())
+
+```
+
+We use the following priors:
+
+$$
+\begin{align}
+\alpha &\sim Normal(0, 4) \\
+\beta_{e=terrestrial} &\sim Normal(0, 2) \\
+\beta_{s=spatial} &\sim Normal(0, 2) \\
+\beta_t &\sim Normal(0, 0.5)
+\end{align}
+$$
+
+## Power analysis
+
+How well does the model recover the simulation parameters with varying sample sizes? We use the *smallest highest density interval* of the linear predictor ( $logit(p)$ ) that contains the actual values as our metric. This metric combines the uncertainty, We simulate data 100 times each for $n^*$ values of 10:10:100. Then, we fit a model to the simulated data and .
+
+```{r}
+#| label: power-analysis
+
+sim_analysis <- function(nstar) {
+  biolog <- expand_grid(
+    era = c("early", "middle", "recent"),
+    E = c("marine", "terrestrial"),
+    S = c("aspatial", "spatial")
+  ) %>%
+    slice(rep(seq(nrow(.)), each = nstar)) %>%
+    mutate(
+      T = case_when(
+        era == "early"  ~ sample(2007:2015, nrow(.), replace = TRUE),
+        era == "middle" ~ sample(2016:2019, nrow(.), replace = TRUE),
+        era == "recent" ~ sample(2020:2023, nrow(.), replace = TRUE)
+      ),
+      T2007 = T - 2007,
+      logit_p = alpha + beta_E[E] + beta_S[S] + beta_T * T2007,
+      p = inv_logit(logit_p),
+      DV = rbinom(nrow(.), 1, p)
+    )
+  biolog_prior <- c(
+    set_prior(prior = "normal(0, 4)", class = "Intercept"),
+    set_prior(prior = "normal(0, 2)", coef = "Eterrestrial"),
+    set_prior(prior = "normal(0, 2)", coef = "Sspatial"),
+    set_prior(prior = "normal(0, 0.5)", coef = "T2007")
+  )
+  biolog_mod <- brm(
+    DV ~ E + S + T2007,
+    data = biolog,
+    family = bernoulli(link = "logit"),
+    prior = biolog_prior,
+    save_pars = save_pars(all = TRUE),
+    chains = 4,
+    cores = 4,
+    iter = 50000,
+    refresh = 0
+  )
+  biolog_actual <- expand_grid(T2007 = (2007:2023) - 2007, 
+                               E = c("marine", "terrestrial"), 
+                               S = c("aspatial", "spatial")) %>% 
+    mutate(logit_p = alpha + beta_E[E] + beta_S[S] + beta_T * T2007)
+  biolog_draws <- biolog_mod %>% 
+    as_draws_df() %>% 
+    as_tibble() %>% 
+    cross_join(biolog_actual) %>% 
+    mutate(linpred_post = b_Intercept + 
+             b_Eterrestrial * (E == "terrestrial") + 
+             b_Sspatial * (S == "spatial") + 
+             b_T2007 * T2007)
+  
+  min_hdi <- biolog_draws %>% 
+    group_by(E, S, T2007) %>% 
+    summarize(min_hdi = find_min_hdi(linpred_post, logit_p[1]),
+              .groups = "drop") %>% 
+    pull(min_hdi) %>% 
+    max()
+  hdi <- HDInterval::hdi(biolog_draws$linpred_post, min_hdi)
+  viz <- biolog_draws %>% 
+    group_by(T2007, E, S) %>% 
+    summarize(
+      across(linpred_post, 
+             list(mean = mean, 
+                  lwr = \(x) hdi(linpred_post, min_hdi)[1], 
+                  upr = \(x) hdi(linpred_post, min_hdi)[2])), 
+      .groups = "drop") %>% 
+    ggplot(aes(T2007, color = E, fill = E, linetype = S)) + 
+    geom_ribbon(aes(ymin = linpred_post_lwr, ymax = linpred_post_upr), 
+                color = NA, alpha = 0.5) + 
+    geom_line(aes(y = linpred_post_mean)) + 
+    scale_color_manual(values = e_palette) + 
+    scale_fill_manual(values = e_palette) + 
+    geom_line(aes(y = logit_p), biolog_actual, linewidth = 1.5) + 
+    labs(title = sprintf("N* = %d", nstar),
+         caption = sprintf("HDI = %0.3f", min_hdi)) +
+    theme_classic()
+  list(min_hdi = min_hdi,
+       viz = viz)
+}
+
+nstar <- seq(10, 100, by = 30)
+niter <- 2
+power_analysis <- map(
+  nstar, 
+  \(n) map(seq(niter), \(i) sim_analysis(n))
+)
+names(power_analysis) <- paste0("nstar=", nstar)
+
+```
+
+```{r}
+#| label: power-analysis-summary
+#| lightbox: true
+
+map2(power_analysis, names(power_analysis), 
+     \(hdi, n) tibble(nstar = n, hdi = hdi)) %>% 
+  list_rbind() %>% 
+  mutate(nstar = as.integer(substr(nstar, 7, 8))) %>% 
+  ggplot(aes(nstar, hdi)) +
+  geom_jitter(height = 0, width = 2) +
+  expand_limits(y = c(0, 1)) +
+  theme_classic()
+
+```
