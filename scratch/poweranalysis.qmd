@@ -9,29 +9,11 @@ editor: visual
 
 library(brms)
 library(cowplot)
-library(HDInterval)
 library(tidybayes)
 library(tidyverse)
 set.seed(1234)
 
 inv_logit <- function(x) exp(x) / (1 + exp(x))
-# Find the minimum Highest Density Interval in draws that contains value
-find_min_hdi <- function(draws, value, tol = 1e-3) {
-  lwr <- tol
-  upr <- 1 - tol
-  cred <- mean(c(lwr, upr))
-  int <- hdi(draws, cred)
-  while (upr - lwr > tol) {
-    if (between(value, int[1], int[2])) {
-      upr <- cred
-    } else {
-      lwr <- cred
-    }
-    cred <- mean(c(lwr, upr))
-    int <- hdi(draws, cred)
-  }
-  cred
-}
 
 ```
 
@@ -151,7 +133,7 @@ $$
 
 ## Power analysis
 
-How well does the model recover the simulation parameters with varying sample sizes? We use the *smallest highest density interval* of the linear predictor ( $logit(p)$ ) that contains the actual values as our metric. This metric combines the uncertainty, We simulate data 100 times each for $n^*$ values of 10:10:100. Then, we fit a model to the simulated data and .
+How well does the model recover the simulation parameters with varying sample sizes? We calculate the root mean square error (RMSE) of the linear predictor ( $logit(p)$ ). We simulate data 20 times each for $n^*$ values of 10:10:100. Then, we fit a model to the simulated data, generate predictions for the linear predictor, and calculate the RMSE. We will choose the $n^*$ value where the RMSE approaches the asymptote.
 
 ```{r}
 #| label: power-analysis
@@ -185,7 +167,6 @@ sim_analysis <- function(nstar) {
     data = biolog,
     family = bernoulli(link = "logit"),
     prior = biolog_prior,
-    save_pars = save_pars(all = TRUE),
     chains = 4,
     cores = 4,
     iter = 50000,
@@ -203,21 +184,15 @@ sim_analysis <- function(nstar) {
              b_Eterrestrial * (E == "terrestrial") + 
              b_Sspatial * (S == "spatial") + 
              b_T2007 * T2007)
-  
-  min_hdi <- biolog_draws %>% 
-    group_by(E, S, T2007) %>% 
-    summarize(min_hdi = find_min_hdi(linpred_post, logit_p[1]),
-              .groups = "drop") %>% 
-    pull(min_hdi) %>% 
-    max()
-  hdi <- HDInterval::hdi(biolog_draws$linpred_post, min_hdi)
+  rmse <- with(biolog_draws, sqrt(mean((linpred_post - logit_p)^2)))
   viz <- biolog_draws %>% 
     group_by(T2007, E, S) %>% 
     summarize(
-      across(linpred_post, 
-             list(mean = mean, 
-                  lwr = \(x) hdi(linpred_post, min_hdi)[1], 
-                  upr = \(x) hdi(linpred_post, min_hdi)[2])), 
+      across(
+        linpred_post, 
+        list(mean = mean, 
+             lwr = \(x) HDInterval::hdi(linpred_post, 0.95)[1], 
+             upr = \(x) HDInterval::hdi(linpred_post, 0.95)[2])), 
       .groups = "drop") %>% 
     ggplot(aes(T2007, color = E, fill = E, linetype = S)) + 
     geom_ribbon(aes(ymin = linpred_post_lwr, ymax = linpred_post_upr), 
@@ -227,33 +202,60 @@ sim_analysis <- function(nstar) {
     scale_fill_manual(values = e_palette) + 
     geom_line(aes(y = logit_p), biolog_actual, linewidth = 1.5) + 
     labs(title = sprintf("N* = %d", nstar),
-         caption = sprintf("HDI = %0.3f", min_hdi)) +
+         caption = sprintf("RMS error = %0.3f", rmse)) +
     theme_classic()
-  list(min_hdi = min_hdi,
+  list(rmse = rmse,
        viz = viz)
 }
 
-nstar <- seq(10, 100, by = 30)
-niter <- 2
-power_analysis <- map(
-  nstar, 
-  \(n) map(seq(niter), \(i) sim_analysis(n))
-)
-names(power_analysis) <- paste0("nstar=", nstar)
+nstar <- seq(10, 100, by = 10)
+niter <- 20
+rmse <- vector(mode = "list", length = length(nstar))
+names(rmse) <- nstar
+viz <- vector(mode = "list", length = length(nstar))
+names(viz) <- nstar
+for (n in nstar) {
+  rmse[[as.character(n)]] <- vector(mode = "double", length = niter)
+  viz[[as.character(n)]] <- vector(mode = "list", length = niter)
+  for (i in seq(niter)) {
+    result <- sim_analysis(n)
+    rmse[[as.character(n)]][i] <- result$rmse
+    viz[[as.character(n)]][[i]] <- result$viz
+  }
+}
 
 ```
 
 ```{r}
-#| label: power-analysis-summary
-#| lightbox: true
+#| label: fig-power-analysis
 
-map2(power_analysis, names(power_analysis), 
-     \(hdi, n) tibble(nstar = n, hdi = hdi)) %>% 
+rmse_results <- map2(
+  rmse, names(rmse), 
+  \(r, n) tibble(nstar = n, 
+                 rmse = r)
+) %>% 
   list_rbind() %>% 
-  mutate(nstar = as.integer(substr(nstar, 7, 8))) %>% 
-  ggplot(aes(nstar, hdi)) +
+  mutate(nstar = as.numeric(nstar))
+rmse_result_summ <- rmse_results %>% 
+  group_by(nstar) %>% 
+  summarize(rmse = mean(rmse))
+
+ggplot(rmse_results, aes(nstar, rmse)) +
+  geom_line(aes(group = 1), rmse_result_summ, 
+            color = "red", linewidth = 1.5) +
   geom_jitter(height = 0, width = 2) +
-  expand_limits(y = c(0, 1)) +
+  expand_limits(y = c(0)) +
   theme_classic()
+
+```
+
+```{r}
+#| label: fig-power-analysis-gallery
+
+for (n in viz) {
+  for (v in n) {
+    print(v)
+  }
+}
 
 ```
