@@ -1,0 +1,118 @@
+---
+title: "[openbiologging] October 2024 meeting"
+execute: 
+  echo: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+
+theme_set(theme_few())
+top_left_legend <- theme(legend.position = "inside",
+                         legend.position.inside = c(0, 1),
+                         legend.justification = c(-0.01, 1.01))
+
+```
+
+```{r}
+#| label: read
+
+reviews <- readRDS(here::here("outputs", "reviews", "reviews20241011.rds"))
+add_taxa <- readRDS(here::here("outputs", "reviews", "taxa20241011.rds"))
+
+completed <- filter(reviews, reviewed) %>% 
+  mutate(novel_biologging = novel_biologging == "Y" & !is.na(novel_biologging))
+relevant <- filter(completed, novel_biologging & manuscript_type != "U")
+
+```
+
+## Progress
+
+We're about 1/3 of the way through the broad pass.
+
+```{r}
+#| label: progress
+
+count(reviews, reviewed) %>% 
+  mutate(frac = scales::label_percent(0.1)(n / sum(n))) %>% 
+  set_names(c("Reviewed", "Count", "Fraction"))
+
+```
+
+## Breakdowns
+
+### By time
+
+```{r}
+#| label: by-time
+
+ggplot(completed, aes(year, fill = novel_biologging)) +
+  geom_bar() +
+  scale_fill_manual("Novel biologging data", 
+                    breaks = c(TRUE, FALSE),
+                    values = c("cornflowerblue", "tomato")) +
+  top_left_legend
+
+```
+
+### By data availability statement
+
+```{r}
+#| label: by-das
+
+relevant %>% 
+  group_by(year) %>% 
+  summarize(N = n(),
+            das = mean(biologging_availability == "Y", na.rm = TRUE)) %>% 
+  ggplot(aes(year, das)) +
+  geom_line(aes(group = 1)) +
+  geom_point(aes(size = N)) +
+  scale_y_continuous("DAS", 
+                     labels = scales::label_percent(),
+                     limits = c(0, 1)) +
+  top_left_legend
+
+```
+
+### By habitat
+
+```{r}
+#| label: by-habitat
+
+ggplot(relevant, aes(year, fill = habitat)) +
+  geom_bar() +
+  # scale_fill_manual("Habitat", 
+  #                   breaks = c(TRUE, FALSE),
+  #                   values = c("cornflowerblue", "tomato")) +
+  guides(fill = guide_legend(ncol = 3)) +
+  top_left_legend
+
+```
+
+$\text{habitat} \in \{ \text{N, W, Y, NA} \} = 9$
+
+### DAS by habitat
+
+```{r}
+#| label: das-by-habitat
+
+relevant %>% 
+  mutate(habitat = substr(habitat, 1, 1)) %>% 
+  filter(habitat %in% c("M", "T")) %>% 
+  group_by(year, habitat) %>% 
+  summarize(N = n(),
+            das = mean(biologging_availability == "Y", na.rm = TRUE),
+            .groups = "drop") %>% 
+  ggplot(aes(year, das, color = habitat)) +
+  geom_line(aes(group = habitat)) +
+  geom_point(aes(size = N)) +
+  scale_y_continuous("DAS", 
+                     labels = scales::label_percent(),
+                     limits = c(0, 1)) +
+  top_left_legend
+
+```
